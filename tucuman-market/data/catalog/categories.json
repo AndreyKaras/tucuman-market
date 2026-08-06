@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "categories": [
+    {
+      "key": "fruit-vegetables",
+      "displayOrder": 1,
+      "isActive": true,
+      "translations": {
+        "es": { "name": "Frutas y verduras", "slug": "frutas-y-verduras" },
+        "en": { "name": "Fruit and vegetables", "slug": "fruit-and-vegetables" }
+      }
+    },
+    {
+      "key": "pantry",
+      "displayOrder": 2,
+      "isActive": true,
+      "translations": {
+        "es": { "name": "Almacén", "slug": "almacen" },
+        "en": { "name": "Pantry", "slug": "pantry" }
+      }
+    },
+    {
+      "key": "dairy-eggs",
+      "displayOrder": 3,
+      "isActive": true,
+      "translations": {
+        "es": { "name": "Lácteos y huevos", "slug": "lacteos-y-huevos" },
+        "en": { "name": "Dairy and eggs", "slug": "dairy-and-eggs" }
+      }
+    },
+    {
+      "key": "bakery",
+      "displayOrder": 4,
+      "isActive": true,
+      "translations": {
+        "es": { "name": "Panadería", "slug": "panaderia" },
+        "en": { "name": "Bakery", "slug": "bakery" }
+      }
+    },
+    {
+      "key": "beverages",
+      "displayOrder": 5,
+      "isActive": true,
+      "translations": {
+        "es": { "name": "Bebidas", "slug": "bebidas" },
+        "en": { "name": "Beverages", "slug": "beverages" }
+      }
+    },
+    {
+      "key": "snacks-sweets",
+      "displayOrder": 6,
+      "isActive": true,
+      "translations": {
+        "es": { "name": "Snacks y dulces", "slug": "snacks-y-dulces" },
+        "en": { "name": "Snacks and sweets", "slug": "snacks-and-sweets" }
+      }
+    },
+    {
+      "key": "meat-deli",
+      "displayOrder": 7,
+      "isActive": true,
+      "translations": {
+        "es": { "name": "Carnes y fiambres", "slug": "carnes-y-fiambres" },
+        "en": { "name": "Meat and deli", "slug": "meat-and-deli" }
+      }
+    },
+    {
+      "key": "frozen",
+      "displayOrder": 8,
+      "isActive": true,
+      "translations": {
+        "es": { "name": "Congelados", "slug": "congelados" },
+        "en": { "name": "Frozen food", "slug": "frozen-food" }
+      }
+    }
+  ]
+}

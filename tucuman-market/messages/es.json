@@ -1,0 +1,79 @@
+{
+  "Common": {
+    "language": "Idioma",
+    "spanish": "Español",
+    "english": "English",
+    "loading": "Cargando…",
+    "retry": "Intentar de nuevo",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "cancel": "Cancelar"
+  },
+  "Navigation": {
+    "home": "Inicio",
+    "catalog": "Productos",
+    "categories": "Categorías",
+    "offers": "Ofertas",
+    "account": "Mi cuenta",
+    "cart": "Carrito"
+  },
+  "Home": {
+    "title": "Tu supermercado en Tucumán",
+    "subtitle": "Comprá productos frescos y de todos los días con entrega o retiro por el local.",
+    "shopNow": "Ver productos",
+    "featured": "Productos destacados",
+    "categories": "Comprá por categoría"
+  },
+  "Catalog": {
+    "title": "Productos",
+    "searchPlaceholder": "Buscar productos o marcas",
+    "filters": "Filtros",
+    "sort": "Ordenar",
+    "availability": "Disponibilidad",
+    "inStock": "En stock",
+    "onSale": "En oferta",
+    "noResults": "No encontramos productos con esos filtros.",
+    "clearFilters": "Limpiar filtros"
+  },
+  "Product": {
+    "addToCart": "Agregar al carrito",
+    "outOfStock": "Sin stock",
+    "lowStock": "Últimas unidades",
+    "quantity": "Cantidad",
+    "each": "por unidad",
+    "perKilogram": "por kilo"
+  },
+  "Cart": {
+    "title": "Tu carrito",
+    "empty": "Tu carrito está vacío.",
+    "continueShopping": "Seguir comprando",
+    "remove": "Eliminar",
+    "subtotal": "Subtotal",
+    "delivery": "Envío",
+    "total": "Total",
+    "checkout": "Continuar con el pedido"
+  },
+  "Checkout": {
+    "title": "Finalizar pedido",
+    "contact": "Datos de contacto",
+    "fullName": "Nombre y apellido",
+    "phone": "Teléfono",
+    "email": "Email (opcional)",
+    "fulfillment": "¿Cómo querés recibir tu pedido?",
+    "delivery": "Entrega a domicilio",
+    "pickup": "Retiro por el local",
+    "address": "Dirección",
+    "notes": "Notas para el pedido (opcional)",
+    "review": "Revisá tu pedido",
+    "placeOrder": "Confirmar pedido",
+    "successTitle": "¡Recibimos tu pedido!",
+    "orderNumber": "Número de pedido"
+  },
+  "Errors": {
+    "generic": "Ocurrió un error. Intentá de nuevo.",
+    "required": "Este campo es obligatorio.",
+    "invalidPhone": "Ingresá un teléfono válido.",
+    "priceChanged": "El precio de este producto cambió. Revisá el carrito.",
+    "stockChanged": "La disponibilidad de este producto cambió. Revisá el carrito."
+  }
+}

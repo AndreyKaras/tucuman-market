@@ -1,0 +1,549 @@
+{
+  "schemaVersion": 1,
+  "currency": "ARS",
+  "priceUnit": "peso",
+  "seedPriceDate": "2026-08-06",
+  "disclaimer": "Demonstration prices for development; editable in the admin panel.",
+  "products": [
+    {
+      "sku": "FV-001",
+      "categoryKey": "fruit-vegetables",
+      "brand": null,
+      "price": 2790,
+      "compareAtPrice": null,
+      "saleUnit": "KG",
+      "quantityStep": 1,
+      "netContent": null,
+      "stockQuantity": 45,
+      "lowStockThreshold": 10,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Banana",
+          "slug": "banana-por-kilo",
+          "description": "Bananas frescas, seleccionadas por su sabor dulce y su punto de maduración. Ideales para desayunos, licuados y colaciones."
+        },
+        "en": {
+          "name": "Banana",
+          "slug": "banana-per-kilogram",
+          "description": "Fresh bananas selected for their sweet flavor and ripeness. Ideal for breakfast, smoothies, and snacks."
+        }
+      }
+    },
+    {
+      "sku": "FV-002",
+      "categoryKey": "fruit-vegetables",
+      "brand": null,
+      "price": 3690,
+      "compareAtPrice": 3990,
+      "saleUnit": "KG",
+      "quantityStep": 1,
+      "netContent": null,
+      "stockQuantity": 32,
+      "lowStockThreshold": 10,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Manzana roja",
+          "slug": "manzana-roja-por-kilo",
+          "description": "Manzanas rojas frescas, de textura crocante y sabor suavemente dulce. Ideales para consumir solas o usar en postres."
+        },
+        "en": {
+          "name": "Red apple",
+          "slug": "red-apple-per-kilogram",
+          "description": "Fresh red apples with a crisp texture and mildly sweet flavor. Perfect as a snack or for desserts."
+        }
+      }
+    },
+    {
+      "sku": "FV-003",
+      "categoryKey": "fruit-vegetables",
+      "brand": null,
+      "price": 1490,
+      "compareAtPrice": null,
+      "saleUnit": "KG",
+      "quantityStep": 1,
+      "netContent": null,
+      "stockQuantity": 50,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Naranja para jugo",
+          "slug": "naranja-para-jugo-por-kilo",
+          "description": "Naranjas jugosas, seleccionadas especialmente para preparar jugos naturales. Fuente natural de vitamina C."
+        },
+        "en": {
+          "name": "Juicing orange",
+          "slug": "juicing-orange-per-kilogram",
+          "description": "Juicy oranges selected especially for making fresh juice. A natural source of vitamin C."
+        }
+      }
+    },
+    {
+      "sku": "FV-004",
+      "categoryKey": "fruit-vegetables",
+      "brand": null,
+      "price": 1690,
+      "compareAtPrice": null,
+      "saleUnit": "KG",
+      "quantityStep": 1,
+      "netContent": null,
+      "stockQuantity": 28,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Mandarina",
+          "slug": "mandarina-por-kilo",
+          "description": "Mandarinas frescas, dulces y fáciles de pelar. Una opción práctica para toda la familia."
+        },
+        "en": {
+          "name": "Mandarin",
+          "slug": "mandarin-per-kilogram",
+          "description": "Fresh, sweet, and easy-to-peel mandarins. A convenient choice for the whole family."
+        }
+      }
+    },
+    {
+      "sku": "FV-005",
+      "categoryKey": "fruit-vegetables",
+      "brand": null,
+      "price": 1490,
+      "compareAtPrice": 1990,
+      "saleUnit": "KG",
+      "quantityStep": 1,
+      "netContent": null,
+      "stockQuantity": 24,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Limón",
+          "slug": "limon-por-kilo",
+          "description": "Limones frescos de aroma intenso y abundante jugo. Ideales para bebidas, aderezos y preparaciones caseras."
+        },
+        "en": {
+          "name": "Lemon",
+          "slug": "lemon-per-kilogram",
+          "description": "Fresh lemons with an intense aroma and plenty of juice. Ideal for drinks, dressings, and home cooking."
+        }
+      }
+    },
+    {
+      "sku": "FV-006",
+      "categoryKey": "fruit-vegetables",
+      "brand": null,
+      "price": 1990,
+      "compareAtPrice": null,
+      "saleUnit": "KG",
+      "quantityStep": 1,
+      "netContent": null,
+      "stockQuantity": 65,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Papa negra",
+          "slug": "papa-negra-por-kilo",
+          "description": "Papas seleccionadas, versátiles y aptas para horno, puré, guisos o frituras."
+        },
+        "en": {
+          "name": "Potatoes",
+          "slug": "potatoes-per-kilogram",
+          "description": "Selected potatoes suitable for roasting, mashing, stews, or frying."
+        }
+      }
+    },
+    {
+      "sku": "FV-007",
+      "categoryKey": "fruit-vegetables",
+      "brand": null,
+      "price": 3890,
+      "compareAtPrice": null,
+      "saleUnit": "KG",
+      "quantityStep": 1,
+      "netContent": null,
+      "stockQuantity": 9,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Tomate redondo",
+          "slug": "tomate-redondo-por-kilo",
+          "description": "Tomates redondos frescos, firmes y jugosos. Ideales para ensaladas, salsas y comidas diarias."
+        },
+        "en": {
+          "name": "Round tomato",
+          "slug": "round-tomato-per-kilogram",
+          "description": "Fresh round tomatoes with a firm and juicy texture. Ideal for salads, sauces, and everyday meals."
+        }
+      }
+    },
+    {
+      "sku": "FV-008",
+      "categoryKey": "fruit-vegetables",
+      "brand": null,
+      "price": 1390,
+      "compareAtPrice": 1790,
+      "saleUnit": "KG",
+      "quantityStep": 1,
+      "netContent": null,
+      "stockQuantity": 38,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Zanahoria",
+          "slug": "zanahoria-por-kilo",
+          "description": "Zanahorias frescas y crocantes. Ideales para ensaladas, jugos, sopas y distintas preparaciones."
+        },
+        "en": {
+          "name": "Carrot",
+          "slug": "carrot-per-kilogram",
+          "description": "Fresh and crunchy carrots. Ideal for salads, juices, soups, and a wide variety of recipes."
+        }
+      }
+    },
+    {
+      "sku": "FV-009",
+      "categoryKey": "fruit-vegetables",
+      "brand": null,
+      "price": 1890,
+      "compareAtPrice": null,
+      "saleUnit": "KG",
+      "quantityStep": 1,
+      "netContent": null,
+      "stockQuantity": 42,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Cebolla",
+          "slug": "cebolla-por-kilo",
+          "description": "Cebollas seleccionadas, indispensables para salsas, guisos, ensaladas y comidas caseras."
+        },
+        "en": {
+          "name": "Yellow onion",
+          "slug": "yellow-onion-per-kilogram",
+          "description": "Selected yellow onions, essential for sauces, stews, salads, and everyday cooking."
+        }
+      }
+    },
+    {
+      "sku": "FV-010",
+      "categoryKey": "fruit-vegetables",
+      "brand": null,
+      "price": 2490,
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": null,
+      "stockQuantity": 0,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Palta Hass",
+          "slug": "palta-hass-por-unidad",
+          "description": "Paltas Hass de textura cremosa y sabor suave. Ideales para tostadas, ensaladas y guacamole."
+        },
+        "en": {
+          "name": "Hass avocado",
+          "slug": "hass-avocado-each",
+          "description": "Creamy Hass avocados with a mild flavor. Perfect for toast, salads, and guacamole."
+        }
+      }
+    },
+    {
+      "sku": "ALM-001",
+      "categoryKey": "pantry",
+      "brand": "Vanguardia",
+      "price": 1599,
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": { "value": 1, "unit": "KG" },
+      "stockQuantity": 64,
+      "lowStockThreshold": 10,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Arroz largo fino",
+          "slug": "arroz-largo-fino-vanguardia-1-kg",
+          "description": "Arroz largo fino de cocción pareja y textura liviana. Ideal para acompañamientos, ensaladas, guisos y comidas de todos los días."
+        },
+        "en": {
+          "name": "Long-grain rice",
+          "slug": "vanguardia-long-grain-rice-1-kg",
+          "description": "Long-grain rice with an even cook and light texture. Ideal for side dishes, salads, stews, and everyday meals."
+        }
+      }
+    },
+    {
+      "sku": "ALM-002",
+      "categoryKey": "pantry",
+      "brand": "DIA",
+      "price": 1290,
+      "compareAtPrice": 1750,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": { "value": 500, "unit": "G" },
+      "stockQuantity": 72,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Fideos spaghetti",
+          "slug": "fideos-spaghetti-dia-500-g",
+          "description": "Fideos secos tipo spaghetti elaborados con sémola de trigo. Una opción práctica para acompañar con salsas, verduras o queso."
+        },
+        "en": {
+          "name": "Spaghetti pasta",
+          "slug": "dia-spaghetti-pasta-500-g",
+          "description": "Dry spaghetti made with durum wheat semolina. A convenient option to serve with sauces, vegetables, or cheese."
+        }
+      }
+    },
+    {
+      "sku": "ALM-003",
+      "categoryKey": "pantry",
+      "brand": "DIA",
+      "price": 690,
+      "compareAtPrice": 1100,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": { "value": 1, "unit": "KG" },
+      "stockQuantity": 55,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Harina de trigo 0000",
+          "slug": "harina-trigo-0000-dia-1-kg",
+          "description": "Harina de trigo 0000 de textura fina, ideal para tortas, masas, panqueques y distintas preparaciones caseras."
+        },
+        "en": {
+          "name": "All-purpose wheat flour",
+          "slug": "dia-all-purpose-flour-1-kg",
+          "description": "Fine all-purpose wheat flour, ideal for cakes, doughs, pancakes, and a wide range of homemade recipes."
+        }
+      }
+    },
+    {
+      "sku": "ALM-004",
+      "categoryKey": "pantry",
+      "brand": "Cañuelas",
+      "price": 4115,
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": { "value": 900, "unit": "ML" },
+      "stockQuantity": 38,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Aceite de girasol",
+          "slug": "aceite-girasol-canuelas-900-ml",
+          "description": "Aceite de girasol de sabor suave. Ideal para cocinar, freír y preparar aderezos para ensaladas."
+        },
+        "en": {
+          "name": "Sunflower oil",
+          "slug": "canuelas-sunflower-oil-900-ml",
+          "description": "Mild-flavored sunflower oil. Ideal for cooking, frying, and preparing salad dressings."
+        }
+      }
+    },
+    {
+      "sku": "ALM-005",
+      "categoryKey": "pantry",
+      "brand": "Rosamonte",
+      "price": 4100,
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": { "value": 1, "unit": "KG" },
+      "stockQuantity": 46,
+      "lowStockThreshold": 10,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Yerba mate con palo",
+          "slug": "yerba-mate-rosamonte-1-kg",
+          "description": "Yerba mate elaborada con palo, de sabor intenso y equilibrado. Ideal para disfrutar todos los días."
+        },
+        "en": {
+          "name": "Yerba mate with stems",
+          "slug": "rosamonte-yerba-mate-1-kg",
+          "description": "Yerba mate with stems, featuring a bold and balanced flavor. Ideal for everyday enjoyment."
+        }
+      }
+    },
+    {
+      "sku": "ALM-006",
+      "categoryKey": "pantry",
+      "brand": "Ledesma",
+      "price": 1565,
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": { "value": 1, "unit": "KG" },
+      "stockQuantity": 61,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Azúcar refinada",
+          "slug": "azucar-refinada-ledesma-1-kg",
+          "description": "Azúcar refinada de uso cotidiano, ideal para infusiones, postres, tortas y otras preparaciones."
+        },
+        "en": {
+          "name": "Refined sugar",
+          "slug": "ledesma-refined-sugar-1-kg",
+          "description": "Refined sugar for everyday use, ideal for hot drinks, desserts, cakes, and other recipes."
+        }
+      }
+    },
+    {
+      "sku": "ALM-007",
+      "categoryKey": "pantry",
+      "brand": "Arcor",
+      "price": 1220,
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": { "value": 520, "unit": "G" },
+      "stockQuantity": 48,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Puré de tomate",
+          "slug": "pure-tomate-arcor-520-g",
+          "description": "Puré elaborado con tomates maduros. Ideal como base para salsas, pizzas, guisos y comidas caseras."
+        },
+        "en": {
+          "name": "Tomato purée",
+          "slug": "arcor-tomato-puree-520-g",
+          "description": "Purée made from ripe tomatoes. Ideal as a base for sauces, pizzas, stews, and homemade meals."
+        }
+      }
+    },
+    {
+      "sku": "ALM-008",
+      "categoryKey": "pantry",
+      "brand": "DIA",
+      "price": 2101,
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": { "value": 400, "unit": "G" },
+      "stockQuantity": 29,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Lentejas secas",
+          "slug": "lentejas-secas-dia-400-g",
+          "description": "Lentejas secas, fuente de proteínas vegetales y fibra. Ideales para guisos, ensaladas y sopas."
+        },
+        "en": {
+          "name": "Dried lentils",
+          "slug": "dia-dried-lentils-400-g",
+          "description": "Dried lentils, a source of plant-based protein and fiber. Ideal for stews, salads, and soups."
+        }
+      }
+    },
+    {
+      "sku": "ALM-009",
+      "categoryKey": "pantry",
+      "brand": "La Campagnola",
+      "price": 6280,
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": { "value": 170, "unit": "G" },
+      "stockQuantity": 7,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Atún al natural",
+          "slug": "atun-natural-la-campagnola-170-g",
+          "description": "Atún al natural listo para consumir. Ideal para ensaladas, tartas, sándwiches y comidas rápidas."
+        },
+        "en": {
+          "name": "Tuna in spring water",
+          "slug": "la-campagnola-tuna-spring-water-170-g",
+          "description": "Ready-to-eat tuna in spring water. Ideal for salads, pies, sandwiches, and quick meals."
+        }
+      }
+    },
+    {
+      "sku": "ALM-010",
+      "categoryKey": "pantry",
+      "brand": "DIA",
+      "price": 650,
+      "compareAtPrice": 990,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": { "value": 500, "unit": "G" },
+      "stockQuantity": 58,
+      "lowStockThreshold": 10,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Sal fina",
+          "slug": "sal-fina-dia-500-g",
+          "description": "Sal fina para condimentar comidas y utilizar en preparaciones cotidianas."
+        },
+        "en": {
+          "name": "Fine table salt",
+          "slug": "dia-fine-table-salt-500-g",
+          "description": "Fine table salt for seasoning food and everyday cooking."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "Common": {
+    "language": "Language",
+    "spanish": "Spanish",
+    "english": "English",
+    "loading": "Loading…",
+    "retry": "Try again",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "Navigation": {
+    "home": "Home",
+    "catalog": "Products",
+    "categories": "Categories",
+    "offers": "Offers",
+    "account": "My account",
+    "cart": "Cart"
+  },
+  "Home": {
+    "title": "Your supermarket in Tucumán",
+    "subtitle": "Shop for fresh, everyday products with delivery or store pickup.",
+    "shopNow": "View products",
+    "featured": "Featured products",
+    "categories": "Shop by category"
+  },
+  "Catalog": {
+    "title": "Products",
+    "searchPlaceholder": "Search products or brands",
+    "filters": "Filters",
+    "sort": "Sort",
+    "availability": "Availability",
+    "inStock": "In stock",
+    "onSale": "On sale",
+    "noResults": "We couldn't find products matching those filters.",
+    "clearFilters": "Clear filters"
+  },
+  "Product": {
+    "addToCart": "Add to cart",
+    "outOfStock": "Out of stock",
+    "lowStock": "Only a few left",
+    "quantity": "Quantity",
+    "each": "each",
+    "perKilogram": "per kilogram"
+  },
+  "Cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty.",
+    "continueShopping": "Continue shopping",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "delivery": "Delivery",
+    "total": "Total",
+    "checkout": "Continue to checkout"
+  },
+  "Checkout": {
+    "title": "Checkout",
+    "contact": "Contact details",
+    "fullName": "Full name",
+    "phone": "Phone",
+    "email": "Email (optional)",
+    "fulfillment": "How would you like to receive your order?",
+    "delivery": "Home delivery",
+    "pickup": "Store pickup",
+    "address": "Address",
+    "notes": "Order notes (optional)",
+    "review": "Review your order",
+    "placeOrder": "Place order",
+    "successTitle": "We received your order!",
+    "orderNumber": "Order number"
+  },
+  "Errors": {
+    "generic": "Something went wrong. Please try again.",
+    "required": "This field is required.",
+    "invalidPhone": "Enter a valid phone number.",
+    "priceChanged": "The price of this product has changed. Review your cart.",
+    "stockChanged": "The availability of this product has changed. Review your cart."
+  }
+}
