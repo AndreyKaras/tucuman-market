@@ -1,118 +1,125 @@
-# Data Model
+# Модель данных
 
-This is the conceptual model. Prisma field names and auth-owned tables may be
-adjusted during implementation, but the constraints below are product
-requirements.
+Это концептуальная модель. Имена полей Prisma и таблицы, которыми управляет
+аутентификация,
+могут корректироваться во время реализации, но приведённые ниже ограничения
+являются требованиями продукта.
 
-## User and Address
+## User и Address
 
-`User` includes identity fields, `role` (`CUSTOMER` or `ADMIN`), timestamps, and
-auth relations. Public registration must always create `CUSTOMER`.
+`User` включает идентификационные поля, `role` (`CUSTOMER` или `ADMIN`),
+временные метки и связи аутентификации. Публичная регистрация всегда должна создавать
+пользователя с ролью `CUSTOMER`.
 
-`Address` belongs to one user and stores label, recipient, street, number,
-optional apartment/reference, city, province, postal code, and default flag.
+`Address` принадлежит одному пользователю и хранит метку, получателя, улицу,
+номер дома, необязательные квартиру/ориентир, город, провинцию, почтовый индекс
+и признак адреса по умолчанию.
 
 ## Category
 
 `Category`:
 
-- stable ID
-- internal key
-- display order
-- active state
-- timestamps
+- стабильный ID
+- внутренний ключ
+- порядок отображения
+- состояние активности
+- временные метки
 
 `CategoryTranslation`:
 
-- category ID
-- locale
-- name
+- ID категории
+- локаль
+- название
 - slug
-- optional description and SEO fields
+- необязательные описание и SEO-поля
 
-Constraints: unique `(categoryId, locale)` and unique `(locale, slug)`.
+Ограничения: уникальные `(categoryId, locale)` и `(locale, slug)`.
 
 ## Product
 
 `Product`:
 
-- stable ID and globally unique SKU
-- optional brand
-- category ID
-- exact price and optional comparison price
-- stock quantity and low-stock threshold
-- sale unit and quantity step
-- optional net-content value/unit
-- featured and active states
-- timestamps
+- стабильный ID и глобально уникальный SKU
+- необязательный бренд
+- ID категории
+- точная цена и необязательная цена для сравнения
+- количество на складе и порог низкого остатка
+- единица продажи и шаг количества
+- необязательные значение и единица net content
+- состояния featured и active
+- временные метки
 
 `ProductTranslation`:
 
-- product ID
-- locale
-- name
+- ID товара
+- локаль
+- название
 - slug
-- description
+- описание
 - SEO title/description
 
-Constraints: unique `(productId, locale)` and unique `(locale, slug)`.
+Ограничения: уникальные `(productId, locale)` и `(locale, slug)`.
 
 `ProductImage`:
 
-- product ID
-- storage asset ID and URL
+- ID товара
+- ID storage asset и URL
 - width/height
-- sort order
-- localized alternative text when needed
+- порядок сортировки
+- локализованный альтернативный текст, когда он необходим
 
 ## Cart
 
-`Cart` belongs to one user for the authenticated flow and has a status/version
-for safe updates. `CartItem` is unique by `(cartId, productId)` and stores
-quantity. Display prices are always resolved from current product data.
+В аутентифицированном сценарии `Cart` принадлежит одному пользователю и имеет
+status/version для безопасных обновлений. `CartItem` уникален по
+`(cartId, productId)` и хранит количество. Отображаемые цены всегда получаются
+из актуальных данных товара.
 
-Guest carts live locally until checkout or login and use a versioned schema.
+Гостевые корзины хранятся локально до оформления заказа или входа и используют
+версионированную schema.
 
 ## Order
 
 `Order`:
 
-- stable ID and human-friendly unique order number
-- optional user ID
-- status and fulfillment type
-- customer name, phone, optional email
-- delivery snapshot or pickup snapshot
-- notes
-- exact subtotal, delivery fee, and total
-- locale used during checkout
-- notification state/timestamps
-- created and updated timestamps
+- стабильный ID и понятный пользователю уникальный номер заказа
+- необязательный ID пользователя
+- статус и способ получения
+- имя и телефон покупателя, необязательный email
+- снимок данных доставки или самовывоза
+- примечания
+- точные subtotal, стоимость доставки и итоговая сумма
+- локаль, использованная во время оформления заказа
+- состояние и временные метки уведомления
+- временные метки создания и обновления
 
-`OrderItem` is an immutable snapshot:
+`OrderItem` — неизменяемый снимок:
 
-- order ID
-- optional source product ID
-- SKU snapshot
-- localized product-name snapshot
-- sale-unit snapshot
-- exact unit-price snapshot
-- quantity
-- exact line total
+- ID заказа
+- необязательный ID исходного товара
+- снимок SKU
+- снимок локализованного названия товара
+- снимок единицы продажи
+- снимок точной цены за единицу
+- количество
+- точная итоговая сумма позиции
 
-Deleting a product must never delete historical order items.
+Удаление товара никогда не должно удалять исторические позиции заказа.
 
 ## StoreSettings
 
-Singleton or versioned settings for phone, WhatsApp, address, hours, delivery
-fee, delivery rules, pickup instructions, and operational flags. Localized text
-may use a related translation table.
+Singleton- или версионированные настройки телефона, WhatsApp, адреса, часов
+работы, стоимости и правил доставки, инструкций по самовывозу и операционных
+флагов. Локализованный текст может использовать связанную таблицу переводов.
 
-## Important constraints
+## Важные ограничения
 
-- All timestamps stored in UTC and formatted in the store timezone at display.
-- All writes use server-side validation.
-- `compareAtPrice` is null or greater than `price`.
-- Quantities are positive and follow product step rules.
-- Order total equals persisted line totals plus delivery fee.
-- Status changes follow an explicit transition map.
-- Customer reads are scoped to the authenticated user.
+- Все временные метки хранятся в UTC, а при отображении форматируются в timezone
+  магазина.
+- Все операции записи используют серверную валидацию.
+- `compareAtPrice` равен null или больше `price`.
+- Количество положительно и соответствует правилам шага товара.
+- Итоговая сумма заказа равна сумме сохранённых итогов позиций и стоимости
+  доставки.
+- Изменения статуса следуют явной карте переходов.
+- Чтение данных покупателя ограничено аутентифицированным пользователем.

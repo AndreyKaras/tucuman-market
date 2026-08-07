@@ -1,36 +1,40 @@
-# Tucumán Market — Project Brief
+# Tucumán Market — Краткое описание проекта
 
-## Product
+## Продукт
 
-`tucuman-market` is a portfolio-quality full-stack grocery store for San Miguel
-de Tucumán, Argentina. It should feel like a credible small local supermarket,
-not a generic e-commerce template.
+`tucuman-market` — полнофункциональный продуктовый интернет-магазин уровня
+портфолио для города Сан-Мигель-де-Тукуман, Аргентина. Он должен выглядеть как
+убедительный небольшой местный супермаркет, а не как типовой e-commerce шаблон.
 
-## Goals
+## Цели
 
-- Let customers discover products quickly by category, search, and filters.
-- Let guests place delivery or pickup orders without online payment.
-- Give staff a protected admin area for catalog and order management.
-- Notify the administrator about new orders in Telegram.
-- Support customer accounts, saved carts, addresses, order history, and repeat
-  ordering after the core storefront and admin flows are stable.
-- Demonstrate sound architecture, localization, accessibility, testing, and
-  security in a public developer portfolio.
+- Дать покупателям возможность быстро находить товары по категориям, через
+  поиск и фильтры.
+- Позволить гостям оформлять заказы с доставкой или самовывозом без онлайн-оплаты.
+- Предоставить сотрудникам защищённую административную область для управления каталогом
+  и заказами.
+- Уведомлять администратора о новых заказах через Telegram.
+- Поддержать учётные записи покупателей, сохранённые корзины, адреса, историю
+  заказов и повторное оформление после стабилизации основных сценариев витрины
+  и административной области.
+- Продемонстрировать качественную архитектуру, локализацию, доступность,
+  тестирование и безопасность в публичном портфолио разработчика.
 
-## Market and localization
+## Рынок и локализация
 
-- Primary market: San Miguel de Tucumán, Argentina.
-- Default language: Argentinian Spanish (`es`).
-- Secondary language: English (`en`).
-- Currency in both locales: Argentine peso (`ARS`).
-- Display examples: `$ 4.500` in Spanish and `ARS 4,500` in English.
-- Storefront copy in Spanish uses natural local wording and `vos` forms.
-- Taxes are included in displayed prices.
+- Основной рынок: Сан-Мигель-де-Тукуман, Аргентина.
+- Язык по умолчанию: аргентинский испанский (`es`).
+- Дополнительный язык: английский (`en`).
+- Валюта в обеих локалях: аргентинское песо (`ARS`).
+- Примеры отображения: `$ 4.500` на испанском и `ARS 4,500` на английском.
+- Испанские тексты витрины используют естественные местные формулировки
+  и формы с `vos`.
+- Налоги включены в отображаемые цены.
 
-## Initial catalog
+## Начальный каталог
 
-The demonstration catalog contains 80 products: 10 products in each of eight
-categories.
+Итоговая цель демонстрационного каталога — 80 товаров: по 10 товаров в каждой
+из восьми категорий.
 
 1. Frutas y verduras / Fruit and vegetables
 2. Almacén / Pantry
@@ -41,49 +45,57 @@ categories.
 7. Carnes y fiambres / Meat and deli
 8. Congelados / Frozen food
 
-Prices are realistic demonstration values dated in seed metadata. They are not
-promises of live market pricing and must be editable in the admin panel.
+Текущие 20 товаров составляют первоначальный набор для проверки полной цепочки
+JSON → Prisma seed → PostgreSQL → каталог. Остальные 60 товаров будут добавлены
+после стабилизации этой цепочки.
 
-## Core release
+Цены являются реалистичными демонстрационными значениями с датой в seed metadata.
+Они не представляют собой обещание актуальных рыночных цен и должны
+редактироваться в административной панели.
 
-- Home page with promotions, categories, featured products, and store trust
-  information.
-- Catalog with categories, search, sorting, and practical filters.
-- Product detail page.
-- Cart drawer and full cart page.
-- Delivery or pickup checkout.
-- Order creation without online payment.
-- Telegram notification after order creation.
-- Hidden storefront entry for admin; direct `/admin` access remains possible.
-- Protected admin login and role-based admin area.
-- Product create/edit/hide, category management, order list/detail/status.
-- Editable store address, phone, hours, delivery, and pickup information.
+## Основной релиз
 
-## Extended release
+- Главная страница с акциями, категориями, избранными товарами и информацией,
+  повышающей доверие к магазину.
+- Каталог с категориями, поиском, сортировкой и практичными фильтрами.
+- Страница товара.
+- Выдвижная корзина и отдельная страница корзины.
+- Оформление заказа с доставкой или самовывозом.
+- Создание заказа без онлайн-оплаты.
+- Уведомление в Telegram после создания заказа.
+- Скрытая от витрины точка входа в административную область; прямой доступ к `/admin` остаётся
+  возможным.
+- Защищённый вход администратора и административная область с ролевым доступом.
+- Создание, редактирование и скрытие товаров, управление категориями, список
+  и детали заказов, изменение их статуса.
+- Редактируемые адрес, телефон, часы работы, а также информация о доставке
+  и самовывозе.
 
-- Customer registration and login.
-- Profile and address management.
-- Order history and repeat order.
-- Server-persisted cart for authenticated customers.
-- Guest cart preserved locally and merged after login.
+## Расширенный релиз
 
-## Explicitly out of scope for the first release
+- Регистрация и вход покупателей.
+- Управление профилем и адресами.
+- История и повторное оформление заказов.
+- Корзина, сохраняемая на сервере для аутентифицированных покупателей.
+- Локальное сохранение гостевой корзины и её объединение после входа.
 
-- Online card payment.
-- Marketplace with multiple sellers.
-- Native mobile apps.
-- Real-time courier tracking.
-- Complex product variants.
-- Warehouse-grade inventory accounting.
-- Multi-currency pricing.
+## Явно вне области первого релиза
 
-## Success criteria
+- Онлайн-оплата картой.
+- Маркетплейс с несколькими продавцами.
+- Нативные мобильные приложения.
+- Отслеживание курьера в реальном времени.
+- Сложные варианты товаров.
+- Складской учёт промышленного уровня.
+- Цены в нескольких валютах.
 
-- A guest can find products, build a cart, choose delivery or pickup, and create
-  a valid order on mobile without confusion.
-- The administrator receives the order in Telegram and can process it in the
-  protected admin area.
-- Both locales cover all customer-facing routes without mixed-language UI.
-- Reloading or changing locale does not lose the guest cart.
-- Automated tests protect critical pricing, authorization, cart, stock, and
-  order-state behavior.
+## Критерии успеха
+
+- Гость может без затруднений найти товары, собрать корзину, выбрать доставку
+  или самовывоз и оформить корректный заказ с мобильного устройства.
+- Администратор получает заказ в Telegram и может обработать его в защищённой
+  административной области.
+- Обе локали охватывают все маршруты для покупателей без смешения языков в UI.
+- Перезагрузка или смена локали не приводит к потере гостевой корзины.
+- Автоматические тесты защищают критически важную логику цен, авторизации,
+  корзины, остатков и статусов заказа.

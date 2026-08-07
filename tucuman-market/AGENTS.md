@@ -1,75 +1,87 @@
 # AGENTS.md
 
-## Role
+## Роль
 
-Work as a senior full-stack engineer for a production-minded bilingual grocery
-store. Preserve agreed product scope, existing code, and user changes.
+Работай как опытный full-stack инженер над двуязычным продуктовым магазином,
+ориентированным на production. Сохраняй согласованную область продукта,
+существующий код и изменения пользователя.
 
-## Required context
+## Общение
 
-Before changing code:
+Общайся с пользователем на русском языке, если он явно не попросил другой язык.
+Код, команды, имена файлов, идентификаторы и названия API сохраняй на английском.
 
-1. Read `PROJECT_BRIEF.md` and `ARCHITECTURE.md` completely.
-2. Read only the relevant files in `docs/` for the current task.
-3. Inspect `git status`, `package.json`, and the files you intend to modify.
+## Необходимый контекст
 
-If code and documentation disagree, stop and describe the conflict. Do not
-silently redefine product behavior.
+Перед изменением кода:
 
-## Product invariants
+1. Полностью прочитай `PROJECT_BRIEF.md` и `ARCHITECTURE.md`.
+2. Читай только относящиеся к текущей задаче файлы из `docs/`.
+3. Проверь `git status`, `package.json` и файлы, которые собираешься изменить.
 
-- Public storefront languages are Argentinian Spanish (`es`) and English (`en`).
-- Spanish is the default locale. Currency is always ARS.
-- Admin routes are not linked from the storefront.
-- Hiding `/admin` is not security. Protect every admin page, Server Action, and
-  Route Handler with authenticated `ADMIN` authorization.
-- Orders do not use online payment in the current scope.
-- An order must persist successfully before sending its Telegram notification.
-- Product price, name, SKU, quantity, and unit must be snapshotted into order
-  items. Historical orders must not change when a product changes.
-- Never trust totals, prices, stock, user IDs, roles, or order status supplied by
-  the browser. Recalculate and authorize on the server.
+Если код и документация противоречат друг другу, остановись и опиши конфликт.
+Не переопределяй поведение продукта без явного уведомления.
 
-## Engineering conventions
+## Инварианты продукта
 
-- Use strict TypeScript. Avoid `any`; narrow `unknown` at boundaries.
-- Prefer Server Components. Add `"use client"` only for actual browser state or
-  interaction.
-- Keep business logic out of React components and Route Handlers.
-- Validate external input with Zod on the server.
-- Store money with an exact database type; never use floating-point arithmetic
-  for totals.
-- Keep translatable content separate from locale-independent product data.
-- Use semantic HTML, keyboard-accessible controls, visible focus, and meaningful
-  image alternative text.
-- Do not add a production dependency without explaining its purpose and checking
-  that an existing dependency cannot solve the problem.
-- Never commit secrets, credentials, personal customer data, or `.env.local`.
-- Do not edit generated Prisma migration SQL after it has been applied.
+- Языки публичной витрины — аргентинский испанский (`es`) и английский (`en`).
+- Испанский — локаль по умолчанию. Валюта всегда ARS.
+- Ссылки на admin-маршруты не отображаются на витрине.
+- Сокрытие `/admin` не обеспечивает безопасность. Защищай каждую admin-страницу,
+  Server Action и Route Handler проверкой аутентификации и роли `ADMIN`.
+- В текущей области проекта заказы не используют онлайн-оплату.
+- Заказ должен быть успешно сохранён до отправки уведомления в Telegram.
+- Цена, название, SKU, количество и единица товара должны сохраняться в позициях
+  заказа как снимок данных. Исторические заказы не должны меняться при изменении
+  товара.
+- Никогда не доверяй итоговым суммам, ценам, остаткам, ID пользователей, ролям
+  или статусам заказа, полученным из браузера. Пересчитывай данные и проверяй
+  авторизацию на сервере.
 
-## Data and localization
+## Инженерные соглашения
 
-- `data/catalog/*.json` is deterministic seed/demo data, not the production data
-  source after PostgreSQL is connected.
-- Every public category and product must contain both `es` and `en` translations.
-- SKU is globally unique. Slugs are unique within a locale.
-- `compareAtPrice` must be `null` or greater than `price`.
-- `stockQuantity === 0` means out of stock; `isActive === false` means hidden.
-- UI copy belongs in `messages/es.json` and `messages/en.json`, not inline in
-  components.
+- Используй strict TypeScript. Избегай `any`; сужай `unknown` на границах системы.
+- Предпочитай Server Components. Добавляй `"use client"` только для реального
+  состояния или взаимодействия в браузере.
+- Не размещай бизнес-логику в React-компонентах и Route Handlers.
+- Проверяй внешние входные данные на сервере с помощью Zod.
+- Храни денежные значения в точном типе базы данных; никогда не используй
+  вычисления с плавающей точкой для итоговых сумм.
+- Храни переводимый контент отдельно от независимых от локали данных товаров.
+- Используй семантический HTML, элементы управления с клавиатурной доступностью,
+  видимый focus и содержательный альтернативный текст для изображений.
+- Не добавляй production-зависимость без объяснения её назначения и проверки,
+  что существующая зависимость не решает ту же задачу.
+- Никогда не коммить секреты, учётные данные, персональные данные покупателей
+  или `.env.local`.
+- Не редактируй сгенерированный SQL Prisma migration после его применения.
 
-## Change discipline
+## Данные и локализация
 
-- Make the smallest coherent change that completes the request.
-- Preserve unrelated and pre-existing changes.
-- Update the relevant documentation when architecture, schema, commands, or
-  product behavior changes.
-- Add or update tests for changed behavior, especially auth, cart totals, stock,
-  checkout, order status, and cart merging.
+- `data/catalog/*.json` содержит детерминированные seed/demo-данные, а не
+  production-источник данных после подключения PostgreSQL.
+- Каждая публичная категория и каждый товар должны содержать переводы на `es`
+  и `en`.
+- SKU глобально уникален. Slug уникален в пределах локали.
+- `compareAtPrice` должен быть `null` или больше `price`.
+- `stockQuantity === 0` означает отсутствие на складе; `isActive === false`
+  означает, что товар скрыт.
+- Тексты UI хранятся в `messages/es.json` и `messages/en.json`, а не встраиваются
+  непосредственно в компоненты.
 
-## Verification
+## Дисциплина изменений
 
-Before declaring work complete, run the scripts that exist in `package.json`:
+- Вноси минимальное целостное изменение, достаточное для выполнения задачи.
+- Сохраняй несвязанные и ранее существовавшие изменения.
+- Обновляй соответствующую документацию при изменении архитектуры, схемы,
+  команд или поведения продукта.
+- Добавляй или обновляй тесты для изменённого поведения, особенно для
+  аутентификации, итогов корзины, остатков, оформления заказа, статуса заказа
+  и объединения корзин.
+
+## Проверка
+
+Перед завершением работы запускай существующие в `package.json` скрипты:
 
 ```bash
 npm run lint
@@ -78,6 +90,6 @@ npm run test
 npm run build
 ```
 
-If a listed script does not exist yet, say so explicitly; do not claim it
-passed. For user-facing changes, also verify the affected flow at mobile and
-desktop widths and check the browser console.
+Если указанного скрипта ещё нет, сообщи об этом явно; не утверждай, что он прошёл.
+Для изменений пользовательского интерфейса также проверяй затронутый сценарий
+на мобильных и desktop-размерах и просматривай console браузера.

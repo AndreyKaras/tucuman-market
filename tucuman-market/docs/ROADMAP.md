@@ -1,92 +1,101 @@
-# Roadmap
+# Дорожная карта
 
-Statuses: `TODO`, `IN PROGRESS`, `DONE`, `BLOCKED`.
+Статусы: `TODO`, `IN PROGRESS`, `DONE`, `BLOCKED`.
 
-## Phase 0 — Foundation
+## Этап 0 — Основа
 
-- [ ] Confirm repository documents and decisions.
-- [ ] Install only the dependencies required for the first vertical slice.
-- [ ] Add `typecheck`, Vitest, and Playwright scripts.
-- [x] Configure `next-intl` with `es` default and `en` secondary locale.
-- [ ] Configure environment validation.
-- [ ] Configure PostgreSQL and Prisma.
-- [ ] Create initial schema and seed pipeline.
-- [ ] Add CI for lint, typecheck, tests, and build.
+- [x] Настроить `next-intl` с основной локалью `es` и дополнительной `en`.
+- [ ] Установить только зависимости, необходимые для этапа PostgreSQL/Prisma.
+- [ ] Настроить PostgreSQL и Prisma.
+- [ ] Создать начальную Prisma schema и первоначальную migration.
+- [ ] Настроить seed pipeline и выполнить seed текущих 20 товаров.
+- [ ] Подтвердить документы и решения репозитория.
+- [ ] Добавить скрипты для `typecheck`, Vitest и Playwright.
+- [ ] Настроить валидацию окружения.
+- [ ] Добавить CI для lint, typecheck, tests и build.
 
-Exit: clean installation, valid environment template, database migration and
-seed work locally, CI is green.
+Критерий завершения: чистая установка, корректный шаблон окружения, локально
+работающие migration базы данных и seed, зелёный CI.
 
-## Phase 1 — Storefront vertical slice
+## Этап 1 — Вертикальный срез витрины
 
-- [ ] App shell, design tokens, responsive header/footer.
-- [ ] Localized home page.
-- [ ] Category and product repositories.
-- [ ] Catalog grid and category routes.
-- [ ] Product detail page.
-- [ ] Search, filters, sorting, and URL state.
-- [ ] Loading, empty, error, and not-found states.
+- [ ] Каркас приложения, дизайн-токены, адаптивные шапка и подвал.
+- [ ] Локализованная главная страница.
+- [ ] Repositories категорий и товаров.
+- [ ] Сетка каталога и маршруты категорий.
+- [ ] Страница товара.
+- [ ] Поиск, фильтры, сортировка и состояние URL.
+- [ ] Состояния загрузки, отсутствия данных, ошибки и not-found.
 
-Exit: customers can browse the bilingual seeded catalog end to end.
+Критерий завершения: покупатели могут просматривать весь двуязычный seed-каталог.
 
-## Phase 2 — Guest cart
+## Этап 2 — Гостевая корзина
 
-- [ ] Cart domain rules and tests.
-- [ ] Zustand guest cart with versioned local persistence.
-- [ ] Cart drawer and full cart page.
-- [ ] Server price/stock revalidation.
-- [ ] Locale-switch persistence.
+- [ ] Domain-правила корзины и тесты.
+- [ ] Гостевая корзина Zustand с версионированным локальным сохранением.
+- [ ] Выдвижная корзина и отдельная страница корзины.
+- [ ] Повторная серверная проверка цены и остатка.
+- [ ] Сохранение состояния при переключении локали.
 
-Exit: guest cart survives reload and handles changed products safely.
+Критерий завершения: гостевая корзина сохраняется после перезагрузки и безопасно
+обрабатывает изменившиеся товары.
 
-## Phase 3 — Checkout and orders
+## Этап 3 — Оформление заказа и заказы
 
-- [ ] Delivery/pickup form and validation.
-- [ ] Store settings and fulfillment rules.
-- [ ] Transactional order creation and item snapshots.
-- [ ] Duplicate-submission protection.
-- [ ] Confirmation page.
-- [ ] Telegram notification and retry-safe logging.
-- [ ] E2E tests for both fulfillment methods.
+- [ ] Форма доставки/самовывоза и валидация.
+- [ ] Настройки магазина и правила способов получения.
+- [ ] Транзакционное создание заказа и снимков позиций.
+- [ ] Защита от повторной отправки.
+- [ ] Страница подтверждения.
+- [ ] Уведомление в Telegram и логирование, безопасное для повторных попыток.
+- [ ] E2E-тесты для обоих способов получения.
 
-Exit: a guest can place an order and the administrator is notified.
+Критерий завершения: гость может оформить заказ, а администратор получает
+уведомление.
 
-## Phase 4 — Admin
+## Этап 4 — Администрирование
 
-- [ ] Better Auth integration and initial admin provisioning.
-- [ ] Admin route, action, and handler authorization.
-- [ ] Product and category management.
-- [ ] Image upload through storage abstraction.
-- [ ] Order list/detail and valid status updates.
-- [ ] Store settings editor.
-- [ ] Authorization and admin E2E tests.
+- [ ] Интеграция Better Auth и начальная настройка администратора.
+- [ ] Авторизация admin routes, actions и handlers.
+- [ ] Управление товарами и категориями.
+- [ ] Загрузка изображений через storage-абстракцию.
+- [ ] Список и детали заказов, корректное обновление статусов.
+- [ ] Редактор настроек магазина.
+- [ ] Авторизационные и admin E2E-тесты.
 
-Exit: the store can be operated without editing code or seed files.
+Критерий завершения: магазином можно управлять без редактирования кода
+или seed-файлов.
 
-## Phase 5 — Customer accounts
+## Этап 5 — Аккаунты покупателей
 
-- [ ] Registration/login and customer profile.
-- [ ] Saved addresses.
-- [ ] Database cart.
-- [ ] Idempotent guest-cart merge.
-- [ ] Owned order history and detail.
-- [ ] Repeat-order flow using current catalog data.
+- [ ] Регистрация/login и профиль покупателя.
+- [ ] Сохранённые адреса.
+- [ ] Корзина в базе данных.
+- [ ] Идемпотентное объединение гостевой корзины.
+- [ ] История и детали заказов, принадлежащих пользователю.
+- [ ] Повторное оформление на основе актуальных данных каталога.
 
-Exit: authenticated customers retain their cart and account history securely.
+Критерий завершения: аутентифицированные покупатели сохраняют корзину
+и историю аккаунта.
 
-## Phase 6 — Quality and release
+## Этап 6 — Качество и релиз
 
-- [ ] Accessibility audit and keyboard testing.
-- [ ] Responsive visual QA on representative devices.
-- [ ] Performance and image optimization.
-- [ ] Localized SEO metadata, sitemap, robots, and structured data.
-- [ ] Security review of auth, authorization, input, uploads, secrets, and logs.
-- [ ] Production database, storage, Telegram, and Vercel configuration.
-- [ ] Backup/restore and operational notes.
+- [ ] Аудит доступности и тестирование с клавиатуры.
+- [ ] Адаптивный visual QA на репрезентативных устройствах.
+- [ ] Оптимизация производительности и изображений.
+- [ ] Локализованные SEO metadata, sitemap, robots и structured data.
+- [ ] Проверка безопасности аутентификации, авторизации, входных данных, загрузок, секретов
+  и логов.
+- [ ] Production-конфигурация базы данных, storage, Telegram и Vercel.
+- [ ] Инструкции по backup/restore и эксплуатации.
 
-Exit: production deployment is tested, documented, and portfolio-ready.
+Критерий завершения: production deployment протестирован, документирован
+и готов для портфолио.
 
-## Current next task
+## Текущая следующая задача
 
-Complete Phase 0 in small commits. Do not design all pages or install the full
-dependency list in one step. First configure localization and render one
-localized page; then connect the database and seed the current 20 products.
+Следующий актуальный шаг этапа 0 — настроить PostgreSQL и Prisma, создать
+первоначальную migration и выполнить seed текущих 20 товаров по цепочке
+JSON → Prisma seed → PostgreSQL. Завершать этап небольшими commits,
+не разрабатывать дизайн всех страниц и не устанавливать сразу полный набор
+зависимостей.
