@@ -1,10 +1,15 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 
-import { CartIcon, MenuIcon, SearchIcon } from "@/components/ui/icons";
+import {
+  CartIcon,
+  CloseIcon,
+  MenuIcon,
+  SearchIcon,
+} from "@/components/ui/icons";
 import { useCart } from "@/features/cart/ui/cart-provider";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 
@@ -21,6 +26,34 @@ export function Header() {
   const searchParams = useSearchParams();
   const cart = useCart();
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const menuCloseButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const desktopQuery = window.matchMedia("(min-width: 901px)");
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    const closeOnDesktop = (event: MediaQueryListEvent) => {
+      if (event.matches) setMenuOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", closeOnEscape);
+    desktopQuery.addEventListener("change", closeOnDesktop);
+    menuCloseButtonRef.current?.focus();
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", closeOnEscape);
+      desktopQuery.removeEventListener("change", closeOnDesktop);
+      if (!desktopQuery.matches) previousFocus?.focus();
+    };
+  }, [isMenuOpen]);
 
   const switchLocale = (nextLocale: "es" | "en") => {
     router.replace(
@@ -54,6 +87,7 @@ export function Header() {
         <div className="container site-header__main">
           <button
             aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
             aria-label={t("openMenu")}
             className="icon-button site-header__menu-button"
             onClick={() => setMenuOpen((open) => !open)}
@@ -113,38 +147,67 @@ export function Header() {
           </nav>
 
           <button
+            aria-label={cartT("title")}
             className="cart-button"
             onClick={cart.openCart}
             type="button"
           >
-            <span className="sr-only">{cartT("openAction")}</span>
             <CartIcon />
             <span>{t("cart")}</span>
             <strong>{cart.count}</strong>
           </button>
         </div>
 
-        <nav
-          aria-label={t("mobile")}
-          className="mobile-nav"
-          data-open={isMenuOpen}
-        >
-          <div className="container mobile-nav__inner">
-            <Link href="/" onClick={() => setMenuOpen(false)}>
-              {t("home")}
-            </Link>
-            <Link href="/products" onClick={() => setMenuOpen(false)}>
-              {t("catalog")}
-            </Link>
-            <Link
-              href={{ pathname: "/products", query: { onSale: "1" } }}
-              onClick={() => setMenuOpen(false)}
-            >
-              {t("offers")}
-            </Link>
-          </div>
-        </nav>
       </header>
+
+      {isMenuOpen ? (
+        <div
+          aria-label={t("mobile")}
+          aria-modal="true"
+          className="mobile-nav-layer"
+          role="dialog"
+        >
+          <button
+            aria-label={common("close")}
+            className="mobile-nav__backdrop"
+            onClick={() => setMenuOpen(false)}
+            tabIndex={-1}
+            type="button"
+          />
+          <nav
+            aria-label={t("mobile")}
+            className="mobile-nav"
+            id="mobile-navigation"
+          >
+            <div className="mobile-nav__header">
+              <strong>{t("mobile")}</strong>
+              <button
+                aria-label={common("close")}
+                className="icon-button"
+                onClick={() => setMenuOpen(false)}
+                ref={menuCloseButtonRef}
+                type="button"
+              >
+                <CloseIcon />
+              </button>
+            </div>
+            <div className="mobile-nav__inner">
+              <Link href="/" onClick={() => setMenuOpen(false)}>
+                {t("home")}
+              </Link>
+              <Link href="/products" onClick={() => setMenuOpen(false)}>
+                {t("catalog")}
+              </Link>
+              <Link
+                href={{ pathname: "/products", query: { onSale: "1" } }}
+                onClick={() => setMenuOpen(false)}
+              >
+                {t("offers")}
+              </Link>
+            </div>
+          </nav>
+        </div>
+      ) : null}
     </>
   );
 }
