@@ -7,7 +7,10 @@
     "retry": "Intentar de nuevo",
     "close": "Cerrar",
     "save": "Guardar",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "skipToContent": "Saltar al contenido",
+    "serviceArea": "Tienda online para San Miguel de Tucumán",
+    "deliveryPickup": "Entrega o retiro, según tu elección"
   },
   "Navigation": {
     "home": "Inicio",
@@ -15,25 +18,49 @@
     "categories": "Categorías",
     "offers": "Ofertas",
     "account": "Mi cuenta",
-    "cart": "Carrito"
+    "cart": "Carrito",
+    "primary": "Navegación principal",
+    "mobile": "Navegación móvil",
+    "openMenu": "Abrir o cerrar el menú"
   },
   "Home": {
     "title": "Tu supermercado en Tucumán",
     "subtitle": "Comprá productos frescos y de todos los días con entrega o retiro por el local.",
     "shopNow": "Ver productos",
     "featured": "Productos destacados",
-    "categories": "Comprá por categoría"
+    "categories": "Comprá por categoría",
+    "categoriesHint": "Encontrá más rápido lo que necesitás.",
+    "featuredHint": "Una selección del catálogo inicial de la tienda.",
+    "viewAll": "Ver todo",
+    "heroImageAlt": "Canasta con frutas, verduras, pan y productos de almacén",
+    "deliveryTitle": "Entrega a domicilio",
+    "deliveryText": "Elegí la entrega al completar tu pedido cuando el servicio esté disponible para tu zona.",
+    "pickupTitle": "Retiro por el local",
+    "pickupText": "También podés elegir retiro y recibir las indicaciones antes de confirmar el pedido."
   },
   "Catalog": {
     "title": "Productos",
     "searchPlaceholder": "Buscar productos o marcas",
+    "searchLabel": "Buscar en el catálogo",
+    "searchAction": "Buscar",
     "filters": "Filtros",
     "sort": "Ordenar",
     "availability": "Disponibilidad",
     "inStock": "En stock",
     "onSale": "En oferta",
     "noResults": "No encontramos productos con esos filtros.",
-    "clearFilters": "Limpiar filtros"
+    "clearFilters": "Limpiar filtros",
+    "categories": "Categorías",
+    "allCategories": "Todas las categorías",
+    "homeBreadcrumb": "Inicio",
+    "resultCount": "{count, plural, =0 {Sin resultados} one {# producto} other {# productos}}",
+    "results": "Resultados del catálogo",
+    "sortFeatured": "Destacados primero",
+    "sortName": "Nombre",
+    "sortPriceAsc": "Menor precio",
+    "sortPriceDesc": "Mayor precio",
+    "apply": "Aplicar",
+    "noResultsTitle": "No encontramos productos"
   },
   "Product": {
     "addToCart": "Agregar al carrito",
@@ -41,7 +68,8 @@
     "lowStock": "Últimas unidades",
     "quantity": "Cantidad",
     "each": "por unidad",
-    "perKilogram": "por kilo"
+    "perKilogram": "por kilo",
+    "onSale": "Oferta"
   },
   "Cart": {
     "title": "Tu carrito",
@@ -51,7 +79,14 @@
     "subtotal": "Subtotal",
     "delivery": "Envío",
     "total": "Total",
-    "checkout": "Continuar con el pedido"
+    "checkout": "Continuar con el pedido",
+    "openAction": "Abrir",
+    "itemCount": "{count, plural, =0 {Sin productos} one {# producto} other {# productos}}",
+    "emptyHint": "Agregá productos desde el catálogo para verlos acá.",
+    "decrease": "Quitar una unidad de {product}",
+    "increase": "Agregar una unidad de {product}",
+    "removeProduct": "Eliminar {product} del carrito",
+    "visualOnly": "La confirmación del pedido se habilitará en una etapa posterior."
   },
   "Checkout": {
     "title": "Finalizar pedido",
@@ -74,6 +109,22 @@
     "required": "Este campo es obligatorio.",
     "invalidPhone": "Ingresá un teléfono válido.",
     "priceChanged": "El precio de este producto cambió. Revisá el carrito.",
-    "stockChanged": "La disponibilidad de este producto cambió. Revisá el carrito."
+    "stockChanged": "La disponibilidad de este producto cambió. Revisá el carrito.",
+    "title": "Algo salió mal",
+    "retry": "Intentar de nuevo"
+  },
+  "Footer": {
+    "description": "Una vitrina bilingüe para compras cotidianas en Tucumán.",
+    "shopLinks": "Enlaces de la tienda",
+    "shop": "Tienda",
+    "languages": "Idioma y moneda",
+    "languageList": "Español argentino e inglés",
+    "currency": "Precios expresados en pesos argentinos (ARS)",
+    "copyright": "© {year} Tucumán Market. Proyecto de demostración."
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscás no existe o cambió de ubicación.",
+    "backHome": "Volver al inicio"
   }
 }

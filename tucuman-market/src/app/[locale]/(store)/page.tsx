@@ -1,47 +1,94 @@
-import { getTranslations } from "next-intl/server";
+import Image from "next/image";
+import { getLocale, getTranslations } from "next-intl/server";
 
+import { CategoryTile } from "@/components/store/category-tile";
+import { ProductCard } from "@/components/store/product-card";
+import { ArrowIcon, StoreIcon, TruckIcon } from "@/components/ui/icons";
+import { getCatalog } from "@/features/catalog/data/catalog-repository";
+import type { StoreLocale } from "@/features/catalog/model/types";
 import { Link } from "@/i18n/navigation";
 
-type HomePageProps = {
-  params: Promise<{ locale: string }>;
-};
-
-export default async function HomePage({ params }: HomePageProps) {
-  const { locale } = await params;
-  const common = await getTranslations({ locale, namespace: "Common" });
-  const home = await getTranslations({ locale, namespace: "Home" });
+export default async function HomePage() {
+  const [locale, home] = await Promise.all([
+    getLocale() as Promise<StoreLocale>,
+    getTranslations("Home"),
+  ]);
+  const catalog = getCatalog(locale);
+  const featured = catalog.products.filter((product) => product.isFeatured);
 
   return (
-    <main className="flex flex-1 items-center justify-center bg-zinc-50 px-6 py-16">
-      <section className="w-full max-w-2xl rounded-3xl bg-white p-8 shadow-sm sm:p-12">
-        <nav aria-label={common("language")} className="mb-12 flex gap-4">
-          <Link
-            href="/"
-            locale="es"
-            aria-current={locale === "es" ? "page" : undefined}
-            className="font-medium text-zinc-700 underline-offset-4 hover:underline"
-          >
-            {common("spanish")}
+    <main id="main-content">
+      <section className="container hero">
+        <div className="hero__content">
+          <h1>{home("title")}</h1>
+          <p>{home("subtitle")}</p>
+          <Link className="button button--primary" href="/products">
+            {home("shopNow")}
+            <ArrowIcon />
           </Link>
-          <Link
-            href="/"
-            locale="en"
-            aria-current={locale === "en" ? "page" : undefined}
-            className="font-medium text-zinc-700 underline-offset-4 hover:underline"
-          >
-            {common("english")}
-          </Link>
-        </nav>
+        </div>
+        <div className="hero__media">
+          <Image
+            alt={home("heroImageAlt")}
+            fill
+            priority
+            sizes="(max-width: 767px) 100vw, 55vw"
+            src="/images/storefront/hero-groceries.png"
+          />
+        </div>
+      </section>
 
-        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-emerald-700">
-          Tucumán Market
-        </p>
-        <h1 className="text-4xl font-semibold tracking-tight text-zinc-950 sm:text-5xl">
-          {home("title")}
-        </h1>
-        <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-600">
-          {home("subtitle")}
-        </p>
+      <section className="section container" aria-labelledby="categories-title">
+        <div className="section-heading">
+          <div>
+            <h2 id="categories-title">{home("categories")}</h2>
+            <p>{home("categoriesHint")}</p>
+          </div>
+          <Link className="text-link" href="/products">
+            {home("viewAll")}
+            <ArrowIcon />
+          </Link>
+        </div>
+        <div className="category-rail">
+          {catalog.categories.map((category) => (
+            <CategoryTile category={category} key={category.key} />
+          ))}
+        </div>
+      </section>
+
+      <section className="section container" aria-labelledby="featured-title">
+        <div className="section-heading">
+          <div>
+            <h2 id="featured-title">{home("featured")}</h2>
+            <p>{home("featuredHint")}</p>
+          </div>
+          <Link className="text-link" href="/products">
+            {home("viewAll")}
+            <ArrowIcon />
+          </Link>
+        </div>
+        <div className="product-grid product-grid--featured">
+          {featured.map((product) => (
+            <ProductCard key={product.sku} product={product} />
+          ))}
+        </div>
+      </section>
+
+      <section className="section container fulfillment-band">
+        <article>
+          <TruckIcon />
+          <div>
+            <h2>{home("deliveryTitle")}</h2>
+            <p>{home("deliveryText")}</p>
+          </div>
+        </article>
+        <article>
+          <StoreIcon />
+          <div>
+            <h2>{home("pickupTitle")}</h2>
+            <p>{home("pickupText")}</p>
+          </div>
+        </article>
       </section>
     </main>
   );

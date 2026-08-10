@@ -7,7 +7,10 @@
     "retry": "Try again",
     "close": "Close",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "skipToContent": "Skip to content",
+    "serviceArea": "Online store for San Miguel de Tucumán",
+    "deliveryPickup": "Delivery or pickup, your choice"
   },
   "Navigation": {
     "home": "Home",
@@ -15,25 +18,49 @@
     "categories": "Categories",
     "offers": "Offers",
     "account": "My account",
-    "cart": "Cart"
+    "cart": "Cart",
+    "primary": "Primary navigation",
+    "mobile": "Mobile navigation",
+    "openMenu": "Open or close menu"
   },
   "Home": {
     "title": "Your supermarket in Tucumán",
     "subtitle": "Shop for fresh, everyday products with delivery or store pickup.",
     "shopNow": "View products",
     "featured": "Featured products",
-    "categories": "Shop by category"
+    "categories": "Shop by category",
+    "categoriesHint": "Find what you need more quickly.",
+    "featuredHint": "A selection from the store's initial catalog.",
+    "viewAll": "View all",
+    "heroImageAlt": "Basket with fruit, vegetables, bread, and pantry products",
+    "deliveryTitle": "Home delivery",
+    "deliveryText": "Choose delivery when placing your order if the service is available in your area.",
+    "pickupTitle": "Store pickup",
+    "pickupText": "You can also choose pickup and review the instructions before confirming your order."
   },
   "Catalog": {
     "title": "Products",
     "searchPlaceholder": "Search products or brands",
+    "searchLabel": "Search the catalog",
+    "searchAction": "Search",
     "filters": "Filters",
     "sort": "Sort",
     "availability": "Availability",
     "inStock": "In stock",
     "onSale": "On sale",
     "noResults": "We couldn't find products matching those filters.",
-    "clearFilters": "Clear filters"
+    "clearFilters": "Clear filters",
+    "categories": "Categories",
+    "allCategories": "All categories",
+    "homeBreadcrumb": "Home",
+    "resultCount": "{count, plural, =0 {No results} one {# product} other {# products}}",
+    "results": "Catalog results",
+    "sortFeatured": "Featured first",
+    "sortName": "Name",
+    "sortPriceAsc": "Lowest price",
+    "sortPriceDesc": "Highest price",
+    "apply": "Apply",
+    "noResultsTitle": "We couldn't find any products"
   },
   "Product": {
     "addToCart": "Add to cart",
@@ -41,7 +68,8 @@
     "lowStock": "Only a few left",
     "quantity": "Quantity",
     "each": "each",
-    "perKilogram": "per kilogram"
+    "perKilogram": "per kilogram",
+    "onSale": "Sale"
   },
   "Cart": {
     "title": "Your cart",
@@ -51,7 +79,14 @@
     "subtotal": "Subtotal",
     "delivery": "Delivery",
     "total": "Total",
-    "checkout": "Continue to checkout"
+    "checkout": "Continue to checkout",
+    "openAction": "Open",
+    "itemCount": "{count, plural, =0 {No products} one {# product} other {# products}}",
+    "emptyHint": "Add products from the catalog to see them here.",
+    "decrease": "Remove one unit of {product}",
+    "increase": "Add one unit of {product}",
+    "removeProduct": "Remove {product} from cart",
+    "visualOnly": "Order confirmation will be enabled in a later stage."
   },
   "Checkout": {
     "title": "Checkout",
@@ -74,6 +109,22 @@
     "required": "This field is required.",
     "invalidPhone": "Enter a valid phone number.",
     "priceChanged": "The price of this product has changed. Review your cart.",
-    "stockChanged": "The availability of this product has changed. Review your cart."
+    "stockChanged": "The availability of this product has changed. Review your cart.",
+    "title": "Something went wrong",
+    "retry": "Try again"
+  },
+  "Footer": {
+    "description": "A bilingual storefront for everyday shopping in Tucumán.",
+    "shopLinks": "Store links",
+    "shop": "Store",
+    "languages": "Language and currency",
+    "languageList": "Argentine Spanish and English",
+    "currency": "Prices shown in Argentine pesos (ARS)",
+    "copyright": "© {year} Tucumán Market. Demonstration project."
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has moved.",
+    "backHome": "Back to home"
   }
 }
