@@ -1,36 +1,63 @@
-Этот проект на [Next.js](https://nextjs.org) создан с помощью [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tucumán Market
 
-## Начало работы
+Двуязычный продуктовый интернет-магазин для Сан-Мигель-де-Тукуман на Next.js
+App Router. Основная локаль публичной витрины — аргентинский испанский (`es`),
+дополнительная — английский (`en`), валюта — ARS.
 
-Сначала запустите сервер разработки:
+Основа проекта и локализованная frontend-витрина находятся в активной
+разработке. Сейчас реализованы маршруты `/es` и `/en`, главная страница,
+каталог, поиск и визуальная гостевая корзина. Текущие 20 товаров служат
+исходными данными для будущей проверки цепочки JSON → Prisma seed → PostgreSQL
+→ каталог. Prisma schema и seed пока не реализованы.
+
+## Локальный запуск
+
+Git root находится на один уровень выше каталога приложения. Выполняйте команды
+из каталога `tucuman-market/`. Требуется Node.js 20.9 или новее:
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Откройте [http://localhost:3000](http://localhost:3000) в браузере, чтобы увидеть результат.
+Откройте [http://localhost:3000](http://localhost:3000). Корневой URL
+перенаправляет на `/es`; английская версия доступна по `/en`.
 
-Текущая стартовая страница находится в `src/app/[locale]/(store)/page.tsx`. Страница автоматически обновляется при изменении файла.
+Текущая стартовая страница находится в
+`src/app/[locale]/(store)/page.tsx`.
 
-Этот проект использует [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) для автоматической оптимизации и загрузки [Geist](https://vercel.com/font) — нового семейства шрифтов от Vercel.
+## Доступные проверки
 
-## Дополнительные материалы
+```bash
+npm run lint
+npm run typecheck
+npm run test
+npm run validate:catalog
+npm run build
+```
 
-Подробнее о Next.js можно узнать из следующих ресурсов:
+Vitest подключён для unit-тестов. Playwright и CI остаются незавершёнными
+задачами этапа 0 в `docs/ROADMAP.md`.
 
-- [Документация Next.js](https://nextjs.org/docs) — описание возможностей и API Next.js.
-- [Изучение Next.js](https://nextjs.org/learn) — интерактивное учебное руководство по Next.js.
+## Документация
 
-Также можно ознакомиться с [репозиторием Next.js на GitHub](https://github.com/vercel/next.js) — отзывы и вклад в проект приветствуются.
+- `PROJECT_BRIEF.md` — область и цели продукта.
+- `ARCHITECTURE.md` — принятые технические решения.
+- `DESIGN.md` — дизайн-система и правила интерфейса.
+- `docs/REQUIREMENTS.md` — функциональные требования.
+- `docs/ROADMAP.md` — этапы реализации и текущий следующий шаг.
+- `docs/GIT_FLOW.md` — локальный Git workflow.
 
-## Развёртывание на Vercel
+## Deployment
 
-Самый простой способ развернуть приложение Next.js — использовать [платформу Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) от создателей Next.js.
+Целевая платформа — Vercel. Поскольку Next.js-приложение вложено в Git root,
+в настройках проекта Vercel укажите Root Directory `tucuman-market`. Build
+Command остаётся `npm run build`, а остальные параметры Next.js могут
+определяться автоматически.
 
-Дополнительные сведения доступны в [документации по развёртыванию Next.js](https://nextjs.org/docs/app/building-your-application/deploying).
+Когда появятся переменные окружения, их имена без реальных значений должны быть
+задокументированы в `.env.example`. Production-секреты настраиваются у hosting
+provider и не сохраняются в Git.
+
+Дополнительные сведения о deployment доступны в
+[документации Next.js](https://nextjs.org/docs/app/getting-started/deploying).
