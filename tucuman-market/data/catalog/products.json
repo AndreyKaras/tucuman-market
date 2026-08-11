@@ -22,7 +22,22 @@
       "lowStockThreshold": 5,
       "isFeatured": true,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/banana-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Bananas frescas"
+            },
+            "en": {
+              "alt": "Fresh bananas"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Banana por kg",
@@ -49,7 +64,22 @@
       "lowStockThreshold": 5,
       "isFeatured": true,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/manzana-roja-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Manzanas rojas frescas"
+            },
+            "en": {
+              "alt": "Fresh red apples"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Manzana roja por kg",
@@ -76,7 +106,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/naranja-para-jugo-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Naranjas frescas para jugo"
+            },
+            "en": {
+              "alt": "Fresh oranges for juice"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Naranja para jugo por kg",
@@ -103,7 +148,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/mandarina-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Mandarinas frescas"
+            },
+            "en": {
+              "alt": "Fresh mandarins"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Mandarina por kg",
@@ -130,7 +190,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/limon-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Limones frescos"
+            },
+            "en": {
+              "alt": "Fresh lemons"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Limón por kg",
@@ -157,7 +232,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/papa-blanca-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Papas blancas frescas"
+            },
+            "en": {
+              "alt": "Fresh white potatoes"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Papa blanca por kg",
@@ -184,7 +274,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/cebolla-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Cebollas frescas"
+            },
+            "en": {
+              "alt": "Fresh onions"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Cebolla por kg",
@@ -211,7 +316,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/tomate-redondo-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Tomates redondos frescos"
+            },
+            "en": {
+              "alt": "Fresh round tomatoes"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Tomate redondo por kg",
@@ -238,7 +358,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/zanahoria-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Zanahorias frescas"
+            },
+            "en": {
+              "alt": "Fresh carrots"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Zanahoria por kg",
@@ -265,7 +400,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/zapallo-anco-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Zapallo anco fresco"
+            },
+            "en": {
+              "alt": "Fresh butternut squash"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Zapallo anco por kg",
@@ -295,7 +445,22 @@
       "lowStockThreshold": 5,
       "isFeatured": true,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/leche-entera-1l.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Leche entera en botella de un litro"
+            },
+            "en": {
+              "alt": "One-liter bottle of whole milk"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Leche entera 1 L",
@@ -355,7 +520,22 @@
       "lowStockThreshold": 5,
       "isFeatured": true,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/yogur-natural-1kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Yogur natural cremoso"
+            },
+            "en": {
+              "alt": "Creamy plain yogurt"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Yogur natural 1 kg",
@@ -475,7 +655,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/huevos-blancos-x12.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Docena de huevos blancos"
+            },
+            "en": {
+              "alt": "Dozen white eggs"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Huevos blancos x 12",
@@ -505,7 +700,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/jamon-cocido-200g.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Jamón cocido en fetas"
+            },
+            "en": {
+              "alt": "Sliced cooked ham"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Jamón cocido 200 g",
@@ -559,7 +769,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/carne-picada-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Carne vacuna picada fresca"
+            },
+            "en": {
+              "alt": "Fresh ground beef"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Carne picada por kg",
@@ -586,7 +811,22 @@
       "lowStockThreshold": 5,
       "isFeatured": true,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/pan-frances-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Pan francés fresco"
+            },
+            "en": {
+              "alt": "Fresh French-style bread"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Pan francés por kg",
@@ -616,7 +856,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/pan-lactal-blanco-500g.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Pan lactal blanco en rebanadas"
+            },
+            "en": {
+              "alt": "Sliced white sandwich bread"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Pan lactal blanco 500 g",
@@ -736,7 +991,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/avena-tradicional-500g.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Avena tradicional en copos"
+            },
+            "en": {
+              "alt": "Traditional rolled oats"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Avena tradicional 500 g",
@@ -766,7 +1036,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/cereales-de-maiz-300g.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Cereales de maíz crocantes"
+            },
+            "en": {
+              "alt": "Crisp corn flakes"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Cereales de maíz 300 g",
@@ -826,7 +1111,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/mermelada-de-durazno-454g.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Mermelada de durazno"
+            },
+            "en": {
+              "alt": "Peach jam"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Mermelada de durazno 454 g",
@@ -856,7 +1156,22 @@
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/cafe-molido-500g.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Café molido tostado"
+            },
+            "en": {
+              "alt": "Roasted ground coffee"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
           "name": "Café molido 500 g",

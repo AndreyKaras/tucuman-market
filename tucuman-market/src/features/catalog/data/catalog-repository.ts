@@ -17,6 +17,13 @@ type Translation = {
 
 type CategorySeed = {
   displayOrder: number;
+  image: {
+    height: number;
+    spritePosition?: number;
+    src: string;
+    translations: Record<StoreLocale, { alt: string }>;
+    width: number;
+  };
   isActive: boolean;
   key: string;
   translations: Record<StoreLocale, Translation>;
@@ -96,6 +103,13 @@ function createCatalog(locale: StoreLocale): CatalogSnapshot {
     .filter((category) => category.isActive)
     .sort((left, right) => left.displayOrder - right.displayOrder)
     .map<CatalogCategory>((category) => ({
+      image: {
+        alt: category.image.translations[locale].alt,
+        height: category.image.height,
+        spritePosition: category.image.spritePosition,
+        src: category.image.src,
+        width: category.image.width,
+      },
       key: category.key,
       name: category.translations[locale].name,
       slug: category.translations[locale].slug,

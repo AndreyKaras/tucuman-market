@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 
-import type { ProductImage as ProductImageValue } from "@/features/catalog/model/types";
+import type { CatalogImage } from "@/features/catalog/model/types";
 import { cn } from "@/components/ui/styles";
 
 const sizeClasses = {
@@ -18,7 +18,7 @@ export function ProductImage({
   size = "card",
 }: {
   decorative?: boolean;
-  image: ProductImageValue;
+  image: CatalogImage;
   size?: "card" | "cart" | "cartPage" | "detail" | "thumbnail";
 }) {
   const isSprite = image.spritePosition !== undefined;

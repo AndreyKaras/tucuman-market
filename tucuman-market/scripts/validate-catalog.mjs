@@ -45,10 +45,24 @@ for (const category of categories) {
   if (category.isActive) activeCategoryKeys.add(category.key);
   invariant(Number.isInteger(category.displayOrder), `${category.key}: invalid displayOrder`);
 
+  const image = category.image;
+  invariant(
+    typeof image?.src === "string" && /^(\/|https:\/\/)/.test(image.src),
+    `${category.key}: invalid category image src`
+  );
+  invariant(Number.isInteger(image.width) && image.width > 0, `${category.key}: invalid category image width`);
+  invariant(Number.isInteger(image.height) && image.height > 0, `${category.key}: invalid category image height`);
+  invariant(
+    image.spritePosition === undefined ||
+      (Number.isInteger(image.spritePosition) && image.spritePosition >= 0 && image.spritePosition <= 9),
+    `${category.key}: invalid category image spritePosition`
+  );
+
   for (const locale of ["es", "en"]) {
     const translation = category.translations?.[locale];
     invariant(translation?.name, `${category.key}: missing ${locale} category name`);
     addUnique(categorySlugs[locale], translation.slug, `${locale} category slug`);
+    invariant(image.translations?.[locale]?.alt, `${category.key}: missing ${locale} category image alt`);
   }
 }
 

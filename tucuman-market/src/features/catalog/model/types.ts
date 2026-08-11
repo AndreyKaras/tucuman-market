@@ -2,16 +2,20 @@ export type StoreLocale = "es" | "en";
 
 export type SaleUnit = "KG" | "UNIT";
 
-export type ProductImage = {
+export type CatalogImage = {
   alt: string;
   height: number;
-  sortOrder: number;
   spritePosition?: number;
   src: string;
   width: number;
 };
 
+export type ProductImage = CatalogImage & {
+  sortOrder: number;
+};
+
 export type CatalogCategory = {
+  image: CatalogImage;
   key: string;
   name: string;
   slug: string;
