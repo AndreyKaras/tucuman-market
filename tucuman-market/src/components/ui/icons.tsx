@@ -71,6 +71,12 @@ export const SlidersIcon = (props: IconProps) => (
   </svg>
 );
 
+export const ChevronDownIcon = (props: IconProps) => (
+  <svg {...defaults} {...props}>
+    <path d="m6 9 6 6 6-6" />
+  </svg>
+);
+
 export const TruckIcon = (props: IconProps) => (
   <svg {...defaults} {...props}>
     <path d="M3 6h11v10H3zM14 10h4l3 3v3h-7z" />
@@ -106,18 +112,38 @@ export const PackageIcon = (props: IconProps) => (
   </svg>
 );
 
+export const MapPinIcon = (props: IconProps) => (
+  <svg {...defaults} {...props}>
+    <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
+    <circle cx="12" cy="10" r="2.5" />
+  </svg>
+);
+
+export const ClockIcon = (props: IconProps) => (
+  <svg {...defaults} {...props}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7v5l3 2" />
+  </svg>
+);
+
+export const PhoneIcon = (props: IconProps) => (
+  <svg {...defaults} {...props}>
+    <path d="M6.5 3.5 10 7l-2 3c1.4 2.8 3.2 4.6 6 6l3-2 3.5 3.5-1.5 3c-.5 1-1.7 1.5-2.8 1.2C9 19.8 4.2 15 2.3 8.8 2 7.7 2.5 6.5 3.5 6Z" />
+  </svg>
+);
+
 type CategoryIconProps = IconProps & {
   kind: string;
 };
 
 export function CategoryIcon({ kind, ...props }: CategoryIconProps) {
   const content = {
-    bakery: <><path d="M5 19c-2-5 1-11 7-14 6 3 9 9 7 14Z" /><path d="m8 14 3-2m1 5 3-2m-5-6 2-1" /></>,
+    "bakery-breakfast": <><path d="M5 19c-2-5 1-11 7-14 6 3 9 9 7 14Z" /><path d="m8 14 3-2m1 5 3-2m-5-6 2-1" /></>,
     beverages: <><path d="M9 3h6M10 3v4l-2 3v11h8V10l-2-3V3" /><path d="M8 13h8" /></>,
-    "dairy-eggs": <><path d="M5 20V8l3-5h6l3 5v12Z" /><path d="M5 9h12M9 3v6" /></>,
+    "dairy-fresh": <><path d="M5 20V8l3-5h6l3 5v12Z" /><path d="M5 9h12M9 3v6" /></>,
     frozen: <><path d="M12 2v20M4.5 6.5l15 11M19.5 6.5l-15 11M8 4l4 4 4-4M8 20l4-4 4 4" /></>,
     "fruit-vegetables": <><path d="M12 8c-4-3-9 0-8 6 1 5 5 7 8 4 3 3 7 1 8-4 1-6-4-9-8-6Z" /><path d="M12 8c0-3 2-5 5-5-1 3-2 5-5 5Z" /></>,
-    "meat-deli": <><path d="M5 8c3-5 10-5 14 0 3 4-1 10-6 10-3 0-4-2-6-1-3 1-5-6-2-9Z" /><circle cx="14" cy="10" r="2" /></>,
+    "cleaning-personal-care": <><path d="M9 3h6v4l3 3v11H6V10l3-3Z" /><path d="M9 7h6M9 14h6M12 11v6" /></>,
     pantry: <><path d="M7 3h10l1 4-1 14H7L6 7Z" /><path d="M6 7h12M9 12h6" /></>,
     "snacks-sweets": <><path d="m5 7 4 2h6l4-2-2 14H7Z" /><path d="M9 4h6l2 3H7Z" /></>,
   }[kind] ?? <><path d="m4 7 8-4 8 4v10l-8 4-8-4Z" /><path d="m4 7 8 4 8-4M12 11v10" /></>;

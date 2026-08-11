@@ -36,18 +36,19 @@
 Итоговая цель демонстрационного каталога — 80 товаров: по 10 товаров в каждой
 из восьми категорий.
 
-1. Frutas y verduras / Fruit and vegetables
-2. Almacén / Pantry
-3. Lácteos y huevos / Dairy and eggs
-4. Panadería / Bakery
+1. Frutas y verduras / Fruits and vegetables
+2. Lácteos y frescos / Dairy and fresh
+3. Panadería y desayuno / Bakery and breakfast
+4. Almacén / Pantry
 5. Bebidas / Beverages
-6. Snacks y dulces / Snacks and sweets
-7. Carnes y fiambres / Meat and deli
-8. Congelados / Frozen food
+6. Snacks y golosinas / Snacks and sweets
+7. Congelados / Frozen foods
+8. Limpieza y cuidado personal / Cleaning and personal care
 
-Текущие 20 товаров составляют первоначальный набор для проверки полной цепочки
-JSON → Prisma seed → PostgreSQL → каталог. Остальные 60 товаров будут добавлены
-после стабилизации этой цепочки.
+Frontend JSON содержит целевой набор из 80 товаров. Для первоначальной проверки
+полной цепочки JSON → Prisma seed → PostgreSQL → каталог используется выделенный
+набор из 20 товаров; после стабилизации цепочки seed распространяется на остальные
+60 позиций без изменения публичного контракта catalog repository.
 
 Цены являются реалистичными демонстрационными значениями с датой в seed metadata.
 Они не представляют собой обещание актуальных рыночных цен и должны

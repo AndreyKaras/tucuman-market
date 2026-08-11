@@ -4,8 +4,11 @@ export type SaleUnit = "KG" | "UNIT";
 
 export type ProductImage = {
   alt: string;
-  position: number;
+  height: number;
+  sortOrder: number;
+  spritePosition?: number;
   src: string;
+  width: number;
 };
 
 export type CatalogCategory = {
@@ -21,6 +24,7 @@ export type CatalogProduct = {
   currency: "ARS";
   description: string;
   image: ProductImage;
+  images: readonly ProductImage[];
   isFeatured: boolean;
   isLowStock: boolean;
   isOnSale: boolean;
@@ -32,6 +36,7 @@ export type CatalogProduct = {
   saleUnit: SaleUnit;
   sku: string;
   slug: string;
+  stockQuantity: number;
 };
 
 export type CatalogSnapshot = {
@@ -42,7 +47,10 @@ export type CatalogSnapshot = {
 export type CatalogQuery = {
   category?: string;
   inStock?: boolean;
+  maxPrice?: string;
+  minPrice?: string;
   onSale?: boolean;
+  page?: number;
   query?: string;
   sort?: "featured" | "name" | "price-asc" | "price-desc";
 };

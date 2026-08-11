@@ -11,5 +11,17 @@ export const routing = defineRouting({
       es: "/productos",
       en: "/products",
     },
+    "/products/[slug]": {
+      es: "/productos/[slug]",
+      en: "/products/[slug]",
+    },
+    "/categories/[slug]": {
+      es: "/categorias/[slug]",
+      en: "/categories/[slug]",
+    },
+    "/cart": {
+      es: "/carrito",
+      en: "/cart",
+    },
   },
 });

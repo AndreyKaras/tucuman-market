@@ -3,6 +3,7 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useReducer,
   type ReactNode,
@@ -15,11 +16,14 @@ import {
   initialCartState,
   type CartAction,
   type CartProductSnapshot,
+  type CartItem,
   type CartState,
 } from "../model/cart";
+import { CART_STORAGE_KEY, deserializeCart, serializeCart } from "../model/cart-storage";
+import type { CatalogProduct } from "@/features/catalog/model/types";
 
 type CartContextValue = {
-  addItem: (product: CartProductSnapshot) => void;
+  addItem: (product: CartProductSnapshot, quantity?: number) => void;
   closeCart: () => void;
   count: number;
   decrement: (sku: string) => void;
@@ -32,12 +36,40 @@ type CartContextValue = {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
-export function CartProvider({ children }: { children: ReactNode }) {
+export function CartProvider({
+  children,
+  products,
+}: {
+  children: ReactNode;
+  products: readonly CatalogProduct[];
+}) {
   const [state, dispatch] = useReducer(cartReducer, initialCartState);
+
+  useEffect(() => {
+    let items: CartItem[] = [];
+
+    try {
+      items = deserializeCart(window.localStorage.getItem(CART_STORAGE_KEY), products);
+    } catch {
+      items = [];
+    }
+
+    dispatch({ items, type: "hydrate" });
+  }, [products]);
+
+  useEffect(() => {
+    if (!state.hasHydrated) return;
+
+    try {
+      window.localStorage.setItem(CART_STORAGE_KEY, serializeCart(state.items));
+    } catch {
+      // The visual cart still works when storage is unavailable.
+    }
+  }, [state.hasHydrated, state.items]);
 
   const value = useMemo<CartContextValue>(
     () => ({
-      addItem: (product) => dispatch({ product, type: "add" }),
+      addItem: (product, quantity) => dispatch({ product, quantity, type: "add" }),
       closeCart: () => dispatch({ type: "close" }),
       count: getCartCount(state.items),
       decrement: (sku) => dispatch({ sku, type: "decrement" }),

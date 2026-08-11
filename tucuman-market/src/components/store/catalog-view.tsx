@@ -1,0 +1,90 @@
+import { getLocale, getTranslations } from "next-intl/server";
+
+import { SearchIcon } from "@/components/ui/icons";
+import { getCatalog } from "@/features/catalog/data/catalog-repository";
+import {
+  parseCatalogQuery,
+  type RawSearchParams,
+} from "@/features/catalog/model/catalog-query";
+import { selectProducts } from "@/features/catalog/model/selectors";
+import type { CatalogCategory, StoreLocale } from "@/features/catalog/model/types";
+import { Link } from "@/i18n/navigation";
+import {
+  cn,
+  containerClass,
+  primaryButtonClass,
+} from "@/components/ui/styles";
+
+import { CatalogControls } from "./catalog-controls";
+import { CatalogProductGrid } from "./catalog-product-grid";
+
+const PAGE_SIZE = 8;
+
+type CatalogViewProps = {
+  category?: CatalogCategory;
+  searchParams: Promise<RawSearchParams>;
+};
+
+export async function CatalogView({ category, searchParams }: CatalogViewProps) {
+  const [locale, params, t] = await Promise.all([
+    getLocale() as Promise<StoreLocale>,
+    searchParams,
+    getTranslations("Catalog"),
+  ]);
+  const catalog = getCatalog(locale);
+  const query = parseCatalogQuery(params, category?.key);
+  const products = selectProducts(catalog.products, query);
+  const visibleCount = Math.min(products.length, (query.page ?? 1) * PAGE_SIZE);
+  const clearHref = category
+    ? ({
+        pathname: "/categories/[slug]" as const,
+        params: { slug: category.slug },
+        query: query.query ? { q: query.query } : {},
+      } as const)
+    : ({ pathname: "/products" as const } as const);
+
+  return (
+    <main className={cn(containerClass, "pt-8 pb-20 max-[639px]:pt-6 max-[639px]:pb-14")} id="main-content">
+      <header>
+        {category ? (
+          <p className="m-0 flex items-center gap-2 text-[13px] text-ink-muted [&_a]:inline-flex [&_a]:min-h-11 [&_a]:min-w-11 [&_a]:items-center [&_a:hover]:text-primary-700 [&_a:hover]:underline">
+            <Link href="/">{t("homeBreadcrumb")}</Link>
+            <span aria-hidden="true">/</span>
+            <Link href="/products">{t("title")}</Link>
+            <span aria-hidden="true">/</span>
+            <span>{category.name}</span>
+          </p>
+        ) : null}
+        <h1 className="mt-2.5 mb-2 text-[40px] leading-[1.12] tracking-[-0.025em] max-[639px]:text-[32px]">{category?.name ?? t("title")}</h1>
+        <p className="m-0 text-ink-muted">{t("resultCount", { count: products.length })}</p>
+      </header>
+
+      <div className="mt-8 grid grid-cols-[232px_minmax(0,1fr)] gap-8 max-[900px]:grid-cols-1 max-[639px]:mt-6 max-[639px]:gap-5">
+        <CatalogControls
+          categories={catalog.categories}
+          categorySlug={category?.slug}
+          query={query}
+        />
+
+        <section className="col-start-2 row-start-2 min-w-0 max-[900px]:col-start-1 max-[900px]:row-start-2" aria-labelledby="results-title">
+          <h2 className="sr-only" id="results-title">{t("results")}</h2>
+          {products.length ? (
+            <CatalogProductGrid
+              initialVisibleCount={visibleCount}
+              key={`${products.map((product) => product.sku).join(":")}:${visibleCount}`}
+              pageSize={PAGE_SIZE}
+              products={products}
+            />
+          ) : (
+            <div className="flex flex-col items-center rounded-xl border border-dashed border-line-strong px-6 py-16 text-center">
+              <span className="inline-flex size-[72px] items-center justify-center rounded-full bg-primary-50 text-primary-700" aria-hidden="true"><SearchIcon className="size-9" /></span>
+              <h2 className="mt-5 mb-0">{t("noResultsTitle")}</h2>
+              <p className="mt-2.5 mb-6 max-w-[460px] leading-6 text-ink-muted">{t("noResults")}</p>
+              <Link className={primaryButtonClass} href={clearHref}>{t("clearFilters")}</Link>
+            </div>
+          )}
+        </section>
+      </div>
+    </main>
+  );
+}

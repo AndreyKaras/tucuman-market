@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "categories": [
     {
       "key": "fruit-vegetables",
@@ -7,34 +7,34 @@
       "isActive": true,
       "translations": {
         "es": { "name": "Frutas y verduras", "slug": "frutas-y-verduras" },
-        "en": { "name": "Fruit and vegetables", "slug": "fruit-and-vegetables" }
+        "en": { "name": "Fruits and vegetables", "slug": "fruits-and-vegetables" }
+      }
+    },
+    {
+      "key": "dairy-fresh",
+      "displayOrder": 2,
+      "isActive": true,
+      "translations": {
+        "es": { "name": "Lácteos y frescos", "slug": "lacteos-y-frescos" },
+        "en": { "name": "Dairy and fresh", "slug": "dairy-and-fresh" }
+      }
+    },
+    {
+      "key": "bakery-breakfast",
+      "displayOrder": 3,
+      "isActive": true,
+      "translations": {
+        "es": { "name": "Panadería y desayuno", "slug": "panaderia-y-desayuno" },
+        "en": { "name": "Bakery and breakfast", "slug": "bakery-and-breakfast" }
       }
     },
     {
       "key": "pantry",
-      "displayOrder": 2,
+      "displayOrder": 4,
       "isActive": true,
       "translations": {
         "es": { "name": "Almacén", "slug": "almacen" },
         "en": { "name": "Pantry", "slug": "pantry" }
-      }
-    },
-    {
-      "key": "dairy-eggs",
-      "displayOrder": 3,
-      "isActive": true,
-      "translations": {
-        "es": { "name": "Lácteos y huevos", "slug": "lacteos-y-huevos" },
-        "en": { "name": "Dairy and eggs", "slug": "dairy-and-eggs" }
-      }
-    },
-    {
-      "key": "bakery",
-      "displayOrder": 4,
-      "isActive": true,
-      "translations": {
-        "es": { "name": "Panadería", "slug": "panaderia" },
-        "en": { "name": "Bakery", "slug": "bakery" }
       }
     },
     {
@@ -51,26 +51,26 @@
       "displayOrder": 6,
       "isActive": true,
       "translations": {
-        "es": { "name": "Snacks y dulces", "slug": "snacks-y-dulces" },
+        "es": { "name": "Snacks y golosinas", "slug": "snacks-y-golosinas" },
         "en": { "name": "Snacks and sweets", "slug": "snacks-and-sweets" }
       }
     },
     {
-      "key": "meat-deli",
+      "key": "frozen",
       "displayOrder": 7,
       "isActive": true,
       "translations": {
-        "es": { "name": "Carnes y fiambres", "slug": "carnes-y-fiambres" },
-        "en": { "name": "Meat and deli", "slug": "meat-and-deli" }
+        "es": { "name": "Congelados", "slug": "congelados" },
+        "en": { "name": "Frozen foods", "slug": "frozen-foods" }
       }
     },
     {
-      "key": "frozen",
+      "key": "cleaning-personal-care",
       "displayOrder": 8,
       "isActive": true,
       "translations": {
-        "es": { "name": "Congelados", "slug": "congelados" },
-        "en": { "name": "Frozen food", "slug": "frozen-food" }
+        "es": { "name": "Limpieza y cuidado personal", "slug": "limpieza-y-cuidado-personal" },
+        "en": { "name": "Cleaning and personal care", "slug": "cleaning-and-personal-care" }
       }
     }
   ]
