@@ -32,6 +32,7 @@ import {
 } from "@/components/ui/styles";
 
 import { Brand } from "./brand";
+import { useScrollToPageTopAfterNavigation } from "./scroll-to-top-link";
 
 const subscribeToClient = () => () => undefined;
 
@@ -70,6 +71,7 @@ export function Header() {
     }
   });
   const menuCloseButtonRef = useRef<HTMLButtonElement>(null);
+  const scrollToTop = useScrollToPageTopAfterNavigation();
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -97,6 +99,11 @@ export function Header() {
       if (!desktopQuery.matches) previousFocus?.focus();
     };
   }, [isMenuOpen]);
+
+  const navigateFromHeader = () => {
+    setMenuOpen(false);
+    scrollToTop();
+  };
 
   const switchLocale = async (nextLocale: StoreLocale) => {
     const browserSegments = window.location.pathname.split("/").filter(Boolean);
@@ -174,7 +181,7 @@ export function Header() {
       pathname: "/products",
       query: value ? { q: value } : {},
     });
-    setMenuOpen(false);
+    navigateFromHeader();
     setSearchFocused(false);
   };
 
@@ -236,6 +243,7 @@ export function Header() {
                 pathname === "/" ? activeNavLinkClass : inactiveNavLinkClass,
               )}
               href="/"
+              onClick={navigateFromHeader}
             >
               {t("home")}
             </Link>
@@ -246,6 +254,7 @@ export function Header() {
                 isCatalogActive ? activeNavLinkClass : inactiveNavLinkClass,
               )}
               href="/products"
+              onClick={navigateFromHeader}
             >
               {t("catalog")}
             </Link>
@@ -256,6 +265,7 @@ export function Header() {
                 isOffersActive ? activeNavLinkClass : inactiveNavLinkClass,
               )}
               href={{ pathname: "/products", query: { onSale: "1" } }}
+              onClick={navigateFromHeader}
             >
               {t("offers")}
             </Link>
@@ -271,7 +281,17 @@ export function Header() {
             role="search"
           >
             <label className="sr-only" htmlFor="site-search">{catalog("searchLabel")}</label>
-            <div className="grid h-12 grid-cols-[auto_minmax(0,1fr)_auto] items-center overflow-hidden rounded-lg border border-line transition-[border-color,box-shadow] duration-[140ms] focus-within:border-focus focus-within:shadow-[0_0_0_2px_rgba(37,99,235,0.18)]">
+            <div
+              className="grid h-12 grid-cols-[auto_minmax(0,1fr)_auto] items-center overflow-hidden rounded-lg border border-line transition-[border-color,box-shadow] duration-[140ms]"
+              style={
+                isSearchFocused
+                  ? {
+                      borderColor: "var(--primary-700)",
+                      boxShadow: "0 0 0 2px var(--primary-100)",
+                    }
+                  : undefined
+              }
+            >
               <SearchIcon className="ml-3.5 size-5 text-ink-muted" />
               <input
                 className="h-[46px] min-w-0 border-0 px-3 outline-0"
@@ -319,24 +339,30 @@ export function Header() {
             ) : null}
           </form>
 
-          <nav aria-label={common("language")} className="flex items-center gap-1.5 text-[13px] font-bold max-[380px]:text-xs">
+          <nav
+            aria-label={common("language")}
+            className="inline-flex items-center gap-1 rounded-lg border border-line bg-surface-muted p-1 text-xs font-bold"
+          >
             <button
               aria-current={locale === "es" ? "page" : undefined}
               className={cn(
-                "inline-flex min-h-11 min-w-11 items-center border-0 bg-transparent p-0 transition-colors duration-[140ms]",
-                locale === "es" && "text-primary-700 underline decoration-2 underline-offset-4",
+                "inline-flex h-9 min-w-10 items-center justify-center rounded-md border-0 px-2 transition-[background-color,color,box-shadow] duration-[140ms]",
+                locale === "es"
+                  ? "bg-primary-700 text-white shadow-sm"
+                  : "bg-transparent text-ink-muted hover:bg-white hover:text-primary-800",
               )}
               onClick={() => switchLocale("es")}
               type="button"
             >
               ES
             </button>
-            <span aria-hidden="true">/</span>
             <button
               aria-current={locale === "en" ? "page" : undefined}
               className={cn(
-                "inline-flex min-h-11 min-w-11 items-center border-0 bg-transparent p-0 transition-colors duration-[140ms]",
-                locale === "en" && "text-primary-700 underline decoration-2 underline-offset-4",
+                "inline-flex h-9 min-w-10 items-center justify-center rounded-md border-0 px-2 transition-[background-color,color,box-shadow] duration-[140ms]",
+                locale === "en"
+                  ? "bg-primary-700 text-white shadow-sm"
+                  : "bg-transparent text-ink-muted hover:bg-white hover:text-primary-800",
               )}
               onClick={() => switchLocale("en")}
               type="button"
@@ -347,7 +373,7 @@ export function Header() {
 
           <button
             aria-label={`${cartT("title")}: ${displayedCartCount}`}
-            className="flex min-h-11 items-center gap-[7px] border-0 bg-white p-0 text-sm font-[650] transition-[color,transform] duration-[140ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] active:scale-[0.97] max-[639px]:[&_span]:hidden"
+            className="group flex min-h-11 items-center gap-[7px] rounded-lg border-0 bg-white px-2 text-sm font-[650] transition-[background-color,color,transform] duration-[140ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:bg-primary-50 hover:text-primary-800 active:scale-[0.97] max-[639px]:[&_span]:hidden"
             onClick={cart.openCart}
             type="button"
           >
@@ -395,20 +421,20 @@ export function Header() {
               </button>
             </div>
             <div className="flex flex-col overflow-y-auto px-6 pt-4 pb-6 [&_a]:flex [&_a]:min-h-14 [&_a]:items-center [&_a]:border-b [&_a]:border-line [&_a]:font-semibold [&_a[aria-current=page]]:text-primary-700">
-              <Link aria-current={pathname === "/" ? "page" : undefined} href="/" onClick={() => setMenuOpen(false)}>
+              <Link aria-current={pathname === "/" ? "page" : undefined} href="/" onClick={navigateFromHeader}>
                 {t("home")}
               </Link>
               <Link
                 aria-current={isCatalogActive ? "page" : undefined}
                 href="/products"
-                onClick={() => setMenuOpen(false)}
+                onClick={navigateFromHeader}
               >
                 {t("catalog")}
               </Link>
               <Link
                 aria-current={isOffersActive ? "page" : undefined}
                 href={{ pathname: "/products", query: { onSale: "1" } }}
-                onClick={() => setMenuOpen(false)}
+                onClick={navigateFromHeader}
               >
                 {t("offers")}
               </Link>

@@ -2,12 +2,16 @@
 
 import { Link } from "@/i18n/navigation";
 
+import { useScrollToPageTopAfterNavigation } from "./scroll-to-top-link";
+
 export function Brand() {
+  const scrollToTop = useScrollToPageTopAfterNavigation();
+
   return (
     <Link
       href="/"
       className="inline-flex min-h-11 flex-none items-center gap-2.5 text-[17px] leading-[1.05] font-[650] text-primary-900 max-[639px]:gap-1.5 max-[639px]:text-sm"
-      onClick={() => window.scrollTo({ top: 0 })}
+      onClick={scrollToTop}
     >
       <svg
         aria-hidden="true"

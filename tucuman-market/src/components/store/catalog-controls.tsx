@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/styles";
 
 const fieldsetClass =
-  "m-0 flex flex-col gap-0.5 border-x-0 border-b-0 border-t border-line px-0 py-[18px]";
+  "m-0 flex flex-col gap-0.5 border-0 px-0 py-[18px]";
 const legendClass = "mb-2 text-sm font-bold";
 const optionClass =
   "flex min-h-11 cursor-pointer items-center gap-2.5 rounded-md px-2 py-[7px] text-sm text-ink-muted transition-[background-color,color] duration-[140ms] hover:bg-primary-50 hover:text-primary-800 has-checked:bg-primary-50 has-checked:font-[650] has-checked:text-primary-800 [&_input]:size-[18px] [&_input]:accent-primary-700";
@@ -62,24 +62,41 @@ export function CatalogControls({
 
   const pushQuery = (next: CatalogQuery) => {
     const cleaned = { ...next, page: 1 };
-    const queryParams = toCatalogSearchParams(cleaned, {
-      includeCategory: !categorySlug,
-    });
 
     if (categorySlug) {
-      router.push({
-        pathname: "/categories/[slug]",
-        params: { slug: categorySlug },
-        query: queryParams,
+      const selectedCategory = categories.find(
+        (category) => category.key === cleaned.category,
+      );
+      const queryParams = toCatalogSearchParams(cleaned, {
+        includeCategory: false,
       });
-    } else {
-      router.push({ pathname: "/products", query: queryParams });
+
+      if (selectedCategory) {
+        router.push({
+          pathname: "/categories/[slug]",
+          params: { slug: selectedCategory.slug },
+          query: queryParams,
+        });
+      } else {
+        router.push({ pathname: "/products", query: queryParams });
+      }
+      closeDialog();
+      return;
     }
+
+    router.push({
+      pathname: "/products",
+      query: toCatalogSearchParams(cleaned),
+    });
     closeDialog();
   };
 
   const reset = () => {
-    const next = { query: query.query, sort: query.sort } satisfies CatalogQuery;
+    const next = {
+      category: categorySlug ? query.category : undefined,
+      query: query.query,
+      sort: query.sort,
+    } satisfies CatalogQuery;
     pushQuery(next);
   };
 
@@ -88,7 +105,7 @@ export function CatalogControls({
     const form = new FormData(event.currentTarget);
     pushQuery({
       ...query,
-      category: categorySlug ? query.category : String(form.get("category") ?? "") || undefined,
+      category: String(form.get("category") ?? "") || undefined,
       inStock: form.get("inStock") === "1",
       maxPrice: String(form.get("maxPrice") ?? "").trim() || undefined,
       minPrice: String(form.get("minPrice") ?? "").trim() || undefined,
@@ -98,27 +115,25 @@ export function CatalogControls({
 
   const filterPanel = (id: string) => (
     <form onSubmit={submitFilters}>
-      {!categorySlug ? (
-        <fieldset className={fieldsetClass}>
-          <legend className={legendClass}>{t("categories")}</legend>
-          <label className={optionClass}>
-            <input defaultChecked={!query.category} key={`${id}-all-${query.category}`} name="category" type="radio" value="" />
-            <span>{t("allCategories")}</span>
+      <fieldset className={fieldsetClass}>
+        <legend className={legendClass}>{t("categories")}</legend>
+        <label className={optionClass}>
+          <input defaultChecked={!query.category} key={`${id}-all-${query.category}`} name="category" type="radio" value="" />
+          <span>{t("allCategories")}</span>
+        </label>
+        {categories.map((category) => (
+          <label className={optionClass} key={category.key}>
+            <input
+              defaultChecked={query.category === category.key}
+              key={`${id}-${category.key}-${query.category}`}
+              name="category"
+              type="radio"
+              value={category.key}
+            />
+            <span>{category.name}</span>
           </label>
-          {categories.map((category) => (
-            <label className={optionClass} key={category.key}>
-              <input
-                defaultChecked={query.category === category.key}
-                key={`${id}-${category.key}-${query.category}`}
-                name="category"
-                type="radio"
-                value={category.key}
-              />
-              <span>{category.name}</span>
-            </label>
-          ))}
-        </fieldset>
-      ) : null}
+        ))}
+      </fieldset>
       <fieldset className={fieldsetClass}>
         <legend className={legendClass}>{t("availability")}</legend>
         <label className={optionClass}>
@@ -152,12 +167,15 @@ export function CatalogControls({
 
   return (
     <div className="contents">
-      <aside className="col-start-1 row-span-2 row-start-1 min-w-0 self-start rounded-xl border border-line p-[18px] motion-safe:animate-[filters-in_220ms_cubic-bezier(0.2,0.8,0.2,1)_both] max-[900px]:hidden" aria-labelledby="desktop-filters-title">
+      <aside className="col-start-1 row-start-1 min-w-0 self-start rounded-xl border border-line p-[18px] motion-safe:animate-[filters-in_220ms_cubic-bezier(0.2,0.8,0.2,1)_both] max-[900px]:hidden" aria-labelledby="desktop-filters-title">
         <h2 className="mt-0 mb-5 flex items-center gap-2 text-lg [&_svg]:size-5" id="desktop-filters-title"><SlidersIcon />{t("filters")}</h2>
         {filterPanel("desktop")}
       </aside>
 
-      <div className="col-start-2 row-start-1 mb-0 flex min-h-12 items-center justify-end max-[900px]:col-start-1 max-[900px]:row-start-1 max-[900px]:justify-between max-[639px]:grid max-[639px]:w-full max-[639px]:grid-cols-1 max-[639px]:items-stretch max-[639px]:gap-2.5">
+      <div
+        className="absolute right-0 flex min-h-12 items-center justify-end max-[900px]:static max-[900px]:col-start-1 max-[900px]:row-start-1 max-[900px]:justify-between max-[639px]:grid max-[639px]:w-full max-[639px]:grid-cols-1 max-[639px]:items-stretch max-[639px]:gap-2.5"
+        style={{ top: "-64px" }}
+      >
         <button
           className={cn(secondaryButtonClass, "min-[901px]:hidden max-[639px]:w-full [&_span]:inline-flex [&_span]:h-[22px] [&_span]:min-w-[22px] [&_span]:items-center [&_span]:justify-center [&_span]:rounded-full [&_span]:bg-primary-700 [&_span]:text-[11px] [&_span]:text-white")}
           onClick={() => {

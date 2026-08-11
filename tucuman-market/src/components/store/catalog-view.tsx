@@ -18,7 +18,7 @@ import {
 import { CatalogControls } from "./catalog-controls";
 import { CatalogProductGrid } from "./catalog-product-grid";
 
-const PAGE_SIZE = 8;
+const PAGE_SIZE = 12;
 
 type CatalogViewProps = {
   category?: CatalogCategory;
@@ -34,6 +34,20 @@ export async function CatalogView({ category, searchParams }: CatalogViewProps) 
   const catalog = getCatalog(locale);
   const query = parseCatalogQuery(params, category?.key);
   const products = selectProducts(catalog.products, query);
+  const selectedCategory =
+    category ?? catalog.categories.find((item) => item.key === query.category);
+  const catalogTitle = query.query
+    ? t("searchResultsTitle", { query: query.query })
+    : selectedCategory?.name ?? (query.onSale ? t("offersTitle") : t("title"));
+  const shouldShowResultCount = Boolean(
+    category ||
+      query.query ||
+      query.category ||
+      query.inStock ||
+      query.onSale ||
+      query.minPrice ||
+      query.maxPrice,
+  );
   const visibleCount = Math.min(products.length, (query.page ?? 1) * PAGE_SIZE);
   const clearHref = category
     ? ({
@@ -55,18 +69,23 @@ export async function CatalogView({ category, searchParams }: CatalogViewProps) 
             <span>{category.name}</span>
           </p>
         ) : null}
-        <h1 className="mt-2.5 mb-2 text-[40px] leading-[1.12] tracking-[-0.025em] max-[639px]:text-[32px]">{category?.name ?? t("title")}</h1>
-        <p className="m-0 text-ink-muted">{t("resultCount", { count: products.length })}</p>
+        <h1 className="mt-2.5 mb-2 text-[40px] leading-[1.12] tracking-[-0.025em] max-[639px]:text-[32px]">{catalogTitle}</h1>
+        {shouldShowResultCount ? (
+          <p className="m-0 text-ink-muted">{t("resultCount", { count: products.length })}</p>
+        ) : null}
       </header>
 
-      <div className="mt-8 grid grid-cols-[232px_minmax(0,1fr)] gap-8 max-[900px]:grid-cols-1 max-[639px]:mt-6 max-[639px]:gap-5">
+      <div className="relative mt-6 grid grid-cols-[232px_minmax(0,1fr)] gap-8 max-[900px]:grid-cols-1 max-[639px]:mt-5">
         <CatalogControls
           categories={catalog.categories}
           categorySlug={category?.slug}
           query={query}
         />
 
-        <section className="col-start-2 row-start-2 min-w-0 max-[900px]:col-start-1 max-[900px]:row-start-2" aria-labelledby="results-title">
+        <section
+          aria-labelledby="results-title"
+          className="col-start-2 row-start-1 min-w-0 max-[900px]:col-start-1 max-[900px]:row-start-2"
+        >
           <h2 className="sr-only" id="results-title">{t("results")}</h2>
           {products.length ? (
             <CatalogProductGrid

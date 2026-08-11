@@ -40,6 +40,8 @@
   },
   "Catalog": {
     "title": "Products",
+    "offersTitle": "Offers",
+    "searchResultsTitle": "Results for “{query}”",
     "searchPlaceholder": "Search products or brands",
     "searchLabel": "Search the catalog",
     "searchAction": "Search",
