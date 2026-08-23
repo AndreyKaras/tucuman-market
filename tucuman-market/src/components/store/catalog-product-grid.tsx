@@ -47,7 +47,7 @@ export function CatalogProductGrid({
 
   return (
     <>
-      <div className="grid grid-cols-4 gap-4 max-[1120px]:grid-cols-3 max-[639px]:grid-cols-1" id="catalog-product-grid">
+      <div className="grid grid-cols-4 gap-4 max-[1279px]:grid-cols-3 max-[639px]:grid-cols-1" id="catalog-product-grid">
         {visibleProducts.map((product) => (
           <ProductCard key={product.sku} product={product} />
         ))}

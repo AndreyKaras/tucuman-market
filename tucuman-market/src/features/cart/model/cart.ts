@@ -69,7 +69,6 @@ export function cartReducer(
 
       return {
         ...state,
-        isOpen: true,
         items: existing
           ? state.items.map((item) =>
               item.sku === action.product.sku

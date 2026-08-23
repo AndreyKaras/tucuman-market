@@ -87,7 +87,7 @@ export default async function HomePage() {
             <ArrowIcon />
           </Link>
         </div>
-        <div className="grid grid-cols-4 gap-4 max-[1120px]:grid-cols-3 max-[1120px]:[&>*:last-child]:hidden max-[639px]:grid-cols-1 max-[639px]:[&>*:last-child]:flex">
+        <div className="grid grid-cols-4 gap-4 max-[1279px]:grid-cols-3 max-[1279px]:[&>*:last-child]:hidden max-[639px]:grid-cols-1 max-[639px]:[&>*:last-child]:flex">
           {featured.map((product) => (
             <ProductCard key={product.sku} product={product} />
           ))}

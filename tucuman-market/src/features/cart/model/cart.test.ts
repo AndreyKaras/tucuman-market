@@ -27,11 +27,18 @@ const product: CartProductSnapshot = {
 };
 
 describe("cart reducer", () => {
-  it("adds an item and opens the visual cart", () => {
+  it("adds an item without opening the visual cart", () => {
     const state = cartReducer(initialCartState, { product, type: "add" });
 
-    expect(state.isOpen).toBe(true);
+    expect(state.isOpen).toBe(false);
     expect(getCartCount(state.items)).toBe(1);
+  });
+
+  it("opens the visual cart only after an explicit action", () => {
+    const added = cartReducer(initialCartState, { product, type: "add" });
+    const opened = cartReducer(added, { type: "open" });
+
+    expect(opened.isOpen).toBe(true);
   });
 
   it("increments and decrements existing items", () => {

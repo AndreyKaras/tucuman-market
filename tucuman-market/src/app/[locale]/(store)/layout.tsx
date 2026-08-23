@@ -2,6 +2,7 @@ import { Suspense, type ReactNode } from "react";
 import { getLocale, getTranslations } from "next-intl/server";
 
 import { CartDrawer } from "@/components/store/cart-drawer";
+import { DesktopCartDock } from "@/components/store/desktop-cart-dock";
 import { Footer } from "@/components/store/footer";
 import { Header } from "@/components/store/header";
 import { CartProvider } from "@/features/cart/ui/cart-provider";
@@ -30,6 +31,7 @@ export default async function StoreLayout({ children }: { children: ReactNode })
       </Suspense>
       {children}
       <Footer />
+      <DesktopCartDock />
       <CartDrawer />
     </CartProvider>
   );

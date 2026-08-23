@@ -2,7 +2,11 @@
 
 import { useLocale, useTranslations } from "next-intl";
 
-import { CartIcon, MinusIcon, PlusIcon } from "@/components/ui/icons";
+import {
+  CartIcon,
+  MinusIcon,
+  PlusIcon,
+} from "@/components/ui/icons";
 import type {
   CatalogProduct,
   StoreLocale,
@@ -20,6 +24,7 @@ import {
   quantityControlClass,
   quantityOutputClass,
   saleBadgeClass,
+  secondaryButtonClass,
   warningBadgeClass,
 } from "@/components/ui/styles";
 
@@ -41,7 +46,7 @@ export function ProductCard({ product }: { product: CatalogProduct }) {
     .filter(Boolean)
     .join(" · ");
   return (
-    <article className="flex min-w-0 flex-col overflow-hidden rounded-xl border border-line bg-surface transition-[border-color,box-shadow,transform] duration-[180ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[0_8px_22px_rgba(10,61,27,0.1)] motion-reduce:transform-none motion-reduce:transition-none">
+    <article className="flex min-w-0 flex-col overflow-hidden rounded-xl border border-line bg-surface transition-[border-color,box-shadow] duration-[180ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:border-line-strong hover:shadow-[0_6px_18px_rgba(10,61,27,0.08)] motion-reduce:transition-none">
       <Link
         className="flex min-w-0 flex-1 flex-col focus-visible:outline-offset-[-3px]"
         href={{ pathname: "/products/[slug]", params: { slug: product.slug } }}
@@ -72,13 +77,13 @@ export function ProductCard({ product }: { product: CatalogProduct }) {
           </div>
         </div>
       </Link>
-      <div className="flex flex-none flex-col px-4 pt-0 pb-4 max-[639px]:px-3 max-[639px]:pb-3">
+      <div className="grid flex-none grid-cols-[minmax(112px,3fr)_minmax(72px,2fr)] gap-2 px-4 pt-0 pb-4 max-[639px]:px-3 max-[639px]:pb-3">
         {cart.state.hasHydrated && cartItem ? (
           <div
             aria-label={`${product.name}: ${t("quantity")}`}
             className={cn(
               quantityControlClass,
-              "mt-auto h-12 w-full grid-cols-[48px_minmax(0,1fr)_48px] [&_button]:h-full",
+              "mt-auto h-12 w-full grid-cols-[44px_minmax(24px,1fr)_44px] [&_button]:h-full",
             )}
             role="group"
           >
@@ -90,7 +95,10 @@ export function ProductCard({ product }: { product: CatalogProduct }) {
             >
               <MinusIcon />
             </button>
-            <output className={quantityOutputClass} key={cartItem.quantity}>
+            <output
+              className={cn(quantityOutputClass, "min-w-6 font-[650] text-ink")}
+              key={cartItem.quantity}
+            >
               {cartItem.quantity}
             </output>
             <button
@@ -105,18 +113,29 @@ export function ProductCard({ product }: { product: CatalogProduct }) {
           </div>
         ) : (
           <button
+            aria-label={product.isOutOfStock ? t("outOfStock") : t("addToCart")}
             className={cn(
               primaryButtonClass,
-              "mt-auto w-full max-[639px]:px-2.5 max-[639px]:[&_span]:text-xs max-[380px]:[&_span]:sr-only max-[380px]:[&_svg]:size-[22px]",
+              "mt-auto min-w-0 w-full px-3 max-[639px]:px-2.5 max-[639px]:[&_span]:text-xs",
             )}
             disabled={product.isOutOfStock}
             onClick={() => cart.addItem(toCartProductSnapshot(product))}
             type="button"
           >
-            <CartIcon />
-            <span>{product.isOutOfStock ? t("outOfStock") : t("addToCart")}</span>
+            <CartIcon className="size-5 shrink-0" />
+            <span>{product.isOutOfStock ? t("outOfStock") : t("addToCartShort")}</span>
           </button>
         )}
+        <Link
+          aria-label={t("viewDetails", { product: product.name })}
+          className={cn(
+            secondaryButtonClass,
+            "min-w-0 w-full px-2.5 max-[639px]:[&_span]:text-xs",
+          )}
+          href={{ pathname: "/products/[slug]", params: { slug: product.slug } }}
+        >
+          <span>{t("details")}</span>
+        </Link>
       </div>
     </article>
   );
