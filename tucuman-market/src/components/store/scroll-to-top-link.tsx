@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, type ComponentProps } from "react";
+import { useEffect, useRef, type ComponentProps } from 'react';
 
-import { Link, usePathname } from "@/i18n/navigation";
+import { Link, usePathname } from '@/i18n/navigation';
 
 type ScrollToTopLinkProps = ComponentProps<typeof Link>;
 
@@ -10,7 +10,7 @@ export function scrollToPageTop() {
   const root = document.documentElement;
   const previousScrollBehavior = root.style.scrollBehavior;
 
-  root.style.scrollBehavior = "auto";
+  root.style.scrollBehavior = 'auto';
   window.scrollTo({ top: 0, left: 0 });
   root.style.scrollBehavior = previousScrollBehavior;
 }

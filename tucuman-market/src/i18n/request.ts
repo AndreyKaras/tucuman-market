@@ -1,12 +1,12 @@
-import * as rootParams from "next/root-params";
-import { notFound } from "next/navigation";
-import { hasLocale } from "next-intl";
-import { getRequestConfig } from "next-intl/server";
+import * as rootParams from 'next/root-params';
+import { notFound } from 'next/navigation';
+import { hasLocale } from 'next-intl';
+import { getRequestConfig } from 'next-intl/server';
 
-import enMessages from "../../messages/en.json";
-import esMessages from "../../messages/es.json";
+import enMessages from '../../messages/en.json';
+import esMessages from '../../messages/es.json';
 
-import { routing } from "./routing";
+import { routing } from './routing';
 
 const messagesByLocale = {
   en: enMessages,

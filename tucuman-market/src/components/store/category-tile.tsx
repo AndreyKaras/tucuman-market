@@ -1,14 +1,14 @@
-import type { CatalogCategory } from "@/features/catalog/model/types";
-import { Link } from "@/i18n/navigation";
+import type { CatalogCategory } from '@/features/catalog/model/types';
+import { Link } from '@/i18n/navigation';
 
-import { ArrowIcon } from "../ui/icons";
-import { ProductImage } from "./product-image";
+import { ArrowIcon } from '../ui/icons';
+import { ProductImage } from './product-image';
 
 export function CategoryTile({ category }: { category: CatalogCategory }) {
   return (
     <Link
       className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-line bg-white text-sm font-[650] transition-[border-color,box-shadow] duration-[180ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:border-line-strong hover:shadow-[0_6px_18px_rgba(10,61,27,0.08)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700 motion-reduce:transition-none"
-      href={{ pathname: "/categories/[slug]", params: { slug: category.slug } }}
+      href={{ pathname: '/categories/[slug]', params: { slug: category.slug } }}
     >
       <span className="relative aspect-[4/3] w-full overflow-hidden bg-surface-muted">
         <span className="absolute inset-0">

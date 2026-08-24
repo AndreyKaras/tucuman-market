@@ -64,15 +64,15 @@ Git root проекта находится уровнем выше Next.js-пр�
 
 Использовать короткий английский kebab-case без пробелов и кириллицы.
 
-| Тип работы | Ветка | Commit |
-|---|---|---|
-| Новая функциональность | `feat/<task-slug>` | `feat: ...` |
-| Исправление ошибки | `fix/<task-slug>` | `fix: ...` |
-| Refactor без изменения поведения | `refactor/<task-slug>` | `refactor: ...` |
-| Документация | `docs/<task-slug>` | `docs: ...` |
-| Тесты | `test/<task-slug>` | `test: ...` |
-| Инфраструктура и обслуживание | `chore/<task-slug>` | `chore: ...` |
-| Build или CI | `build/<task-slug>` / `ci/<task-slug>` | `build: ...` / `ci: ...` |
+| Тип работы                       | Ветка                                  | Commit                   |
+| -------------------------------- | -------------------------------------- | ------------------------ |
+| Новая функциональность           | `feat/<task-slug>`                     | `feat: ...`              |
+| Исправление ошибки               | `fix/<task-slug>`                      | `fix: ...`               |
+| Refactor без изменения поведения | `refactor/<task-slug>`                 | `refactor: ...`          |
+| Документация                     | `docs/<task-slug>`                     | `docs: ...`              |
+| Тесты                            | `test/<task-slug>`                     | `test: ...`              |
+| Инфраструктура и обслуживание    | `chore/<task-slug>`                    | `chore: ...`             |
+| Build или CI                     | `build/<task-slug>` / `ci/<task-slug>` | `build: ...` / `ci: ...` |
 
 Допустим необязательный scope, например `feat(catalog): add product repository`.
 Сообщение commit пишется на английском, в повелительной форме и описывает один

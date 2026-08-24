@@ -7,10 +7,10 @@ export function moneyToMinorUnits(value: string): bigint {
     throw new Error(`Invalid decimal money value: ${value}`);
   }
 
-  const [, whole, fraction = ""] = match;
-  return BigInt(whole) * BigInt(100) + BigInt(fraction.padEnd(2, "0"));
+  const [, whole, fraction = ''] = match;
+  return BigInt(whole) * BigInt(100) + BigInt(fraction.padEnd(2, '0'));
 }
 
 export function isDecimalMoney(value: unknown): value is string {
-  return typeof value === "string" && DECIMAL_MONEY_PATTERN.test(value);
+  return typeof value === 'string' && DECIMAL_MONEY_PATTERN.test(value);
 }

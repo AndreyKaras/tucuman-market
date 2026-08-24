@@ -1,10 +1,6 @@
-import type { CatalogProduct } from "@/features/catalog/model/types";
+import type { CatalogProduct } from '@/features/catalog/model/types';
 
-import {
-  normalizeCartQuantity,
-  toCartProductSnapshot,
-  type CartItem,
-} from "./cart";
+import { normalizeCartQuantity, toCartProductSnapshot, type CartItem } from './cart';
 
 const STORAGE_VERSION = 1;
 
@@ -13,7 +9,7 @@ type PersistedCart = {
   version: typeof STORAGE_VERSION;
 };
 
-export const CART_STORAGE_KEY = "tucuman-market:cart:v1";
+export const CART_STORAGE_KEY = 'tucuman-market:cart:v1';
 
 export function serializeCart(items: readonly CartItem[]) {
   const value: PersistedCart = {
@@ -62,7 +58,7 @@ export function deserializeCart(
 }
 
 function isPersistedCart(value: unknown): value is PersistedCart {
-  if (!value || typeof value !== "object") return false;
+  if (!value || typeof value !== 'object') return false;
 
   const candidate = value as Partial<PersistedCart>;
   return (
@@ -71,8 +67,8 @@ function isPersistedCart(value: unknown): value is PersistedCart {
     candidate.items.every(
       (item) =>
         item &&
-        typeof item === "object" &&
-        typeof item.sku === "string" &&
+        typeof item === 'object' &&
+        typeof item.sku === 'string' &&
         Number.isFinite(item.quantity) &&
         item.quantity > 0,
     )

@@ -29,6 +29,7 @@ npm run dev
 ## Доступные проверки
 
 ```bash
+npm run format:check
 npm run lint
 npm run typecheck
 npm run test

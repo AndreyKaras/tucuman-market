@@ -1,16 +1,16 @@
-import type { SVGProps } from "react";
+import type { SVGProps } from 'react';
 
 type IconProps = SVGProps<SVGSVGElement>;
 
 const defaults = {
-  "aria-hidden": true,
-  fill: "none",
+  'aria-hidden': true,
+  fill: 'none',
   height: 24,
-  stroke: "currentColor",
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
+  stroke: 'currentColor',
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
   strokeWidth: 2,
-  viewBox: "0 0 24 24",
+  viewBox: '0 0 24 24',
   width: 24,
 };
 
@@ -138,15 +138,59 @@ type CategoryIconProps = IconProps & {
 
 export function CategoryIcon({ kind, ...props }: CategoryIconProps) {
   const content = {
-    "bakery-breakfast": <><path d="M5 19c-2-5 1-11 7-14 6 3 9 9 7 14Z" /><path d="m8 14 3-2m1 5 3-2m-5-6 2-1" /></>,
-    beverages: <><path d="M9 3h6M10 3v4l-2 3v11h8V10l-2-3V3" /><path d="M8 13h8" /></>,
-    "dairy-fresh": <><path d="M5 20V8l3-5h6l3 5v12Z" /><path d="M5 9h12M9 3v6" /></>,
-    frozen: <><path d="M12 2v20M4.5 6.5l15 11M19.5 6.5l-15 11M8 4l4 4 4-4M8 20l4-4 4 4" /></>,
-    "fruit-vegetables": <><path d="M12 8c-4-3-9 0-8 6 1 5 5 7 8 4 3 3 7 1 8-4 1-6-4-9-8-6Z" /><path d="M12 8c0-3 2-5 5-5-1 3-2 5-5 5Z" /></>,
-    "cleaning-personal-care": <><path d="M9 3h6v4l3 3v11H6V10l3-3Z" /><path d="M9 7h6M9 14h6M12 11v6" /></>,
-    pantry: <><path d="M7 3h10l1 4-1 14H7L6 7Z" /><path d="M6 7h12M9 12h6" /></>,
-    "snacks-sweets": <><path d="m5 7 4 2h6l4-2-2 14H7Z" /><path d="M9 4h6l2 3H7Z" /></>,
-  }[kind] ?? <><path d="m4 7 8-4 8 4v10l-8 4-8-4Z" /><path d="m4 7 8 4 8-4M12 11v10" /></>;
+    'bakery-breakfast': (
+      <>
+        <path d="M5 19c-2-5 1-11 7-14 6 3 9 9 7 14Z" />
+        <path d="m8 14 3-2m1 5 3-2m-5-6 2-1" />
+      </>
+    ),
+    beverages: (
+      <>
+        <path d="M9 3h6M10 3v4l-2 3v11h8V10l-2-3V3" />
+        <path d="M8 13h8" />
+      </>
+    ),
+    'dairy-fresh': (
+      <>
+        <path d="M5 20V8l3-5h6l3 5v12Z" />
+        <path d="M5 9h12M9 3v6" />
+      </>
+    ),
+    frozen: (
+      <>
+        <path d="M12 2v20M4.5 6.5l15 11M19.5 6.5l-15 11M8 4l4 4 4-4M8 20l4-4 4 4" />
+      </>
+    ),
+    'fruit-vegetables': (
+      <>
+        <path d="M12 8c-4-3-9 0-8 6 1 5 5 7 8 4 3 3 7 1 8-4 1-6-4-9-8-6Z" />
+        <path d="M12 8c0-3 2-5 5-5-1 3-2 5-5 5Z" />
+      </>
+    ),
+    'cleaning-personal-care': (
+      <>
+        <path d="M9 3h6v4l3 3v11H6V10l3-3Z" />
+        <path d="M9 7h6M9 14h6M12 11v6" />
+      </>
+    ),
+    pantry: (
+      <>
+        <path d="M7 3h10l1 4-1 14H7L6 7Z" />
+        <path d="M6 7h12M9 12h6" />
+      </>
+    ),
+    'snacks-sweets': (
+      <>
+        <path d="m5 7 4 2h6l4-2-2 14H7Z" />
+        <path d="M9 4h6l2 3H7Z" />
+      </>
+    ),
+  }[kind] ?? (
+    <>
+      <path d="m4 7 8-4 8 4v10l-8 4-8-4Z" />
+      <path d="m4 7 8 4 8-4M12 11v10" />
+    </>
+  );
 
   return (
     <svg {...defaults} {...props}>

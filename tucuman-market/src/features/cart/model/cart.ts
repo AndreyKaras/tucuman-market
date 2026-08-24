@@ -1,13 +1,9 @@
-import type {
-  CatalogProduct,
-  ProductImage,
-} from "@/features/catalog/model/types";
-import { moneyToMinorUnits } from "../../../lib/money";
+import type { CatalogProduct, ProductImage } from '@/features/catalog/model/types';
+import { moneyToMinorUnits } from '../../../lib/money';
 
 const QUANTITY_SCALE = 1000;
 
-const roundQuantity = (quantity: number) =>
-  Math.round(quantity * QUANTITY_SCALE) / QUANTITY_SCALE;
+const roundQuantity = (quantity: number) => Math.round(quantity * QUANTITY_SCALE) / QUANTITY_SCALE;
 
 export function normalizeCartQuantity(
   quantity: number,
@@ -23,7 +19,7 @@ export type CartProductSnapshot = {
   name: string;
   price: string;
   quantityStep: number;
-  saleUnit: "KG" | "UNIT";
+  saleUnit: 'KG' | 'UNIT';
   sku: string;
   slug: string;
   stockQuantity: number;
@@ -40,10 +36,10 @@ export type CartState = {
 };
 
 export type CartAction =
-  | { product: CartProductSnapshot; quantity?: number; type: "add" }
-  | { items: CartItem[]; type: "hydrate" }
-  | { sku: string; type: "decrement" | "increment" | "remove" }
-  | { type: "close" | "open" };
+  | { product: CartProductSnapshot; quantity?: number; type: 'add' }
+  | { items: CartItem[]; type: 'hydrate' }
+  | { sku: string; type: 'decrement' | 'increment' | 'remove' }
+  | { type: 'close' | 'open' };
 
 export const initialCartState: CartState = {
   hasHydrated: false,
@@ -51,16 +47,11 @@ export const initialCartState: CartState = {
   items: [],
 };
 
-export function cartReducer(
-  state: CartState,
-  action: CartAction,
-): CartState {
+export function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
-    case "add": {
+    case 'add': {
       if (action.product.stockQuantity < 1) return state;
-      const existing = state.items.find(
-        (item) => item.sku === action.product.sku,
-      );
+      const existing = state.items.find((item) => item.sku === action.product.sku);
       const quantity = normalizeCartQuantity(
         action.quantity ?? action.product.quantityStep,
         action.product.quantityStep,
@@ -91,7 +82,7 @@ export function cartReducer(
             ],
       };
     }
-    case "increment":
+    case 'increment':
       return {
         ...state,
         items: state.items.map((item) =>
@@ -107,36 +98,36 @@ export function cartReducer(
             : item,
         ),
       };
-    case "decrement":
+    case 'decrement':
       return {
         ...state,
         items: state.items.flatMap((item) => {
           if (item.sku !== action.sku) return [item];
           return item.quantity > item.quantityStep
-            ? [{
-                ...item,
-                quantity: roundQuantity(item.quantity - item.quantityStep),
-              }]
+            ? [
+                {
+                  ...item,
+                  quantity: roundQuantity(item.quantity - item.quantityStep),
+                },
+              ]
             : [];
         }),
       };
-    case "remove":
+    case 'remove':
       return {
         ...state,
         items: state.items.filter((item) => item.sku !== action.sku),
       };
-    case "open":
+    case 'open':
       return { ...state, isOpen: true };
-    case "close":
+    case 'close':
       return { ...state, isOpen: false };
-    case "hydrate":
+    case 'hydrate':
       return { hasHydrated: true, isOpen: false, items: action.items };
   }
 }
 
-export function toCartProductSnapshot(
-  product: CatalogProduct,
-): CartProductSnapshot {
+export function toCartProductSnapshot(product: CatalogProduct): CartProductSnapshot {
   return {
     image: product.image,
     name: product.name,
@@ -162,8 +153,5 @@ export function getCartLineSubtotal(item: CartItem) {
 }
 
 export function getCartSubtotal(items: readonly CartItem[]) {
-  return items.reduce(
-    (total, item) => total + getCartLineSubtotal(item),
-    BigInt(0),
-  );
+  return items.reduce((total, item) => total + getCartLineSubtotal(item), BigInt(0));
 }

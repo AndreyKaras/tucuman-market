@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Link } from "@/i18n/navigation";
+import { Link } from '@/i18n/navigation';
 
-import { useScrollToPageTopAfterNavigation } from "./scroll-to-top-link";
+import { useScrollToPageTopAfterNavigation } from './scroll-to-top-link';
 
 export function Brand() {
   const scrollToTop = useScrollToPageTopAfterNavigation();
@@ -24,9 +24,7 @@ export function Brand() {
       </svg>
       <span>
         Tucumán
-        <strong className="block text-xl font-[750] max-[639px]:text-[17px]">
-          Market
-        </strong>
+        <strong className="block text-xl font-[750] max-[639px]:text-[17px]">Market</strong>
       </span>
     </Link>
   );

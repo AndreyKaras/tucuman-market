@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
-import { ChevronDownIcon } from "@/components/ui/icons";
-import type { CatalogProduct } from "@/features/catalog/model/types";
-import { secondaryButtonClass } from "@/components/ui/styles";
+import { ChevronDownIcon } from '@/components/ui/icons';
+import type { CatalogProduct } from '@/features/catalog/model/types';
+import { secondaryButtonClass } from '@/components/ui/styles';
 
-import { ProductCard } from "./product-card";
+import { ProductCard } from './product-card';
 
 type CatalogProductGridProps = {
   initialVisibleCount: number;
@@ -19,12 +19,12 @@ function updatePageInUrl(page: number) {
   const url = new URL(window.location.href);
 
   if (page > 1) {
-    url.searchParams.set("page", String(page));
+    url.searchParams.set('page', String(page));
   } else {
-    url.searchParams.delete("page");
+    url.searchParams.delete('page');
   }
 
-  window.history.replaceState(window.history.state, "", url);
+  window.history.replaceState(window.history.state, '', url);
 }
 
 export function CatalogProductGrid({
@@ -32,7 +32,7 @@ export function CatalogProductGrid({
   pageSize,
   products,
 }: CatalogProductGridProps) {
-  const t = useTranslations("Catalog");
+  const t = useTranslations('Catalog');
   const [visibleCount, setVisibleCount] = useState(initialVisibleCount);
   const visibleProducts = products.slice(0, visibleCount);
   const hasMore = visibleCount < products.length;
@@ -47,7 +47,10 @@ export function CatalogProductGrid({
 
   return (
     <>
-      <div className="grid grid-cols-4 gap-4 max-[1279px]:grid-cols-3 max-[639px]:grid-cols-1" id="catalog-product-grid">
+      <div
+        className="grid grid-cols-4 gap-4 max-[1279px]:grid-cols-3 max-[639px]:grid-cols-2 max-[639px]:gap-2"
+        id="catalog-product-grid"
+      >
         {visibleProducts.map((product) => (
           <ProductCard key={product.sku} product={product} />
         ))}
@@ -60,12 +63,12 @@ export function CatalogProductGrid({
             onClick={showMore}
             type="button"
           >
-            <span>{t("showMore")}</span>
+            <span>{t('showMore')}</span>
             <ChevronDownIcon />
           </button>
         ) : null}
         <p className="mt-2.5 mb-0 text-[13px] text-ink-muted" aria-live="polite">
-          {t("showingCount", {
+          {t('showingCount', {
             count: visibleProducts.length,
             total: products.length,
           })}

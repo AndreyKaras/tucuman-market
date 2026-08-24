@@ -1,95 +1,95 @@
 ---
 version: alpha
 name: Tucumán Market Fresh Commerce
-description: "Светлая, практичная и доступная дизайн-система двуязычного продуктового магазина в Тукумане."
+description: 'Светлая, практичная и доступная дизайн-система двуязычного продуктового магазина в Тукумане.'
 colors:
-  primary-900: "#0A3D1B"
-  primary-800: "#0F5425"
-  primary-700: "#146C2E"
-  primary-600: "#1F7A38"
-  primary-100: "#DFF2E4"
-  primary-50: "#F2FAF4"
-  accent-700: "#C2410C"
-  accent-100: "#FFEDD5"
-  background: "#FFFFFF"
-  surface: "#FFFFFF"
-  surface-muted: "#F7F9F7"
-  surface-strong: "#EEF3EF"
-  text: "#17201A"
-  text-muted: "#59635C"
-  text-subtle: "#6B756E"
-  border: "#DDE4DF"
-  border-strong: "#B8C4BB"
-  on-primary: "#FFFFFF"
-  success: "#146C2E"
-  warning: "#A15C07"
-  error: "#B42318"
-  info: "#1D4ED8"
-  focus: "#2563EB"
+  primary-900: '#0A3D1B'
+  primary-800: '#0F5425'
+  primary-700: '#146C2E'
+  primary-600: '#1F7A38'
+  primary-100: '#DFF2E4'
+  primary-50: '#F2FAF4'
+  accent-700: '#C2410C'
+  accent-100: '#FFEDD5'
+  background: '#FFFFFF'
+  surface: '#FFFFFF'
+  surface-muted: '#F7F9F7'
+  surface-strong: '#EEF3EF'
+  text: '#17201A'
+  text-muted: '#59635C'
+  text-subtle: '#6B756E'
+  border: '#DDE4DF'
+  border-strong: '#B8C4BB'
+  on-primary: '#FFFFFF'
+  success: '#146C2E'
+  warning: '#A15C07'
+  error: '#B42318'
+  info: '#1D4ED8'
+  focus: '#2563EB'
 typography:
   display:
-    fontFamily: "Geist, Arial, sans-serif"
+    fontFamily: 'Geist, Arial, sans-serif'
     fontSize: 48px
     fontWeight: 700
     lineHeight: 1.08
     letterSpacing: -0.03em
   headline-lg:
-    fontFamily: "Geist, Arial, sans-serif"
+    fontFamily: 'Geist, Arial, sans-serif'
     fontSize: 40px
     fontWeight: 700
     lineHeight: 1.12
     letterSpacing: -0.025em
   headline-md:
-    fontFamily: "Geist, Arial, sans-serif"
+    fontFamily: 'Geist, Arial, sans-serif'
     fontSize: 32px
     fontWeight: 700
     lineHeight: 1.2
     letterSpacing: -0.02em
   headline-sm:
-    fontFamily: "Geist, Arial, sans-serif"
+    fontFamily: 'Geist, Arial, sans-serif'
     fontSize: 24px
     fontWeight: 650
     lineHeight: 1.25
     letterSpacing: -0.01em
   body-lg:
-    fontFamily: "Geist, Arial, sans-serif"
+    fontFamily: 'Geist, Arial, sans-serif'
     fontSize: 18px
     fontWeight: 400
     lineHeight: 1.55
   body-md:
-    fontFamily: "Geist, Arial, sans-serif"
+    fontFamily: 'Geist, Arial, sans-serif'
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.5
   body-sm:
-    fontFamily: "Geist, Arial, sans-serif"
+    fontFamily: 'Geist, Arial, sans-serif'
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.45
   label-md:
-    fontFamily: "Geist, Arial, sans-serif"
+    fontFamily: 'Geist, Arial, sans-serif'
     fontSize: 14px
     fontWeight: 600
     lineHeight: 1.25
   label-sm:
-    fontFamily: "Geist, Arial, sans-serif"
+    fontFamily: 'Geist, Arial, sans-serif'
     fontSize: 12px
     fontWeight: 600
     lineHeight: 1.25
     letterSpacing: 0.01em
   price-lg:
-    fontFamily: "Geist, Arial, sans-serif"
+    fontFamily: 'Geist, Arial, sans-serif'
     fontSize: 24px
     fontWeight: 700
     lineHeight: 1.2
     letterSpacing: -0.015em
   price-md:
-    fontFamily: "Geist, Arial, sans-serif"
+    fontFamily: 'Geist, Arial, sans-serif'
     fontSize: 18px
     fontWeight: 700
     lineHeight: 1.25
   technical:
-    fontFamily: "Geist Mono, Consolas, monospace"
+    fontFamily: 'Geist Mono, Consolas, monospace'
     fontSize: 13px
     fontWeight: 500
     lineHeight: 1.4
@@ -119,59 +119,59 @@ spacing:
   container-max: 1280px
 components:
   button-primary:
-    backgroundColor: "{colors.primary-700}"
-    textColor: "{colors.on-primary}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.sm}"
+    backgroundColor: '{colors.primary-700}'
+    textColor: '{colors.on-primary}'
+    typography: '{typography.label-md}'
+    rounded: '{rounded.sm}'
     height: 48px
-    padding: "0 20px"
+    padding: '0 20px'
   button-primary-hover:
-    backgroundColor: "{colors.primary-800}"
+    backgroundColor: '{colors.primary-800}'
   button-secondary:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.primary-800}"
-    borderColor: "{colors.border-strong}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.sm}"
+    backgroundColor: '{colors.surface}'
+    textColor: '{colors.primary-800}'
+    borderColor: '{colors.border-strong}'
+    typography: '{typography.label-md}'
+    rounded: '{rounded.sm}'
     height: 48px
-    padding: "0 20px"
+    padding: '0 20px'
   button-compact:
-    typography: "{typography.label-md}"
-    rounded: "{rounded.sm}"
+    typography: '{typography.label-md}'
+    rounded: '{rounded.sm}'
     height: 40px
-    padding: "0 16px"
+    padding: '0 16px'
   input:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.text}"
-    borderColor: "{colors.border}"
-    typography: "{typography.body-md}"
-    rounded: "{rounded.sm}"
+    backgroundColor: '{colors.surface}'
+    textColor: '{colors.text}'
+    borderColor: '{colors.border}'
+    typography: '{typography.body-md}'
+    rounded: '{rounded.sm}'
     height: 48px
-    padding: "0 16px"
+    padding: '0 16px'
   product-card:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.text}"
-    borderColor: "{colors.border}"
-    rounded: "{rounded.md}"
+    backgroundColor: '{colors.surface}'
+    textColor: '{colors.text}'
+    borderColor: '{colors.border}'
+    rounded: '{rounded.md}'
     padding: 16px
   category-tile:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.text}"
-    borderColor: "{colors.border}"
-    rounded: "{rounded.md}"
+    backgroundColor: '{colors.surface}'
+    textColor: '{colors.text}'
+    borderColor: '{colors.border}'
+    rounded: '{rounded.md}'
     padding: 16px
   badge-sale:
-    backgroundColor: "{colors.accent-700}"
-    textColor: "{colors.on-primary}"
-    typography: "{typography.label-sm}"
-    rounded: "{rounded.xs}"
-    padding: "4px 8px"
+    backgroundColor: '{colors.accent-700}'
+    textColor: '{colors.on-primary}'
+    typography: '{typography.label-sm}'
+    rounded: '{rounded.xs}'
+    padding: '4px 8px'
   badge-status:
-    backgroundColor: "{colors.primary-100}"
-    textColor: "{colors.primary-900}"
-    typography: "{typography.label-sm}"
-    rounded: "{rounded.full}"
-    padding: "4px 10px"
+    backgroundColor: '{colors.primary-100}'
+    textColor: '{colors.primary-900}'
+    typography: '{typography.label-sm}'
+    rounded: '{rounded.full}'
+    padding: '4px 10px'
 ---
 
 # Дизайн-система Tucumán Market
@@ -284,11 +284,18 @@ Breakpoints служат поведению контента, а не конкр
 - Внутренний padding cards обычно 16px; в формах и summary panels — 20–24px.
 - Основные страницы начинают содержимое с 24–32px после header/breadcrumb.
 - Hero на desktop использует две сбалансированные области: короткий текст и
-  одно сильное grocery-изображение. На mobile они складываются вертикально.
+  одно сильное grocery-изображение. Рекомендуемая высота — около 360px, чтобы
+  начало категорий оставалось видно в первом desktop viewport. Ниже 900px hero
+  становится одной текстовой карточкой с полной рамкой и скруглением; desktop-
+  изображение скрывается и не загружается на этих viewport.
 - Категории на desktop располагаются сеткой или rail; на mobile — горизонтальным
   scroll-snap rail с видимой частью следующего элемента.
 - Product grid использует 4 колонки на wide desktop, 3 на tablet, 2 на mobile.
-  На узких экранах controls карточки переходят в compact icon variant.
+  На узких экранах карточка сохраняет две колонки и 44px touch targets: отдельная
+  кнопка подробностей не дублируется, изображение и название ведут на страницу
+  товара, а кнопка корзины располагается справа от цены. После добавления
+  quantity-control занимает отдельную строку на mobile. Net content не
+  повторяется отдельной строкой, если он уже указан в названии товара.
 - Checkout использует форму и order summary в двух колонках на desktop и одну
   колонку на mobile. Summary следует после данных покупателя, но остаётся видимым
   рядом на широком экране.
@@ -399,6 +406,8 @@ pills. Радиус изображения согласуется с конте�
   полного названия для assistive technology.
 - Текущая цена — primary green. Sale price использует accent только при наличии
   корректной compare-at price; старая цена располагается рядом или ниже.
+- Цена и действие корзины образуют единый нижний ряд карточки; ценовая группа
+  выравнивается по вертикальному центру 44px кнопки добавления.
 - `/ kg`, `/ unidad` и quantity step отображаются явно. Товар на вес нельзя
   визуально выдавать за товар с заранее известным итоговым весом.
 - Out-of-stock card сохраняет читаемость, показывает текстовый статус и
@@ -489,6 +498,15 @@ pills. Радиус изображения согласуется с конте�
 
 Не добавлять testimonials, blog, fake counters, партнёрские логотипы или
 маркетинговые claims, отсутствующие в данных магазина.
+
+### Footer
+
+- На mobile бренд занимает всю ширину, ссылки магазина и контакты располагаются
+  в двух колонках, а адрес и часы снова занимают всю ширину.
+- На 768–900px footer использует один компактный ряд из четырёх колонок; на
+  640–767px применяется та же иерархия, что на mobile, без сетки 2×2 с пустотами.
+- В контактном блоке подпись WhatsApp и номер располагаются на отдельных строках,
+  чтобы длинный номер не конкурировал с названием канала связи.
 
 ## Do's and Don'ts
 

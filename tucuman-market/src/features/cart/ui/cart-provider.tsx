@@ -1,13 +1,6 @@
-"use client";
+'use client';
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useReducer,
-  type ReactNode,
-} from "react";
+import { createContext, useContext, useEffect, useMemo, useReducer, type ReactNode } from 'react';
 
 import {
   cartReducer,
@@ -18,9 +11,9 @@ import {
   type CartProductSnapshot,
   type CartItem,
   type CartState,
-} from "../model/cart";
-import { CART_STORAGE_KEY, deserializeCart, serializeCart } from "../model/cart-storage";
-import type { CatalogProduct } from "@/features/catalog/model/types";
+} from '../model/cart';
+import { CART_STORAGE_KEY, deserializeCart, serializeCart } from '../model/cart-storage';
+import type { CatalogProduct } from '@/features/catalog/model/types';
 
 type CartContextValue = {
   addItem: (product: CartProductSnapshot, quantity?: number) => void;
@@ -54,7 +47,7 @@ export function CartProvider({
       items = [];
     }
 
-    dispatch({ items, type: "hydrate" });
+    dispatch({ items, type: 'hydrate' });
   }, [products]);
 
   useEffect(() => {
@@ -69,13 +62,13 @@ export function CartProvider({
 
   const value = useMemo<CartContextValue>(
     () => ({
-      addItem: (product, quantity) => dispatch({ product, quantity, type: "add" }),
-      closeCart: () => dispatch({ type: "close" }),
+      addItem: (product, quantity) => dispatch({ product, quantity, type: 'add' }),
+      closeCart: () => dispatch({ type: 'close' }),
       count: getCartCount(state.items),
-      decrement: (sku) => dispatch({ sku, type: "decrement" }),
-      increment: (sku) => dispatch({ sku, type: "increment" }),
-      openCart: () => dispatch({ type: "open" }),
-      remove: (sku) => dispatch({ sku, type: "remove" }),
+      decrement: (sku) => dispatch({ sku, type: 'decrement' }),
+      increment: (sku) => dispatch({ sku, type: 'increment' }),
+      openCart: () => dispatch({ type: 'open' }),
+      remove: (sku) => dispatch({ sku, type: 'remove' }),
       state,
       subtotal: getCartSubtotal(state.items),
     }),
@@ -89,7 +82,7 @@ export function useCart() {
   const context = useContext(CartContext);
 
   if (!context) {
-    throw new Error("useCart must be used inside CartProvider");
+    throw new Error('useCart must be used inside CartProvider');
   }
 
   return context;

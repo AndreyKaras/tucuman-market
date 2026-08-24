@@ -1,13 +1,8 @@
-import categoriesSeed from "../../../../data/catalog/categories.json";
-import productsSeed from "../../../../data/catalog/products.json";
-import { moneyToMinorUnits } from "../../../lib/money";
+import categoriesSeed from '../../../../data/catalog/categories.json';
+import productsSeed from '../../../../data/catalog/products.json';
+import { moneyToMinorUnits } from '../../../lib/money';
 
-import type {
-  CatalogCategory,
-  CatalogProduct,
-  CatalogSnapshot,
-  StoreLocale,
-} from "../model/types";
+import type { CatalogCategory, CatalogProduct, CatalogSnapshot, StoreLocale } from '../model/types';
 
 type Translation = {
   description?: string;
@@ -46,7 +41,7 @@ type ProductSeed = {
   netContent: { unit: string; value: number } | null;
   price: string;
   quantityStep: number;
-  saleUnit: "KG" | "UNIT";
+  saleUnit: 'KG' | 'UNIT';
   sku: string;
   stockQuantity: number;
   translations: Record<StoreLocale, Translation>;
@@ -59,15 +54,15 @@ const getPlaceholderImage = (
   product: ProductSeed,
   index: number,
   alt: string,
-): CatalogProduct["image"] => ({
+): CatalogProduct['image'] => ({
   alt,
   height: 240,
   sortOrder: 0,
   spritePosition: index % 10,
   src:
-    product.categoryKey === "fruit-vegetables"
-      ? "/images/storefront/products-fresh.png"
-      : "/images/storefront/products-pantry.png",
+    product.categoryKey === 'fruit-vegetables'
+      ? '/images/storefront/products-fresh.png'
+      : '/images/storefront/products-pantry.png',
   width: 320,
 });
 
@@ -76,7 +71,7 @@ const getImages = (
   index: number,
   locale: StoreLocale,
   fallbackAlt: string,
-): CatalogProduct["images"] => {
+): CatalogProduct['images'] => {
   const images = product.images
     .map((image) => ({
       alt: image.translations[locale].alt,
@@ -87,15 +82,11 @@ const getImages = (
     }))
     .sort((left, right) => left.sortOrder - right.sortOrder);
 
-  return images.length > 0
-    ? images
-    : [getPlaceholderImage(product, index, fallbackAlt)];
+  return images.length > 0 ? images : [getPlaceholderImage(product, index, fallbackAlt)];
 };
 
 const activeCategoryKeys = new Set(
-  categorySeeds
-    .filter((category) => category.isActive)
-    .map((category) => category.key),
+  categorySeeds.filter((category) => category.isActive).map((category) => category.key),
 );
 
 function createCatalog(locale: StoreLocale): CatalogSnapshot {
@@ -116,9 +107,7 @@ function createCatalog(locale: StoreLocale): CatalogSnapshot {
     }));
 
   const products = productSeeds
-    .filter(
-      (product) => product.isActive && activeCategoryKeys.has(product.categoryKey),
-    )
+    .filter((product) => product.isActive && activeCategoryKeys.has(product.categoryKey))
     .map<CatalogProduct>((product, index) => {
       const translation = product.translations[locale];
       const images = getImages(product, index, locale, translation.name);
@@ -127,18 +116,15 @@ function createCatalog(locale: StoreLocale): CatalogSnapshot {
         brand: product.brand,
         categoryKey: product.categoryKey,
         compareAtPrice: product.compareAtPrice,
-        currency: "ARS",
-        description: translation.description ?? "",
+        currency: 'ARS',
+        description: translation.description ?? '',
         image: images[0],
         images,
         isFeatured: product.isFeatured,
-        isLowStock:
-          product.stockQuantity > 0 &&
-          product.stockQuantity <= product.lowStockThreshold,
+        isLowStock: product.stockQuantity > 0 && product.stockQuantity <= product.lowStockThreshold,
         isOnSale:
           product.compareAtPrice !== null &&
-          moneyToMinorUnits(product.compareAtPrice) >
-            moneyToMinorUnits(product.price),
+          moneyToMinorUnits(product.compareAtPrice) > moneyToMinorUnits(product.price),
         isOutOfStock: product.stockQuantity <= 0,
         name: translation.name,
         netContent: product.netContent,
@@ -155,8 +141,8 @@ function createCatalog(locale: StoreLocale): CatalogSnapshot {
 }
 
 const catalogs: Record<StoreLocale, CatalogSnapshot> = {
-  en: createCatalog("en"),
-  es: createCatalog("es"),
+  en: createCatalog('en'),
+  es: createCatalog('es'),
 };
 
 const productsBySku: Record<StoreLocale, Map<string, CatalogProduct>> = {
@@ -178,41 +164,34 @@ export function getCatalog(locale: StoreLocale): CatalogSnapshot {
   return catalogs[locale];
 }
 
-export function getProductBySlug(
-  locale: StoreLocale,
-  slug: string,
-): CatalogProduct | undefined {
+export function getProductBySlug(locale: StoreLocale, slug: string): CatalogProduct | undefined {
   return productsBySlug[locale].get(slug);
 }
 
-export function getProductBySku(
-  locale: StoreLocale,
-  sku: string,
-): CatalogProduct | undefined {
+export function getProductBySku(locale: StoreLocale, sku: string): CatalogProduct | undefined {
   return productsBySku[locale].get(sku);
 }
 
-export function getCategoryBySlug(
-  locale: StoreLocale,
-  slug: string,
-): CatalogCategory | undefined {
+export function getCategoryBySlug(locale: StoreLocale, slug: string): CatalogCategory | undefined {
   return categoriesBySlug[locale].get(slug);
 }
 
-export function getLocalizedProductSlugs(
-  sku: string,
-): { en: string | undefined; es: string | undefined } {
+export function getLocalizedProductSlugs(sku: string): {
+  en: string | undefined;
+  es: string | undefined;
+} {
   return {
-    en: getProductBySku("en", sku)?.slug,
-    es: getProductBySku("es", sku)?.slug,
+    en: getProductBySku('en', sku)?.slug,
+    es: getProductBySku('es', sku)?.slug,
   };
 }
 
-export function getLocalizedCategorySlugs(
-  key: string,
-): { en: string | undefined; es: string | undefined } {
+export function getLocalizedCategorySlugs(key: string): {
+  en: string | undefined;
+  es: string | undefined;
+} {
   return {
-    en: getCatalog("en").categories.find((category) => category.key === key)?.slug,
-    es: getCatalog("es").categories.find((category) => category.key === key)?.slug,
+    en: getCatalog('en').categories.find((category) => category.key === key)?.slug,
+    es: getCatalog('es').categories.find((category) => category.key === key)?.slug,
   };
 }

@@ -1,13 +1,10 @@
-import type {
-  CatalogProduct,
-  CatalogQuery,
-} from "./types";
-import { moneyToMinorUnits } from "../../../lib/money";
+import type { CatalogProduct, CatalogQuery } from './types';
+import { moneyToMinorUnits } from '../../../lib/money';
 
 const normalize = (value: string) =>
   value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLocaleLowerCase();
 
 const PRICE_PATTERN = /^\d{1,12}$/;
@@ -30,8 +27,7 @@ export function getDiscountPercentage(product: CatalogProduct) {
   if (compareAtPrice <= price || compareAtPrice === BigInt(0)) return null;
 
   return Number(
-    ((compareAtPrice - price) * BigInt(100) + compareAtPrice / BigInt(2)) /
-      compareAtPrice,
+    ((compareAtPrice - price) * BigInt(100) + compareAtPrice / BigInt(2)) / compareAtPrice,
   );
 }
 
@@ -39,7 +35,7 @@ export function selectProducts(
   products: readonly CatalogProduct[],
   query: CatalogQuery,
 ): CatalogProduct[] {
-  const search = normalize(query.query?.trim() ?? "");
+  const search = normalize(query.query?.trim() ?? '');
   const minPrice = normalizePriceFilter(query.minPrice);
   const maxPrice = normalizePriceFilter(query.maxPrice);
 
@@ -66,21 +62,19 @@ export function selectProducts(
       }
 
       return normalize(
-        [product.name, product.brand, product.description, product.sku]
-          .filter(Boolean)
-          .join(" "),
+        [product.name, product.brand, product.description, product.sku].filter(Boolean).join(' '),
       ).includes(search);
     })
     .sort((left, right) => {
       switch (query.sort) {
-        case "name":
+        case 'name':
           return left.name.localeCompare(right.name);
-        case "price-asc": {
+        case 'price-asc': {
           const leftPrice = moneyToMinorUnits(left.price);
           const rightPrice = moneyToMinorUnits(right.price);
           return leftPrice === rightPrice ? 0 : leftPrice < rightPrice ? -1 : 1;
         }
-        case "price-desc": {
+        case 'price-desc': {
           const leftPrice = moneyToMinorUnits(left.price);
           const rightPrice = moneyToMinorUnits(right.price);
           return leftPrice === rightPrice ? 0 : leftPrice > rightPrice ? -1 : 1;

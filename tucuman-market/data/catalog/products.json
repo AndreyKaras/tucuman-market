@@ -3,10 +3,7 @@
   "currency": "ARS",
   "priceFormat": "decimal-string",
   "seedPriceDate": "2026-08-11",
-  "priceSources": [
-    "https://www.vea.com.ar/",
-    "https://www.laanonima.com.ar/leches/n3_722/"
-  ],
+  "priceSources": ["https://www.vea.com.ar/", "https://www.laanonima.com.ar/leches/n3_722/"],
   "disclaimer": "Demonstration online retail snapshot for development. Prices vary by branch, availability and date.",
   "products": [
     {

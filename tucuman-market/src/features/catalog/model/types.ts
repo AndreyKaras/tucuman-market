@@ -1,6 +1,6 @@
-export type StoreLocale = "es" | "en";
+export type StoreLocale = 'es' | 'en';
 
-export type SaleUnit = "KG" | "UNIT";
+export type SaleUnit = 'KG' | 'UNIT';
 
 export type CatalogImage = {
   alt: string;
@@ -25,7 +25,7 @@ export type CatalogProduct = {
   brand: string | null;
   categoryKey: string;
   compareAtPrice: string | null;
-  currency: "ARS";
+  currency: 'ARS';
   description: string;
   image: ProductImage;
   images: readonly ProductImage[];
@@ -56,5 +56,5 @@ export type CatalogQuery = {
   onSale?: boolean;
   page?: number;
   query?: string;
-  sort?: "featured" | "name" | "price-asc" | "price-desc";
+  sort?: 'featured' | 'name' | 'price-asc' | 'price-desc';
 };
