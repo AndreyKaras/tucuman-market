@@ -13,7 +13,6 @@ import {
   type CartState,
 } from '../model/cart';
 import { CART_STORAGE_KEY, deserializeCart, serializeCart } from '../model/cart-storage';
-import type { CatalogProduct } from '@/features/catalog/model/types';
 
 type CartContextValue = {
   addItem: (product: CartProductSnapshot, quantity?: number) => void;
@@ -34,7 +33,7 @@ export function CartProvider({
   products,
 }: {
   children: ReactNode;
-  products: readonly CatalogProduct[];
+  products: readonly CartProductSnapshot[];
 }) {
   const [state, dispatch] = useReducer(cartReducer, initialCartState);
 

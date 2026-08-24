@@ -1,6 +1,4 @@
-import type { CatalogProduct } from '@/features/catalog/model/types';
-
-import { normalizeCartQuantity, toCartProductSnapshot, type CartItem } from './cart';
+import { normalizeCartQuantity, type CartItem, type CartProductSnapshot } from './cart';
 
 const STORAGE_VERSION = 1;
 
@@ -22,7 +20,7 @@ export function serializeCart(items: readonly CartItem[]) {
 
 export function deserializeCart(
   raw: string | null,
-  products: readonly CatalogProduct[],
+  products: readonly CartProductSnapshot[],
 ): CartItem[] {
   if (!raw) return [];
 
@@ -36,7 +34,7 @@ export function deserializeCart(
 
     for (const { quantity, sku } of parsed.items) {
       const product = productsBySku.get(sku);
-      if (!product || product.isOutOfStock || product.stockQuantity < 1) continue;
+      if (!product || product.stockQuantity < 1) continue;
 
       quantities.set(
         sku,
@@ -49,7 +47,7 @@ export function deserializeCart(
     }
 
     return [...quantities].map(([sku, quantity]) => ({
-      ...toCartProductSnapshot(productsBySku.get(sku)!),
+      ...productsBySku.get(sku)!,
       quantity,
     }));
   } catch {

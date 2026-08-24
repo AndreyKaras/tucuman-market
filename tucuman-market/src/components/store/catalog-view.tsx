@@ -1,12 +1,21 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 
-import { SearchIcon } from '@/components/ui/icons';
+import { ChevronDownIcon, SearchIcon } from '@/components/ui/icons';
 import { getCatalog } from '@/features/catalog/data/catalog-repository';
-import { parseCatalogQuery, type RawSearchParams } from '@/features/catalog/model/catalog-query';
+import {
+  parseCatalogQuery,
+  toCatalogSearchParams,
+  type RawSearchParams,
+} from '@/features/catalog/model/catalog-query';
 import { selectProducts } from '@/features/catalog/model/selectors';
 import type { CatalogCategory, StoreLocale } from '@/features/catalog/model/types';
 import { Link } from '@/i18n/navigation';
-import { cn, containerClass, primaryButtonClass } from '@/components/ui/styles';
+import {
+  cn,
+  containerClass,
+  primaryButtonClass,
+  secondaryButtonClass,
+} from '@/components/ui/styles';
 
 import { CatalogControls } from './catalog-controls';
 import { CatalogProductGrid } from './catalog-product-grid';
@@ -42,6 +51,19 @@ export async function CatalogView({ category, searchParams }: CatalogViewProps) 
     query.maxPrice,
   );
   const visibleCount = Math.min(products.length, (query.page ?? 1) * PAGE_SIZE);
+  const visibleProducts = products.slice(0, visibleCount);
+  const hasMore = visibleCount < products.length;
+  const nextQuery = toCatalogSearchParams(
+    { ...query, page: (query.page ?? 1) + 1 },
+    { includeCategory: !category },
+  );
+  const loadMoreHref = category
+    ? ({
+        pathname: '/categories/[slug]' as const,
+        params: { slug: category.slug },
+        query: nextQuery,
+      } as const)
+    : ({ pathname: '/products' as const, query: nextQuery } as const);
   const clearHref = category
     ? ({
         pathname: '/categories/[slug]' as const,
@@ -88,12 +110,25 @@ export async function CatalogView({ category, searchParams }: CatalogViewProps) 
             {t('results')}
           </h2>
           {products.length ? (
-            <CatalogProductGrid
-              initialVisibleCount={visibleCount}
-              key={`${products.map((product) => product.sku).join(':')}:${visibleCount}`}
-              pageSize={PAGE_SIZE}
-              products={products}
-            />
+            <>
+              <CatalogProductGrid products={visibleProducts} />
+              <div className="mt-[30px] flex flex-col items-center">
+                {hasMore ? (
+                  <Link
+                    aria-controls="catalog-product-grid"
+                    className={`${secondaryButtonClass} min-w-[190px] [&_svg]:transition-transform [&_svg]:duration-[140ms] hover:[&_svg]:translate-y-0.5`}
+                    href={loadMoreHref}
+                    scroll={false}
+                  >
+                    <span>{t('showMore')}</span>
+                    <ChevronDownIcon />
+                  </Link>
+                ) : null}
+                <p className="mt-2.5 mb-0 text-[13px] text-ink-muted" aria-live="polite">
+                  {t('showingCount', { count: visibleProducts.length, total: products.length })}
+                </p>
+              </div>
+            </>
           ) : (
             <div className="flex flex-col items-center rounded-xl border border-dashed border-line-strong px-6 py-16 text-center">
               <span

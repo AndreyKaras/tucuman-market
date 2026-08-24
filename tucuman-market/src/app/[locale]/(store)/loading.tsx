@@ -14,7 +14,7 @@ export default async function StoreLoading() {
       </p>
       <div className={cn(skeletonClass, 'mb-8 h-12 w-[min(320px,75%)]')} />
       <div
-        className="grid grid-cols-4 gap-4 max-[900px]:grid-cols-3 max-[639px]:grid-cols-1"
+        className="grid grid-cols-4 gap-4 max-[1279px]:grid-cols-3 max-[639px]:grid-cols-2 max-[639px]:gap-2"
         aria-hidden="true"
       >
         {Array.from({ length: 8 }, (_, index) => (

@@ -6,6 +6,7 @@ import { DesktopCartDock } from '@/components/store/desktop-cart-dock';
 import { Footer } from '@/components/store/footer';
 import { Header } from '@/components/store/header';
 import { CartProvider } from '@/features/cart/ui/cart-provider';
+import { toCartProductSnapshot } from '@/features/cart/model/cart';
 import { getCatalog } from '@/features/catalog/data/catalog-repository';
 import type { StoreLocale } from '@/features/catalog/model/types';
 
@@ -15,9 +16,10 @@ export default async function StoreLayout({ children }: { children: ReactNode })
     getLocale() as Promise<StoreLocale>,
   ]);
   const catalog = getCatalog(locale);
+  const cartProducts = catalog.products.map(toCartProductSnapshot);
 
   return (
-    <CartProvider products={catalog.products}>
+    <CartProvider products={cartProducts}>
       <a
         className="fixed top-3 left-4 z-[100] -translate-y-[150%] bg-primary-900 px-4 py-3 text-white transition-transform focus:translate-y-0"
         href="#main-content"
