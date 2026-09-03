@@ -1,34 +1,50 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "currency": "ARS",
-  "priceUnit": "peso",
-  "seedPriceDate": "2026-08-06",
-  "disclaimer": "Demonstration prices for development; editable in the admin panel.",
+  "priceFormat": "decimal-string",
+  "seedPriceDate": "2026-08-11",
+  "priceSources": ["https://www.vea.com.ar/", "https://www.laanonima.com.ar/leches/n3_722/"],
+  "disclaimer": "Demonstration online retail snapshot for development. Prices vary by branch, availability and date.",
   "products": [
     {
       "sku": "FV-001",
       "categoryKey": "fruit-vegetables",
       "brand": null,
-      "price": 2790,
+      "price": "1990",
       "compareAtPrice": null,
       "saleUnit": "KG",
-      "quantityStep": 1,
+      "quantityStep": 0.5,
       "netContent": null,
-      "stockQuantity": 45,
-      "lowStockThreshold": 10,
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": true,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/banana-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Bananas frescas"
+            },
+            "en": {
+              "alt": "Fresh bananas"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
-          "name": "Banana",
-          "slug": "banana-por-kilo",
-          "description": "Bananas frescas, seleccionadas por su sabor dulce y su punto de maduración. Ideales para desayunos, licuados y colaciones."
+          "name": "Banana por kg",
+          "slug": "banana-por-kg",
+          "description": "Producto fresco seleccionado para compras cotidianas y preparaciones caseras."
         },
         "en": {
-          "name": "Banana",
-          "slug": "banana-per-kilogram",
-          "description": "Fresh bananas selected for their sweet flavor and ripeness. Ideal for breakfast, smoothies, and snacks."
+          "name": "Bananas per kg",
+          "slug": "bananas-per-kg",
+          "description": "Fresh produce selected for everyday shopping and home cooking."
         }
       }
     },
@@ -36,26 +52,41 @@
       "sku": "FV-002",
       "categoryKey": "fruit-vegetables",
       "brand": null,
-      "price": 3690,
-      "compareAtPrice": 3990,
+      "price": "2990",
+      "compareAtPrice": "3490",
       "saleUnit": "KG",
-      "quantityStep": 1,
+      "quantityStep": 0.5,
       "netContent": null,
-      "stockQuantity": 32,
-      "lowStockThreshold": 10,
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": true,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/manzana-roja-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Manzanas rojas frescas"
+            },
+            "en": {
+              "alt": "Fresh red apples"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
-          "name": "Manzana roja",
-          "slug": "manzana-roja-por-kilo",
-          "description": "Manzanas rojas frescas, de textura crocante y sabor suavemente dulce. Ideales para consumir solas o usar en postres."
+          "name": "Manzana roja por kg",
+          "slug": "manzana-roja-por-kg",
+          "description": "Producto fresco seleccionado para compras cotidianas y preparaciones caseras."
         },
         "en": {
-          "name": "Red apple",
-          "slug": "red-apple-per-kilogram",
-          "description": "Fresh red apples with a crisp texture and mildly sweet flavor. Perfect as a snack or for desserts."
+          "name": "Red apples per kg",
+          "slug": "red-apples-per-kg",
+          "description": "Fresh produce selected for everyday shopping and home cooking."
         }
       }
     },
@@ -63,26 +94,41 @@
       "sku": "FV-003",
       "categoryKey": "fruit-vegetables",
       "brand": null,
-      "price": 1490,
+      "price": "990",
       "compareAtPrice": null,
       "saleUnit": "KG",
-      "quantityStep": 1,
+      "quantityStep": 0.5,
       "netContent": null,
-      "stockQuantity": 50,
-      "lowStockThreshold": 10,
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/naranja-para-jugo-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Naranjas frescas para jugo"
+            },
+            "en": {
+              "alt": "Fresh oranges for juice"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
-          "name": "Naranja para jugo",
-          "slug": "naranja-para-jugo-por-kilo",
-          "description": "Naranjas jugosas, seleccionadas especialmente para preparar jugos naturales. Fuente natural de vitamina C."
+          "name": "Naranja para jugo por kg",
+          "slug": "naranja-para-jugo-por-kg",
+          "description": "Producto fresco seleccionado para compras cotidianas y preparaciones caseras."
         },
         "en": {
-          "name": "Juicing orange",
-          "slug": "juicing-orange-per-kilogram",
-          "description": "Juicy oranges selected especially for making fresh juice. A natural source of vitamin C."
+          "name": "Juice oranges per kg",
+          "slug": "juice-oranges-per-kg",
+          "description": "Fresh produce selected for everyday shopping and home cooking."
         }
       }
     },
@@ -90,26 +136,41 @@
       "sku": "FV-004",
       "categoryKey": "fruit-vegetables",
       "brand": null,
-      "price": 1690,
+      "price": "1690",
       "compareAtPrice": null,
       "saleUnit": "KG",
-      "quantityStep": 1,
+      "quantityStep": 0.5,
       "netContent": null,
-      "stockQuantity": 28,
-      "lowStockThreshold": 10,
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/mandarina-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Mandarinas frescas"
+            },
+            "en": {
+              "alt": "Fresh mandarins"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
-          "name": "Mandarina",
-          "slug": "mandarina-por-kilo",
-          "description": "Mandarinas frescas, dulces y fáciles de pelar. Una opción práctica para toda la familia."
+          "name": "Mandarina por kg",
+          "slug": "mandarina-por-kg",
+          "description": "Producto fresco seleccionado para compras cotidianas y preparaciones caseras."
         },
         "en": {
-          "name": "Mandarin",
-          "slug": "mandarin-per-kilogram",
-          "description": "Fresh, sweet, and easy-to-peel mandarins. A convenient choice for the whole family."
+          "name": "Mandarins per kg",
+          "slug": "mandarins-per-kg",
+          "description": "Fresh produce selected for everyday shopping and home cooking."
         }
       }
     },
@@ -117,26 +178,41 @@
       "sku": "FV-005",
       "categoryKey": "fruit-vegetables",
       "brand": null,
-      "price": 1490,
-      "compareAtPrice": 1990,
+      "price": "1090",
+      "compareAtPrice": null,
       "saleUnit": "KG",
-      "quantityStep": 1,
+      "quantityStep": 0.5,
       "netContent": null,
-      "stockQuantity": 24,
-      "lowStockThreshold": 10,
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/limon-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Limones frescos"
+            },
+            "en": {
+              "alt": "Fresh lemons"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
-          "name": "Limón",
-          "slug": "limon-por-kilo",
-          "description": "Limones frescos de aroma intenso y abundante jugo. Ideales para bebidas, aderezos y preparaciones caseras."
+          "name": "Limón por kg",
+          "slug": "limon-por-kg",
+          "description": "Producto fresco seleccionado para compras cotidianas y preparaciones caseras."
         },
         "en": {
-          "name": "Lemon",
-          "slug": "lemon-per-kilogram",
-          "description": "Fresh lemons with an intense aroma and plenty of juice. Ideal for drinks, dressings, and home cooking."
+          "name": "Lemons per kg",
+          "slug": "lemons-per-kg",
+          "description": "Fresh produce selected for everyday shopping and home cooking."
         }
       }
     },
@@ -144,26 +220,41 @@
       "sku": "FV-006",
       "categoryKey": "fruit-vegetables",
       "brand": null,
-      "price": 1990,
+      "price": "2190",
       "compareAtPrice": null,
       "saleUnit": "KG",
-      "quantityStep": 1,
+      "quantityStep": 0.5,
       "netContent": null,
-      "stockQuantity": 65,
-      "lowStockThreshold": 10,
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/papa-blanca-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Papas blancas frescas"
+            },
+            "en": {
+              "alt": "Fresh white potatoes"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
-          "name": "Papa negra",
-          "slug": "papa-negra-por-kilo",
-          "description": "Papas seleccionadas, versátiles y aptas para horno, puré, guisos o frituras."
+          "name": "Papa blanca por kg",
+          "slug": "papa-blanca-por-kg",
+          "description": "Producto fresco seleccionado para compras cotidianas y preparaciones caseras."
         },
         "en": {
-          "name": "Potatoes",
-          "slug": "potatoes-per-kilogram",
-          "description": "Selected potatoes suitable for roasting, mashing, stews, or frying."
+          "name": "White potatoes per kg",
+          "slug": "white-potatoes-per-kg",
+          "description": "Fresh produce selected for everyday shopping and home cooking."
         }
       }
     },
@@ -171,26 +262,41 @@
       "sku": "FV-007",
       "categoryKey": "fruit-vegetables",
       "brand": null,
-      "price": 3890,
+      "price": "2690",
       "compareAtPrice": null,
       "saleUnit": "KG",
-      "quantityStep": 1,
+      "quantityStep": 0.5,
       "netContent": null,
-      "stockQuantity": 9,
-      "lowStockThreshold": 10,
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/cebolla-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Cebollas frescas"
+            },
+            "en": {
+              "alt": "Fresh onions"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
-          "name": "Tomate redondo",
-          "slug": "tomate-redondo-por-kilo",
-          "description": "Tomates redondos frescos, firmes y jugosos. Ideales para ensaladas, salsas y comidas diarias."
+          "name": "Cebolla por kg",
+          "slug": "cebolla-por-kg",
+          "description": "Producto fresco seleccionado para compras cotidianas y preparaciones caseras."
         },
         "en": {
-          "name": "Round tomato",
-          "slug": "round-tomato-per-kilogram",
-          "description": "Fresh round tomatoes with a firm and juicy texture. Ideal for salads, sauces, and everyday meals."
+          "name": "Onions per kg",
+          "slug": "onions-per-kg",
+          "description": "Fresh produce selected for everyday shopping and home cooking."
         }
       }
     },
@@ -198,26 +304,41 @@
       "sku": "FV-008",
       "categoryKey": "fruit-vegetables",
       "brand": null,
-      "price": 1390,
-      "compareAtPrice": 1790,
+      "price": "3890",
+      "compareAtPrice": null,
       "saleUnit": "KG",
-      "quantityStep": 1,
+      "quantityStep": 0.5,
       "netContent": null,
-      "stockQuantity": 38,
-      "lowStockThreshold": 10,
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/tomate-redondo-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Tomates redondos frescos"
+            },
+            "en": {
+              "alt": "Fresh round tomatoes"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
-          "name": "Zanahoria",
-          "slug": "zanahoria-por-kilo",
-          "description": "Zanahorias frescas y crocantes. Ideales para ensaladas, jugos, sopas y distintas preparaciones."
+          "name": "Tomate redondo por kg",
+          "slug": "tomate-redondo-por-kg",
+          "description": "Producto fresco seleccionado para compras cotidianas y preparaciones caseras."
         },
         "en": {
-          "name": "Carrot",
-          "slug": "carrot-per-kilogram",
-          "description": "Fresh and crunchy carrots. Ideal for salads, juices, soups, and a wide variety of recipes."
+          "name": "Round tomatoes per kg",
+          "slug": "round-tomatoes-per-kg",
+          "description": "Fresh produce selected for everyday shopping and home cooking."
         }
       }
     },
@@ -225,26 +346,41 @@
       "sku": "FV-009",
       "categoryKey": "fruit-vegetables",
       "brand": null,
-      "price": 1890,
+      "price": "1290",
       "compareAtPrice": null,
       "saleUnit": "KG",
-      "quantityStep": 1,
+      "quantityStep": 0.5,
       "netContent": null,
-      "stockQuantity": 42,
-      "lowStockThreshold": 10,
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/zanahoria-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Zanahorias frescas"
+            },
+            "en": {
+              "alt": "Fresh carrots"
+            }
+          }
+        }
+      ],
       "translations": {
         "es": {
-          "name": "Cebolla",
-          "slug": "cebolla-por-kilo",
-          "description": "Cebollas seleccionadas, indispensables para salsas, guisos, ensaladas y comidas caseras."
+          "name": "Zanahoria por kg",
+          "slug": "zanahoria-por-kg",
+          "description": "Producto fresco seleccionado para compras cotidianas y preparaciones caseras."
         },
         "en": {
-          "name": "Yellow onion",
-          "slug": "yellow-onion-per-kilogram",
-          "description": "Selected yellow onions, essential for sauces, stews, salads, and everyday cooking."
+          "name": "Carrots per kg",
+          "slug": "carrots-per-kg",
+          "description": "Fresh produce selected for everyday shopping and home cooking."
         }
       }
     },
@@ -252,296 +388,2297 @@
       "sku": "FV-010",
       "categoryKey": "fruit-vegetables",
       "brand": null,
-      "price": 2490,
+      "price": "2690",
+      "compareAtPrice": null,
+      "saleUnit": "KG",
+      "quantityStep": 0.5,
+      "netContent": null,
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [
+        {
+          "src": "/images/products/zapallo-anco-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Zapallo anco fresco"
+            },
+            "en": {
+              "alt": "Fresh butternut squash"
+            }
+          }
+        }
+      ],
+      "translations": {
+        "es": {
+          "name": "Zapallo anco por kg",
+          "slug": "zapallo-anco-por-kg",
+          "description": "Producto fresco seleccionado para compras cotidianas y preparaciones caseras."
+        },
+        "en": {
+          "name": "Butternut squash per kg",
+          "slug": "butternut-squash-per-kg",
+          "description": "Fresh produce selected for everyday shopping and home cooking."
+        }
+      }
+    },
+    {
+      "sku": "LAC-001",
+      "categoryKey": "dairy-fresh",
+      "brand": null,
+      "price": "2560",
+      "compareAtPrice": "3200",
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 1,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [
+        {
+          "src": "/images/products/leche-entera-1l.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Leche entera en botella de un litro"
+            },
+            "en": {
+              "alt": "One-liter bottle of whole milk"
+            }
+          }
+        }
+      ],
+      "translations": {
+        "es": {
+          "name": "Leche entera 1 L",
+          "slug": "leche-entera-1l",
+          "description": "Producto refrigerado en una presentación práctica para el consumo diario."
+        },
+        "en": {
+          "name": "Whole milk 1 L",
+          "slug": "whole-milk-1l",
+          "description": "Chilled product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "LAC-002",
+      "categoryKey": "dairy-fresh",
+      "brand": null,
+      "price": "2400",
       "compareAtPrice": null,
       "saleUnit": "UNIT",
       "quantityStep": 1,
-      "netContent": null,
-      "stockQuantity": 0,
+      "netContent": {
+        "value": 1,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
       "images": [],
       "translations": {
         "es": {
-          "name": "Palta Hass",
-          "slug": "palta-hass-por-unidad",
-          "description": "Paltas Hass de textura cremosa y sabor suave. Ideales para tostadas, ensaladas y guacamole."
+          "name": "Leche descremada 1 L",
+          "slug": "leche-descremada-1l",
+          "description": "Producto refrigerado en una presentación práctica para el consumo diario."
         },
         "en": {
-          "name": "Hass avocado",
-          "slug": "hass-avocado-each",
-          "description": "Creamy Hass avocados with a mild flavor. Perfect for toast, salads, and guacamole."
+          "name": "Skim milk 1 L",
+          "slug": "skim-milk-1l",
+          "description": "Chilled product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "LAC-003",
+      "categoryKey": "dairy-fresh",
+      "brand": null,
+      "price": "5850",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 1,
+        "unit": "KG"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [
+        {
+          "src": "/images/products/yogur-natural-1kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Yogur natural cremoso"
+            },
+            "en": {
+              "alt": "Creamy plain yogurt"
+            }
+          }
+        }
+      ],
+      "translations": {
+        "es": {
+          "name": "Yogur natural 1 kg",
+          "slug": "yogur-natural-1kg",
+          "description": "Producto refrigerado en una presentación práctica para el consumo diario."
+        },
+        "en": {
+          "name": "Plain yogurt 1 kg",
+          "slug": "plain-yogurt-1kg",
+          "description": "Chilled product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "LAC-004",
+      "categoryKey": "dairy-fresh",
+      "brand": null,
+      "price": "5850",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 1,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Yogur bebible de frutilla 1 L",
+          "slug": "yogur-bebible-frutilla-1l",
+          "description": "Producto refrigerado en una presentación práctica para el consumo diario."
+        },
+        "en": {
+          "name": "Strawberry drinkable yogurt 1 L",
+          "slug": "strawberry-drinkable-yogurt-1l",
+          "description": "Chilled product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "LAC-005",
+      "categoryKey": "dairy-fresh",
+      "brand": null,
+      "price": "4390",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 200,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Manteca 200 g",
+          "slug": "manteca-200g",
+          "description": "Producto refrigerado en una presentación práctica para el consumo diario."
+        },
+        "en": {
+          "name": "Butter 200 g",
+          "slug": "butter-200g",
+          "description": "Chilled product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "LAC-006",
+      "categoryKey": "dairy-fresh",
+      "brand": null,
+      "price": "7450",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 500,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Queso cremoso 500 g",
+          "slug": "queso-cremoso-500g",
+          "description": "Producto refrigerado en una presentación práctica para el consumo diario."
+        },
+        "en": {
+          "name": "Soft cheese 500 g",
+          "slug": "soft-cheese-500g",
+          "description": "Chilled product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "FRE-001",
+      "categoryKey": "dairy-fresh",
+      "brand": null,
+      "price": "4840",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 12,
+        "unit": "UNIT"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [
+        {
+          "src": "/images/products/huevos-blancos-x12.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Docena de huevos blancos"
+            },
+            "en": {
+              "alt": "Dozen white eggs"
+            }
+          }
+        }
+      ],
+      "translations": {
+        "es": {
+          "name": "Huevos blancos x 12",
+          "slug": "huevos-blancos-x12",
+          "description": "Producto refrigerado en una presentación práctica para el consumo diario."
+        },
+        "en": {
+          "name": "White eggs pack of 12",
+          "slug": "white-eggs-pack-12",
+          "description": "Chilled product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "FRE-002",
+      "categoryKey": "dairy-fresh",
+      "brand": null,
+      "price": "8950",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 200,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [
+        {
+          "src": "/images/products/jamon-cocido-200g.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Jamón cocido en fetas"
+            },
+            "en": {
+              "alt": "Sliced cooked ham"
+            }
+          }
+        }
+      ],
+      "translations": {
+        "es": {
+          "name": "Jamón cocido 200 g",
+          "slug": "jamon-cocido-200g",
+          "description": "Producto refrigerado en una presentación práctica para el consumo diario."
+        },
+        "en": {
+          "name": "Cooked ham 200 g",
+          "slug": "cooked-ham-200g",
+          "description": "Chilled product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "FRE-003",
+      "categoryKey": "dairy-fresh",
+      "brand": null,
+      "price": "10990",
+      "compareAtPrice": null,
+      "saleUnit": "KG",
+      "quantityStep": 0.5,
+      "netContent": null,
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Pechuga de pollo por kg",
+          "slug": "pechuga-de-pollo-por-kg",
+          "description": "Producto refrigerado en una presentación práctica para el consumo diario."
+        },
+        "en": {
+          "name": "Chicken breast per kg",
+          "slug": "chicken-breast-per-kg",
+          "description": "Chilled product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "FRE-004",
+      "categoryKey": "dairy-fresh",
+      "brand": null,
+      "price": "13890",
+      "compareAtPrice": null,
+      "saleUnit": "KG",
+      "quantityStep": 0.5,
+      "netContent": null,
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [
+        {
+          "src": "/images/products/carne-picada-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Carne vacuna picada fresca"
+            },
+            "en": {
+              "alt": "Fresh ground beef"
+            }
+          }
+        }
+      ],
+      "translations": {
+        "es": {
+          "name": "Carne picada por kg",
+          "slug": "carne-picada-por-kg",
+          "description": "Producto refrigerado en una presentación práctica para el consumo diario."
+        },
+        "en": {
+          "name": "Ground beef per kg",
+          "slug": "ground-beef-per-kg",
+          "description": "Chilled product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "PAN-001",
+      "categoryKey": "bakery-breakfast",
+      "brand": null,
+      "price": "2890",
+      "compareAtPrice": null,
+      "saleUnit": "KG",
+      "quantityStep": 0.5,
+      "netContent": null,
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [
+        {
+          "src": "/images/products/pan-frances-por-kg.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Pan francés fresco"
+            },
+            "en": {
+              "alt": "Fresh French-style bread"
+            }
+          }
+        }
+      ],
+      "translations": {
+        "es": {
+          "name": "Pan francés por kg",
+          "slug": "pan-frances-por-kg",
+          "description": "Producto de panadería o desayuno en una presentación práctica para el hogar."
+        },
+        "en": {
+          "name": "French-style bread per kg",
+          "slug": "french-style-bread-per-kg",
+          "description": "Bakery or breakfast staple in a practical size for the household."
+        }
+      }
+    },
+    {
+      "sku": "PAN-002",
+      "categoryKey": "bakery-breakfast",
+      "brand": null,
+      "price": "5190",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 500,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [
+        {
+          "src": "/images/products/pan-lactal-blanco-500g.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Pan lactal blanco en rebanadas"
+            },
+            "en": {
+              "alt": "Sliced white sandwich bread"
+            }
+          }
+        }
+      ],
+      "translations": {
+        "es": {
+          "name": "Pan lactal blanco 500 g",
+          "slug": "pan-lactal-blanco-500g",
+          "description": "Producto de panadería o desayuno en una presentación práctica para el hogar."
+        },
+        "en": {
+          "name": "White sandwich bread 500 g",
+          "slug": "white-sandwich-bread-500g",
+          "description": "Bakery or breakfast staple in a practical size for the household."
+        }
+      }
+    },
+    {
+      "sku": "PAN-003",
+      "categoryKey": "bakery-breakfast",
+      "brand": null,
+      "price": "3990",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 6,
+        "unit": "UNIT"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Medialunas x 6",
+          "slug": "medialunas-x6",
+          "description": "Producto de panadería o desayuno en una presentación práctica para el hogar."
+        },
+        "en": {
+          "name": "Croissants pack of 6",
+          "slug": "croissants-pack-6",
+          "description": "Bakery or breakfast staple in a practical size for the household."
+        }
+      }
+    },
+    {
+      "sku": "PAN-004",
+      "categoryKey": "bakery-breakfast",
+      "brand": null,
+      "price": "2490",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 250,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Bizcochos de grasa 250 g",
+          "slug": "bizcochos-de-grasa-250g",
+          "description": "Producto de panadería o desayuno en una presentación práctica para el hogar."
+        },
+        "en": {
+          "name": "Savory biscuits 250 g",
+          "slug": "savory-biscuits-250g",
+          "description": "Bakery or breakfast staple in a practical size for the household."
+        }
+      }
+    },
+    {
+      "sku": "DES-001",
+      "categoryKey": "bakery-breakfast",
+      "brand": null,
+      "price": "2190",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 300,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Galletitas de agua 300 g",
+          "slug": "galletitas-de-agua-300g",
+          "description": "Producto de panadería o desayuno en una presentación práctica para el hogar."
+        },
+        "en": {
+          "name": "Water crackers 300 g",
+          "slug": "water-crackers-300g",
+          "description": "Bakery or breakfast staple in a practical size for the household."
+        }
+      }
+    },
+    {
+      "sku": "DES-002",
+      "categoryKey": "bakery-breakfast",
+      "brand": null,
+      "price": "4500",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 500,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [
+        {
+          "src": "/images/products/avena-tradicional-500g.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Avena tradicional en copos"
+            },
+            "en": {
+              "alt": "Traditional rolled oats"
+            }
+          }
+        }
+      ],
+      "translations": {
+        "es": {
+          "name": "Avena tradicional 500 g",
+          "slug": "avena-tradicional-500g",
+          "description": "Producto de panadería o desayuno en una presentación práctica para el hogar."
+        },
+        "en": {
+          "name": "Rolled oats 500 g",
+          "slug": "rolled-oats-500g",
+          "description": "Bakery or breakfast staple in a practical size for the household."
+        }
+      }
+    },
+    {
+      "sku": "DES-003",
+      "categoryKey": "bakery-breakfast",
+      "brand": null,
+      "price": "4190",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 300,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [
+        {
+          "src": "/images/products/cereales-de-maiz-300g.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Cereales de maíz crocantes"
+            },
+            "en": {
+              "alt": "Crisp corn flakes"
+            }
+          }
+        }
+      ],
+      "translations": {
+        "es": {
+          "name": "Cereales de maíz 300 g",
+          "slug": "cereales-de-maiz-300g",
+          "description": "Producto de panadería o desayuno en una presentación práctica para el hogar."
+        },
+        "en": {
+          "name": "Corn flakes 300 g",
+          "slug": "corn-flakes-300g",
+          "description": "Bakery or breakfast staple in a practical size for the household."
+        }
+      }
+    },
+    {
+      "sku": "DES-004",
+      "categoryKey": "bakery-breakfast",
+      "brand": null,
+      "price": "3790",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 400,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Dulce de leche clásico 400 g",
+          "slug": "dulce-de-leche-clasico-400g",
+          "description": "Producto de panadería o desayuno en una presentación práctica para el hogar."
+        },
+        "en": {
+          "name": "Classic dulce de leche 400 g",
+          "slug": "classic-dulce-de-leche-400g",
+          "description": "Bakery or breakfast staple in a practical size for the household."
+        }
+      }
+    },
+    {
+      "sku": "DES-005",
+      "categoryKey": "bakery-breakfast",
+      "brand": null,
+      "price": "3090",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 454,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [
+        {
+          "src": "/images/products/mermelada-de-durazno-454g.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Mermelada de durazno"
+            },
+            "en": {
+              "alt": "Peach jam"
+            }
+          }
+        }
+      ],
+      "translations": {
+        "es": {
+          "name": "Mermelada de durazno 454 g",
+          "slug": "mermelada-de-durazno-454g",
+          "description": "Producto de panadería o desayuno en una presentación práctica para el hogar."
+        },
+        "en": {
+          "name": "Peach jam 454 g",
+          "slug": "peach-jam-454g",
+          "description": "Bakery or breakfast staple in a practical size for the household."
+        }
+      }
+    },
+    {
+      "sku": "DES-006",
+      "categoryKey": "bakery-breakfast",
+      "brand": null,
+      "price": "12190",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 500,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [
+        {
+          "src": "/images/products/cafe-molido-500g.webp",
+          "width": 1200,
+          "height": 1200,
+          "sortOrder": 0,
+          "translations": {
+            "es": {
+              "alt": "Café molido tostado"
+            },
+            "en": {
+              "alt": "Roasted ground coffee"
+            }
+          }
+        }
+      ],
+      "translations": {
+        "es": {
+          "name": "Café molido 500 g",
+          "slug": "cafe-molido-500g",
+          "description": "Producto de panadería o desayuno en una presentación práctica para el hogar."
+        },
+        "en": {
+          "name": "Ground coffee 500 g",
+          "slug": "ground-coffee-500g",
+          "description": "Bakery or breakfast staple in a practical size for the household."
         }
       }
     },
     {
       "sku": "ALM-001",
       "categoryKey": "pantry",
-      "brand": "Vanguardia",
-      "price": 1599,
-      "compareAtPrice": null,
+      "brand": null,
+      "price": "1190",
+      "compareAtPrice": "1590",
       "saleUnit": "UNIT",
       "quantityStep": 1,
-      "netContent": { "value": 1, "unit": "KG" },
-      "stockQuantity": 64,
-      "lowStockThreshold": 10,
+      "netContent": {
+        "value": 1,
+        "unit": "KG"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": true,
       "isActive": true,
       "images": [],
       "translations": {
         "es": {
-          "name": "Arroz largo fino",
-          "slug": "arroz-largo-fino-vanguardia-1-kg",
-          "description": "Arroz largo fino de cocción pareja y textura liviana. Ideal para acompañamientos, ensaladas, guisos y comidas de todos los días."
+          "name": "Arroz largo fino 1 kg",
+          "slug": "arroz-largo-fino-1kg",
+          "description": "Producto de almacén de uso cotidiano, ideal para mantener la despensa abastecida."
         },
         "en": {
-          "name": "Long-grain rice",
-          "slug": "vanguardia-long-grain-rice-1-kg",
-          "description": "Long-grain rice with an even cook and light texture. Ideal for side dishes, salads, stews, and everyday meals."
+          "name": "Long-grain rice 1 kg",
+          "slug": "long-grain-rice-1kg",
+          "description": "Everyday pantry staple, ideal for keeping the kitchen well stocked."
         }
       }
     },
     {
       "sku": "ALM-002",
       "categoryKey": "pantry",
-      "brand": "DIA",
-      "price": 1290,
-      "compareAtPrice": 1750,
+      "brand": null,
+      "price": "1590",
+      "compareAtPrice": null,
       "saleUnit": "UNIT",
       "quantityStep": 1,
-      "netContent": { "value": 500, "unit": "G" },
-      "stockQuantity": 72,
-      "lowStockThreshold": 10,
+      "netContent": {
+        "value": 500,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
       "images": [],
       "translations": {
         "es": {
-          "name": "Fideos spaghetti",
-          "slug": "fideos-spaghetti-dia-500-g",
-          "description": "Fideos secos tipo spaghetti elaborados con sémola de trigo. Una opción práctica para acompañar con salsas, verduras o queso."
+          "name": "Fideos spaghetti 500 g",
+          "slug": "fideos-spaghetti-500g",
+          "description": "Producto de almacén de uso cotidiano, ideal para mantener la despensa abastecida."
         },
         "en": {
-          "name": "Spaghetti pasta",
-          "slug": "dia-spaghetti-pasta-500-g",
-          "description": "Dry spaghetti made with durum wheat semolina. A convenient option to serve with sauces, vegetables, or cheese."
+          "name": "Spaghetti 500 g",
+          "slug": "spaghetti-500g",
+          "description": "Everyday pantry staple, ideal for keeping the kitchen well stocked."
         }
       }
     },
     {
       "sku": "ALM-003",
       "categoryKey": "pantry",
-      "brand": "DIA",
-      "price": 690,
-      "compareAtPrice": 1100,
+      "brand": null,
+      "price": "850",
+      "compareAtPrice": "999",
       "saleUnit": "UNIT",
       "quantityStep": 1,
-      "netContent": { "value": 1, "unit": "KG" },
-      "stockQuantity": 55,
-      "lowStockThreshold": 10,
+      "netContent": {
+        "value": 1,
+        "unit": "KG"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
       "images": [],
       "translations": {
         "es": {
-          "name": "Harina de trigo 0000",
-          "slug": "harina-trigo-0000-dia-1-kg",
-          "description": "Harina de trigo 0000 de textura fina, ideal para tortas, masas, panqueques y distintas preparaciones caseras."
+          "name": "Harina de trigo 000 1 kg",
+          "slug": "harina-de-trigo-000-1kg",
+          "description": "Producto de almacén de uso cotidiano, ideal para mantener la despensa abastecida."
         },
         "en": {
-          "name": "All-purpose wheat flour",
-          "slug": "dia-all-purpose-flour-1-kg",
-          "description": "Fine all-purpose wheat flour, ideal for cakes, doughs, pancakes, and a wide range of homemade recipes."
+          "name": "Wheat flour 000 1 kg",
+          "slug": "wheat-flour-000-1kg",
+          "description": "Everyday pantry staple, ideal for keeping the kitchen well stocked."
         }
       }
     },
     {
       "sku": "ALM-004",
       "categoryKey": "pantry",
-      "brand": "Cañuelas",
-      "price": 4115,
+      "brand": null,
+      "price": "1490",
       "compareAtPrice": null,
       "saleUnit": "UNIT",
       "quantityStep": 1,
-      "netContent": { "value": 900, "unit": "ML" },
-      "stockQuantity": 38,
-      "lowStockThreshold": 10,
+      "netContent": {
+        "value": 1,
+        "unit": "KG"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
       "images": [],
       "translations": {
         "es": {
-          "name": "Aceite de girasol",
-          "slug": "aceite-girasol-canuelas-900-ml",
-          "description": "Aceite de girasol de sabor suave. Ideal para cocinar, freír y preparar aderezos para ensaladas."
+          "name": "Azúcar 1 kg",
+          "slug": "azucar-1kg",
+          "description": "Producto de almacén de uso cotidiano, ideal para mantener la despensa abastecida."
         },
         "en": {
-          "name": "Sunflower oil",
-          "slug": "canuelas-sunflower-oil-900-ml",
-          "description": "Mild-flavored sunflower oil. Ideal for cooking, frying, and preparing salad dressings."
+          "name": "Sugar 1 kg",
+          "slug": "sugar-1kg",
+          "description": "Everyday pantry staple, ideal for keeping the kitchen well stocked."
         }
       }
     },
     {
       "sku": "ALM-005",
       "categoryKey": "pantry",
-      "brand": "Rosamonte",
-      "price": 4100,
+      "brand": null,
+      "price": "4890",
       "compareAtPrice": null,
       "saleUnit": "UNIT",
       "quantityStep": 1,
-      "netContent": { "value": 1, "unit": "KG" },
-      "stockQuantity": 46,
-      "lowStockThreshold": 10,
+      "netContent": {
+        "value": 1,
+        "unit": "KG"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": true,
       "isActive": true,
       "images": [],
       "translations": {
         "es": {
-          "name": "Yerba mate con palo",
-          "slug": "yerba-mate-rosamonte-1-kg",
-          "description": "Yerba mate elaborada con palo, de sabor intenso y equilibrado. Ideal para disfrutar todos los días."
+          "name": "Yerba mate tradicional 1 kg",
+          "slug": "yerba-mate-tradicional-1kg",
+          "description": "Producto de almacén de uso cotidiano, ideal para mantener la despensa abastecida."
         },
         "en": {
-          "name": "Yerba mate with stems",
-          "slug": "rosamonte-yerba-mate-1-kg",
-          "description": "Yerba mate with stems, featuring a bold and balanced flavor. Ideal for everyday enjoyment."
+          "name": "Traditional yerba mate 1 kg",
+          "slug": "traditional-yerba-mate-1kg",
+          "description": "Everyday pantry staple, ideal for keeping the kitchen well stocked."
         }
       }
     },
     {
       "sku": "ALM-006",
       "categoryKey": "pantry",
-      "brand": "Ledesma",
-      "price": 1565,
+      "brand": null,
+      "price": "4990",
       "compareAtPrice": null,
       "saleUnit": "UNIT",
       "quantityStep": 1,
-      "netContent": { "value": 1, "unit": "KG" },
-      "stockQuantity": 61,
-      "lowStockThreshold": 10,
+      "netContent": {
+        "value": 1.5,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
       "images": [],
       "translations": {
         "es": {
-          "name": "Azúcar refinada",
-          "slug": "azucar-refinada-ledesma-1-kg",
-          "description": "Azúcar refinada de uso cotidiano, ideal para infusiones, postres, tortas y otras preparaciones."
+          "name": "Aceite de girasol 1,5 L",
+          "slug": "aceite-de-girasol-15l",
+          "description": "Producto de almacén de uso cotidiano, ideal para mantener la despensa abastecida."
         },
         "en": {
-          "name": "Refined sugar",
-          "slug": "ledesma-refined-sugar-1-kg",
-          "description": "Refined sugar for everyday use, ideal for hot drinks, desserts, cakes, and other recipes."
+          "name": "Sunflower oil 1.5 L",
+          "slug": "sunflower-oil-15l",
+          "description": "Everyday pantry staple, ideal for keeping the kitchen well stocked."
         }
       }
     },
     {
       "sku": "ALM-007",
       "categoryKey": "pantry",
-      "brand": "Arcor",
-      "price": 1220,
+      "brand": null,
+      "price": "950",
       "compareAtPrice": null,
       "saleUnit": "UNIT",
       "quantityStep": 1,
-      "netContent": { "value": 520, "unit": "G" },
-      "stockQuantity": 48,
-      "lowStockThreshold": 10,
+      "netContent": {
+        "value": 520,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
       "images": [],
       "translations": {
         "es": {
-          "name": "Puré de tomate",
-          "slug": "pure-tomate-arcor-520-g",
-          "description": "Puré elaborado con tomates maduros. Ideal como base para salsas, pizzas, guisos y comidas caseras."
+          "name": "Puré de tomate 520 g",
+          "slug": "pure-de-tomate-520g",
+          "description": "Producto de almacén de uso cotidiano, ideal para mantener la despensa abastecida."
         },
         "en": {
-          "name": "Tomato purée",
-          "slug": "arcor-tomato-puree-520-g",
-          "description": "Purée made from ripe tomatoes. Ideal as a base for sauces, pizzas, stews, and homemade meals."
+          "name": "Tomato purée 520 g",
+          "slug": "tomato-puree-520g",
+          "description": "Everyday pantry staple, ideal for keeping the kitchen well stocked."
         }
       }
     },
     {
       "sku": "ALM-008",
       "categoryKey": "pantry",
-      "brand": "DIA",
-      "price": 2101,
+      "brand": null,
+      "price": "2330",
       "compareAtPrice": null,
       "saleUnit": "UNIT",
       "quantityStep": 1,
-      "netContent": { "value": 400, "unit": "G" },
-      "stockQuantity": 29,
-      "lowStockThreshold": 10,
+      "netContent": {
+        "value": 400,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
       "images": [],
       "translations": {
         "es": {
-          "name": "Lentejas secas",
-          "slug": "lentejas-secas-dia-400-g",
-          "description": "Lentejas secas, fuente de proteínas vegetales y fibra. Ideales para guisos, ensaladas y sopas."
+          "name": "Lentejas secas 400 g",
+          "slug": "lentejas-secas-400g",
+          "description": "Producto de almacén de uso cotidiano, ideal para mantener la despensa abastecida."
         },
         "en": {
-          "name": "Dried lentils",
-          "slug": "dia-dried-lentils-400-g",
-          "description": "Dried lentils, a source of plant-based protein and fiber. Ideal for stews, salads, and soups."
+          "name": "Dried lentils 400 g",
+          "slug": "dried-lentils-400g",
+          "description": "Everyday pantry staple, ideal for keeping the kitchen well stocked."
         }
       }
     },
     {
       "sku": "ALM-009",
       "categoryKey": "pantry",
-      "brand": "La Campagnola",
-      "price": 6280,
+      "brand": null,
+      "price": "1550",
       "compareAtPrice": null,
       "saleUnit": "UNIT",
       "quantityStep": 1,
-      "netContent": { "value": 170, "unit": "G" },
-      "stockQuantity": 7,
-      "lowStockThreshold": 10,
+      "netContent": {
+        "value": 500,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
       "images": [],
       "translations": {
         "es": {
-          "name": "Atún al natural",
-          "slug": "atun-natural-la-campagnola-170-g",
-          "description": "Atún al natural listo para consumir. Ideal para ensaladas, tartas, sándwiches y comidas rápidas."
+          "name": "Sal fina 500 g",
+          "slug": "sal-fina-500g",
+          "description": "Producto de almacén de uso cotidiano, ideal para mantener la despensa abastecida."
         },
         "en": {
-          "name": "Tuna in spring water",
-          "slug": "la-campagnola-tuna-spring-water-170-g",
-          "description": "Ready-to-eat tuna in spring water. Ideal for salads, pies, sandwiches, and quick meals."
+          "name": "Fine salt 500 g",
+          "slug": "fine-salt-500g",
+          "description": "Everyday pantry staple, ideal for keeping the kitchen well stocked."
         }
       }
     },
     {
       "sku": "ALM-010",
       "categoryKey": "pantry",
-      "brand": "DIA",
-      "price": 650,
-      "compareAtPrice": 990,
+      "brand": null,
+      "price": "1150",
+      "compareAtPrice": null,
       "saleUnit": "UNIT",
       "quantityStep": 1,
-      "netContent": { "value": 500, "unit": "G" },
-      "stockQuantity": 58,
-      "lowStockThreshold": 10,
+      "netContent": {
+        "value": 500,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
       "isFeatured": false,
       "isActive": true,
       "images": [],
       "translations": {
         "es": {
-          "name": "Sal fina",
-          "slug": "sal-fina-dia-500-g",
-          "description": "Sal fina para condimentar comidas y utilizar en preparaciones cotidianas."
+          "name": "Polenta rápida 500 g",
+          "slug": "polenta-rapida-500g",
+          "description": "Producto de almacén de uso cotidiano, ideal para mantener la despensa abastecida."
         },
         "en": {
-          "name": "Fine table salt",
-          "slug": "dia-fine-table-salt-500-g",
-          "description": "Fine table salt for seasoning food and everyday cooking."
+          "name": "Instant polenta 500 g",
+          "slug": "instant-polenta-500g",
+          "description": "Everyday pantry staple, ideal for keeping the kitchen well stocked."
+        }
+      }
+    },
+    {
+      "sku": "BEB-001",
+      "categoryKey": "beverages",
+      "brand": null,
+      "price": "2500",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 2,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Agua mineral sin gas 2 L",
+          "slug": "agua-mineral-sin-gas-2l",
+          "description": "Bebida en una presentación práctica para acompañar comidas y reuniones."
+        },
+        "en": {
+          "name": "Still mineral water 2 L",
+          "slug": "still-mineral-water-2l",
+          "description": "Beverage in a practical size for meals and gatherings."
+        }
+      }
+    },
+    {
+      "sku": "BEB-002",
+      "categoryKey": "beverages",
+      "brand": null,
+      "price": "1990",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 2,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Soda 2 L",
+          "slug": "soda-2l",
+          "description": "Bebida en una presentación práctica para acompañar comidas y reuniones."
+        },
+        "en": {
+          "name": "Soda water 2 L",
+          "slug": "soda-water-2l",
+          "description": "Beverage in a practical size for meals and gatherings."
+        }
+      }
+    },
+    {
+      "sku": "BEB-003",
+      "categoryKey": "beverages",
+      "brand": null,
+      "price": "1790",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 2.25,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Gaseosa cola 2,25 L",
+          "slug": "gaseosa-cola-225l",
+          "description": "Bebida en una presentación práctica para acompañar comidas y reuniones."
+        },
+        "en": {
+          "name": "Cola soft drink 2.25 L",
+          "slug": "cola-soft-drink-225l",
+          "description": "Beverage in a practical size for meals and gatherings."
+        }
+      }
+    },
+    {
+      "sku": "BEB-004",
+      "categoryKey": "beverages",
+      "brand": null,
+      "price": "1890",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 2.25,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Gaseosa de naranja 2,25 L",
+          "slug": "gaseosa-naranja-225l",
+          "description": "Bebida en una presentación práctica para acompañar comidas y reuniones."
+        },
+        "en": {
+          "name": "Orange soft drink 2.25 L",
+          "slug": "orange-soft-drink-225l",
+          "description": "Beverage in a practical size for meals and gatherings."
+        }
+      }
+    },
+    {
+      "sku": "BEB-005",
+      "categoryKey": "beverages",
+      "brand": null,
+      "price": "1890",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 2.25,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Gaseosa lima-limón 2,25 L",
+          "slug": "gaseosa-lima-limon-225l",
+          "description": "Bebida en una presentación práctica para acompañar comidas y reuniones."
+        },
+        "en": {
+          "name": "Lemon-lime soft drink 2.25 L",
+          "slug": "lemon-lime-soft-drink-225l",
+          "description": "Beverage in a practical size for meals and gatherings."
+        }
+      }
+    },
+    {
+      "sku": "BEB-006",
+      "categoryKey": "beverages",
+      "brand": null,
+      "price": "2990",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 1,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Jugo de manzana 1 L",
+          "slug": "jugo-de-manzana-1l",
+          "description": "Bebida en una presentación práctica para acompañar comidas y reuniones."
+        },
+        "en": {
+          "name": "Apple juice 1 L",
+          "slug": "apple-juice-1l",
+          "description": "Beverage in a practical size for meals and gatherings."
+        }
+      }
+    },
+    {
+      "sku": "BEB-007",
+      "categoryKey": "beverages",
+      "brand": null,
+      "price": "3150",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 1,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Jugo de naranja 1 L",
+          "slug": "jugo-de-naranja-1l",
+          "description": "Bebida en una presentación práctica para acompañar comidas y reuniones."
+        },
+        "en": {
+          "name": "Orange juice 1 L",
+          "slug": "orange-juice-1l",
+          "description": "Beverage in a practical size for meals and gatherings."
+        }
+      }
+    },
+    {
+      "sku": "BEB-008",
+      "categoryKey": "beverages",
+      "brand": null,
+      "price": "2990",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 1.5,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Agua saborizada de pomelo 1,5 L",
+          "slug": "agua-saborizada-pomelo-15l",
+          "description": "Bebida en una presentación práctica para acompañar comidas y reuniones."
+        },
+        "en": {
+          "name": "Grapefruit flavored water 1.5 L",
+          "slug": "grapefruit-flavored-water-15l",
+          "description": "Beverage in a practical size for meals and gatherings."
+        }
+      }
+    },
+    {
+      "sku": "BEB-009",
+      "categoryKey": "beverages",
+      "brand": null,
+      "price": "2490",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 473,
+        "unit": "ML"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Cerveza rubia 473 ml",
+          "slug": "cerveza-rubia-473ml",
+          "description": "Bebida en una presentación práctica para acompañar comidas y reuniones."
+        },
+        "en": {
+          "name": "Lager beer 473 ml",
+          "slug": "lager-beer-473ml",
+          "description": "Beverage in a practical size for meals and gatherings."
+        }
+      }
+    },
+    {
+      "sku": "BEB-010",
+      "categoryKey": "beverages",
+      "brand": null,
+      "price": "6190",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 750,
+        "unit": "ML"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Vino tinto 750 ml",
+          "slug": "vino-tinto-750ml",
+          "description": "Bebida en una presentación práctica para acompañar comidas y reuniones."
+        },
+        "en": {
+          "name": "Red wine 750 ml",
+          "slug": "red-wine-750ml",
+          "description": "Beverage in a practical size for meals and gatherings."
+        }
+      }
+    },
+    {
+      "sku": "SNA-001",
+      "categoryKey": "snacks-sweets",
+      "brand": null,
+      "price": "3550",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 150,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Papas fritas clásicas 150 g",
+          "slug": "papas-fritas-clasicas-150g",
+          "description": "Snack o golosina en una presentación práctica para compartir o disfrutar entre comidas."
+        },
+        "en": {
+          "name": "Classic potato chips 150 g",
+          "slug": "classic-potato-chips-150g",
+          "description": "Snack or sweet in a practical size for sharing or enjoying between meals."
+        }
+      }
+    },
+    {
+      "sku": "SNA-002",
+      "categoryKey": "snacks-sweets",
+      "brand": null,
+      "price": "2490",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 100,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Palitos sabor queso 100 g",
+          "slug": "palitos-sabor-queso-100g",
+          "description": "Snack o golosina en una presentación práctica para compartir o disfrutar entre comidas."
+        },
+        "en": {
+          "name": "Cheese-flavored corn snacks 100 g",
+          "slug": "cheese-corn-snacks-100g",
+          "description": "Snack or sweet in a practical size for sharing or enjoying between meals."
+        }
+      }
+    },
+    {
+      "sku": "SNA-003",
+      "categoryKey": "snacks-sweets",
+      "brand": null,
+      "price": "2890",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 200,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Maní salado 200 g",
+          "slug": "mani-salado-200g",
+          "description": "Snack o golosina en una presentación práctica para compartir o disfrutar entre comidas."
+        },
+        "en": {
+          "name": "Salted peanuts 200 g",
+          "slug": "salted-peanuts-200g",
+          "description": "Snack or sweet in a practical size for sharing or enjoying between meals."
+        }
+      }
+    },
+    {
+      "sku": "SNA-004",
+      "categoryKey": "snacks-sweets",
+      "brand": null,
+      "price": "2190",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 400,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Maíz para pochoclo 400 g",
+          "slug": "maiz-para-pochoclo-400g",
+          "description": "Snack o golosina en una presentación práctica para compartir o disfrutar entre comidas."
+        },
+        "en": {
+          "name": "Popcorn kernels 400 g",
+          "slug": "popcorn-kernels-400g",
+          "description": "Snack or sweet in a practical size for sharing or enjoying between meals."
+        }
+      }
+    },
+    {
+      "sku": "SNA-005",
+      "categoryKey": "snacks-sweets",
+      "brand": null,
+      "price": "2550",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 300,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Galletitas saladas 300 g",
+          "slug": "galletitas-saladas-300g",
+          "description": "Snack o golosina en una presentación práctica para compartir o disfrutar entre comidas."
+        },
+        "en": {
+          "name": "Salted crackers 300 g",
+          "slug": "salted-crackers-300g",
+          "description": "Snack or sweet in a practical size for sharing or enjoying between meals."
+        }
+      }
+    },
+    {
+      "sku": "GOL-001",
+      "categoryKey": "snacks-sweets",
+      "brand": null,
+      "price": "6200",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 100,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Chocolate con leche 100 g",
+          "slug": "chocolate-con-leche-100g",
+          "description": "Snack o golosina en una presentación práctica para compartir o disfrutar entre comidas."
+        },
+        "en": {
+          "name": "Milk chocolate 100 g",
+          "slug": "milk-chocolate-100g",
+          "description": "Snack or sweet in a practical size for sharing or enjoying between meals."
+        }
+      }
+    },
+    {
+      "sku": "GOL-002",
+      "categoryKey": "snacks-sweets",
+      "brand": null,
+      "price": "1700",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 1,
+        "unit": "UNIT"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Alfajor triple de chocolate",
+          "slug": "alfajor-triple-chocolate",
+          "description": "Snack o golosina en una presentación práctica para compartir o disfrutar entre comidas."
+        },
+        "en": {
+          "name": "Triple chocolate alfajor",
+          "slug": "triple-chocolate-alfajor",
+          "description": "Snack or sweet in a practical size for sharing or enjoying between meals."
+        }
+      }
+    },
+    {
+      "sku": "GOL-003",
+      "categoryKey": "snacks-sweets",
+      "brand": null,
+      "price": "2690",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 150,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Gomitas frutales 150 g",
+          "slug": "gomitas-frutales-150g",
+          "description": "Snack o golosina en una presentación práctica para compartir o disfrutar entre comidas."
+        },
+        "en": {
+          "name": "Fruit gummies 150 g",
+          "slug": "fruit-gummies-150g",
+          "description": "Snack or sweet in a practical size for sharing or enjoying between meals."
+        }
+      }
+    },
+    {
+      "sku": "GOL-004",
+      "categoryKey": "snacks-sweets",
+      "brand": null,
+      "price": "2990",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 300,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Caramelos surtidos 300 g",
+          "slug": "caramelos-surtidos-300g",
+          "description": "Snack o golosina en una presentación práctica para compartir o disfrutar entre comidas."
+        },
+        "en": {
+          "name": "Assorted hard candies 300 g",
+          "slug": "assorted-hard-candies-300g",
+          "description": "Snack or sweet in a practical size for sharing or enjoying between meals."
+        }
+      }
+    },
+    {
+      "sku": "GOL-005",
+      "categoryKey": "snacks-sweets",
+      "brand": null,
+      "price": "3100",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 300,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Galletitas de vainilla 300 g",
+          "slug": "galletitas-de-vainilla-300g",
+          "description": "Snack o golosina en una presentación práctica para compartir o disfrutar entre comidas."
+        },
+        "en": {
+          "name": "Vanilla cookies 300 g",
+          "slug": "vanilla-cookies-300g",
+          "description": "Snack or sweet in a practical size for sharing or enjoying between meals."
+        }
+      }
+    },
+    {
+      "sku": "CON-001",
+      "categoryKey": "frozen",
+      "brand": null,
+      "price": "9990",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 4,
+        "unit": "UNIT"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Hamburguesas de carne x 4",
+          "slug": "hamburguesas-de-carne-x4",
+          "description": "Producto congelado de preparación práctica; conservar según las indicaciones del envase."
+        },
+        "en": {
+          "name": "Beef burgers pack of 4",
+          "slug": "beef-burgers-pack-4",
+          "description": "Convenient frozen product; store according to the package instructions."
+        }
+      }
+    },
+    {
+      "sku": "CON-002",
+      "categoryKey": "frozen",
+      "brand": null,
+      "price": "7590",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 700,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Papas prefritas congeladas 700 g",
+          "slug": "papas-prefritas-congeladas-700g",
+          "description": "Producto congelado de preparación práctica; conservar según las indicaciones del envase."
+        },
+        "en": {
+          "name": "Frozen French fries 700 g",
+          "slug": "frozen-french-fries-700g",
+          "description": "Convenient frozen product; store according to the package instructions."
+        }
+      }
+    },
+    {
+      "sku": "CON-003",
+      "categoryKey": "frozen",
+      "brand": null,
+      "price": "6850",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 400,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Nuggets de pollo 400 g",
+          "slug": "nuggets-de-pollo-400g",
+          "description": "Producto congelado de preparación práctica; conservar según las indicaciones del envase."
+        },
+        "en": {
+          "name": "Chicken nuggets 400 g",
+          "slug": "chicken-nuggets-400g",
+          "description": "Convenient frozen product; store according to the package instructions."
+        }
+      }
+    },
+    {
+      "sku": "CON-004",
+      "categoryKey": "frozen",
+      "brand": null,
+      "price": "7490",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 6,
+        "unit": "UNIT"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Empanadas de carne x 6",
+          "slug": "empanadas-de-carne-x6",
+          "description": "Producto congelado de preparación práctica; conservar según las indicaciones del envase."
+        },
+        "en": {
+          "name": "Beef empanadas pack of 6",
+          "slug": "beef-empanadas-pack-6",
+          "description": "Convenient frozen product; store according to the package instructions."
+        }
+      }
+    },
+    {
+      "sku": "CON-005",
+      "categoryKey": "frozen",
+      "brand": null,
+      "price": "13490",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 1,
+        "unit": "UNIT"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Pizza de mozzarella",
+          "slug": "pizza-de-mozzarella",
+          "description": "Producto congelado de preparación práctica; conservar según las indicaciones del envase."
+        },
+        "en": {
+          "name": "Mozzarella pizza",
+          "slug": "mozzarella-pizza",
+          "description": "Convenient frozen product; store according to the package instructions."
+        }
+      }
+    },
+    {
+      "sku": "CON-006",
+      "categoryKey": "frozen",
+      "brand": null,
+      "price": "3590",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 500,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Mix de vegetales 500 g",
+          "slug": "mix-de-vegetales-500g",
+          "description": "Producto congelado de preparación práctica; conservar según las indicaciones del envase."
+        },
+        "en": {
+          "name": "Frozen vegetable mix 500 g",
+          "slug": "frozen-vegetable-mix-500g",
+          "description": "Convenient frozen product; store according to the package instructions."
+        }
+      }
+    },
+    {
+      "sku": "CON-007",
+      "categoryKey": "frozen",
+      "brand": null,
+      "price": "2990",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 500,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Arvejas congeladas 500 g",
+          "slug": "arvejas-congeladas-500g",
+          "description": "Producto congelado de preparación práctica; conservar según las indicaciones del envase."
+        },
+        "en": {
+          "name": "Frozen peas 500 g",
+          "slug": "frozen-peas-500g",
+          "description": "Convenient frozen product; store according to the package instructions."
+        }
+      }
+    },
+    {
+      "sku": "CON-008",
+      "categoryKey": "frozen",
+      "brand": null,
+      "price": "8290",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 400,
+        "unit": "G"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Espinaca congelada 400 g",
+          "slug": "espinaca-congelada-400g",
+          "description": "Producto congelado de preparación práctica; conservar según las indicaciones del envase."
+        },
+        "en": {
+          "name": "Frozen spinach 400 g",
+          "slug": "frozen-spinach-400g",
+          "description": "Convenient frozen product; store according to the package instructions."
+        }
+      }
+    },
+    {
+      "sku": "CON-009",
+      "categoryKey": "frozen",
+      "brand": null,
+      "price": "8890",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 1,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Helado de vainilla 1 L",
+          "slug": "helado-de-vainilla-1l",
+          "description": "Producto congelado de preparación práctica; conservar según las indicaciones del envase."
+        },
+        "en": {
+          "name": "Vanilla ice cream 1 L",
+          "slug": "vanilla-ice-cream-1l",
+          "description": "Convenient frozen product; store according to the package instructions."
+        }
+      }
+    },
+    {
+      "sku": "CON-010",
+      "categoryKey": "frozen",
+      "brand": null,
+      "price": "2500",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 2,
+        "unit": "KG"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Hielo en cubos 2 kg",
+          "slug": "hielo-en-cubos-2kg",
+          "description": "Producto congelado de preparación práctica; conservar según las indicaciones del envase."
+        },
+        "en": {
+          "name": "Ice cubes 2 kg",
+          "slug": "ice-cubes-2kg",
+          "description": "Convenient frozen product; store according to the package instructions."
+        }
+      }
+    },
+    {
+      "sku": "LIM-001",
+      "categoryKey": "cleaning-personal-care",
+      "brand": null,
+      "price": "6590",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 750,
+        "unit": "ML"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Detergente para platos 750 ml",
+          "slug": "detergente-para-platos-750ml",
+          "description": "Producto de limpieza o cuidado personal en una presentación práctica para el uso diario."
+        },
+        "en": {
+          "name": "Dishwashing liquid 750 ml",
+          "slug": "dishwashing-liquid-750ml",
+          "description": "Cleaning or personal care product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "LIM-002",
+      "categoryKey": "cleaning-personal-care",
+      "brand": null,
+      "price": "1990",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 1,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Lavandina 1 L",
+          "slug": "lavandina-1l",
+          "description": "Producto de limpieza o cuidado personal en una presentación práctica para el uso diario."
+        },
+        "en": {
+          "name": "Bleach 1 L",
+          "slug": "bleach-1l",
+          "description": "Cleaning or personal care product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "LIM-003",
+      "categoryKey": "cleaning-personal-care",
+      "brand": null,
+      "price": "5890",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 3,
+        "unit": "L"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Jabón líquido para ropa 3 L",
+          "slug": "jabon-liquido-para-ropa-3l",
+          "description": "Producto de limpieza o cuidado personal en una presentación práctica para el uso diario."
+        },
+        "en": {
+          "name": "Liquid laundry detergent 3 L",
+          "slug": "liquid-laundry-detergent-3l",
+          "description": "Cleaning or personal care product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "LIM-004",
+      "categoryKey": "cleaning-personal-care",
+      "brand": null,
+      "price": "3990",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 900,
+        "unit": "ML"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Suavizante para ropa 900 ml",
+          "slug": "suavizante-para-ropa-900ml",
+          "description": "Producto de limpieza o cuidado personal en una presentación práctica para el uso diario."
+        },
+        "en": {
+          "name": "Fabric softener 900 ml",
+          "slug": "fabric-softener-900ml",
+          "description": "Cleaning or personal care product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "LIM-005",
+      "categoryKey": "cleaning-personal-care",
+      "brand": null,
+      "price": "2490",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 900,
+        "unit": "ML"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Limpiador para pisos 900 ml",
+          "slug": "limpiador-para-pisos-900ml",
+          "description": "Producto de limpieza o cuidado personal en una presentación práctica para el uso diario."
+        },
+        "en": {
+          "name": "Floor cleaner 900 ml",
+          "slug": "floor-cleaner-900ml",
+          "description": "Cleaning or personal care product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "LIM-006",
+      "categoryKey": "cleaning-personal-care",
+      "brand": null,
+      "price": "2950",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 10,
+        "unit": "UNIT"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Bolsas para residuos x 10",
+          "slug": "bolsas-para-residuos-x10",
+          "description": "Producto de limpieza o cuidado personal en una presentación práctica para el uso diario."
+        },
+        "en": {
+          "name": "Trash bags pack of 10",
+          "slug": "trash-bags-pack-10",
+          "description": "Cleaning or personal care product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "LIM-007",
+      "categoryKey": "cleaning-personal-care",
+      "brand": null,
+      "price": "2790",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 4,
+        "unit": "UNIT"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Papel higiénico 4 rollos",
+          "slug": "papel-higienico-4-rollos",
+          "description": "Producto de limpieza o cuidado personal en una presentación práctica para el uso diario."
+        },
+        "en": {
+          "name": "Toilet paper 4 rolls",
+          "slug": "toilet-paper-4-rolls",
+          "description": "Cleaning or personal care product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "LIM-008",
+      "categoryKey": "cleaning-personal-care",
+      "brand": null,
+      "price": "2490",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 3,
+        "unit": "UNIT"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Rollo de cocina x 3",
+          "slug": "rollo-de-cocina-x3",
+          "description": "Producto de limpieza o cuidado personal en una presentación práctica para el uso diario."
+        },
+        "en": {
+          "name": "Kitchen paper 3 rolls",
+          "slug": "kitchen-paper-3-rolls",
+          "description": "Cleaning or personal care product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "CUI-001",
+      "categoryKey": "cleaning-personal-care",
+      "brand": null,
+      "price": "2370",
+      "compareAtPrice": null,
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 250,
+        "unit": "ML"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Jabón líquido para manos 250 ml",
+          "slug": "jabon-liquido-para-manos-250ml",
+          "description": "Producto de limpieza o cuidado personal en una presentación práctica para el uso diario."
+        },
+        "en": {
+          "name": "Liquid hand soap 250 ml",
+          "slug": "liquid-hand-soap-250ml",
+          "description": "Cleaning or personal care product in a practical size for everyday use."
+        }
+      }
+    },
+    {
+      "sku": "CUI-002",
+      "categoryKey": "cleaning-personal-care",
+      "brand": null,
+      "price": "5214",
+      "compareAtPrice": "8690",
+      "saleUnit": "UNIT",
+      "quantityStep": 1,
+      "netContent": {
+        "value": 400,
+        "unit": "ML"
+      },
+      "stockQuantity": 20,
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isActive": true,
+      "images": [],
+      "translations": {
+        "es": {
+          "name": "Shampoo uso diario 400 ml",
+          "slug": "shampoo-uso-diario-400ml",
+          "description": "Producto de limpieza o cuidado personal en una presentación práctica para el uso diario."
+        },
+        "en": {
+          "name": "Daily shampoo 400 ml",
+          "slug": "daily-shampoo-400ml",
+          "description": "Cleaning or personal care product in a practical size for everyday use."
         }
       }
     }

@@ -1,70 +1,81 @@
-# Codex Setup for This Repository
+# Настройка Codex для этого репозитория
 
-## Project instructions
+## Инструкции проекта
 
-Keep `AGENTS.md` in the Git repository root. Codex reads applicable
-`AGENTS.md` files from the repository root toward the current working directory.
-Use nested instruction files only when a directory genuinely needs different
-rules.
+Git root находится на один уровень выше каталога Next.js-приложения, а проектный
+`AGENTS.md` — в каталоге `tucuman-market/`. Запускайте Codex из этого каталога,
+чтобы проектные инструкции применялись автоматически. Вложенные `AGENTS.md`
+нужны только директориям с действительно отличающимися правилами.
 
-Start Codex from the repository root so it sees the complete project context.
-Useful first prompt:
+Правила контекста уже находятся в `AGENTS.md`, поэтому не копируйте их в каждый
+prompt. Достаточно коротко назвать результат и ограничения, например:
 
 ```text
-Read AGENTS.md, PROJECT_BRIEF.md, ARCHITECTURE.md and the relevant docs. Inspect
-package.json and git status. Propose the smallest Phase 0 task without editing
-files yet.
+Реализуй следующий незавершённый шаг этапа 0 из docs/ROADMAP.md. Сначала
+проверь текущее состояние и предложи минимальный план, пока не меняя файлы.
 ```
 
 ## MCP
 
-First inspect what is already configured:
+Сначала проверьте, что уже настроено:
 
 ```bash
 codex mcp list
 ```
 
-Context7 is useful for current library documentation. Add it only if missing:
+Используйте browser/DevTools MCP для непосредственной визуальной проверки,
+ошибок console, адаптивного поведения, доступности и сетевой отладки.
+Для документации библиотек используйте доступный источник официальной
+документации. Не устанавливайте MCP, plugin или skill заранее: подключайте его
+только для задачи, которой действительно нужна эта возможность. Не добавляйте
+дублирующие серверы, если один уже доступен глобально.
 
-```bash
-codex mcp add context7 -- npx -y @upstash/context7-mcp
-```
+## Экономия контекста
 
-Use a browser/DevTools MCP for direct visual inspection, console errors,
-responsive behavior, accessibility, and network debugging. Do not add duplicate
-servers when one is already available globally. Codex CLI and the IDE extension
-on the same host share MCP configuration; a trusted repository may also use
-project-scoped `.codex/config.toml` when the setup truly belongs to this repo.
+- Давайте одну целостную задачу или один этап `docs/ROADMAP.md` за раз.
+- Ссылайтесь на существующий документ вместо повторения его полного текста.
+- Для небольших fixes называйте конкретный сценарий или файл; `AGENTS.md`
+  определит остальной обязательный контекст.
+- `DESIGN.md` нужен для визуальных задач, `docs/DATA_MODEL.md` — для данных,
+  `docs/GIT_FLOW.md` — для feature/fix/refactor, а security skill — только для
+  перечисленных в `AGENTS.md` рисковых границ.
+- Не используйте субагентов для небольшой последовательной задачи; они полезны
+  только для явно разрешённых независимых параллельных частей.
+- Просите краткий итог и полный список проверок; длинные логи нужны только при
+  ошибках.
 
-## Plugins
+## Плагины (Plugins)
 
-Install plugins only when the corresponding phase needs external access:
+Устанавливайте plugins, только когда соответствующему этапу требуется внешний
+доступ:
 
-- GitHub: Issues, pull requests, and hosted repository workflows.
-- Neon Postgres: cloud database work after the local Prisma schema is stable.
-- Vercel: deployment and environment configuration near release.
-- Codex Security: focused security review before production release.
+- GitHub: Issues, pull requests и workflows размещённого репозитория.
+- Neon Postgres: работа с облачной базой данных после стабилизации локальной
+  Prisma schema.
+- Vercel: deployment и настройка окружения ближе к релизу.
+- Codex Security: целевая проверка безопасности перед production-релизом.
 
-Local coding does not require these plugins. Never put provider tokens in this
-file or in `AGENTS.md`.
+Для локальной разработки эти plugins не нужны. Никогда не помещайте токены
+провайдера в этот файл или в `AGENTS.md`.
 
-## Skills
+## Навыки (Skills)
 
-Do not create a broad “build the whole app” skill. `AGENTS.md` already covers
-durable repository rules. Add a repo skill under `.agents/skills/` only after a
-workflow repeats and its inputs/outputs are stable.
+Не создавайте общий skill «собрать всё приложение». `AGENTS.md` уже содержит
+долгосрочные правила репозитория. Добавляйте skill репозитория в
+`.agents/skills/` только после того, как workflow повторится, а его входные
+и выходные данные станут стабильными.
 
-The first justified candidate is `catalog-workflow`, after the JSON schema and
-Prisma model agree. It should validate bilingual translations, SKU/slug
-uniqueness, price rules, units, and seed compatibility through a deterministic
-script. Until then, keep catalog validation in ordinary project scripts so the
-schema can still change cheaply.
+Первым обоснованным кандидатом станет `catalog-workflow` после согласования JSON
+schema и модели Prisma. Он должен проверять двуязычные переводы, уникальность
+SKU/slugs, правила цен, единицы и совместимость seed с помощью детерминированного
+скрипта. До этого храните валидацию каталога в обычных скриптах проекта, чтобы
+schema всё ещё можно было изменять без больших затрат.
 
-## Working rhythm
+## Рабочий ритм
 
-1. Give Codex one coherent task from `docs/ROADMAP.md`.
-2. Ask it to inspect before editing.
-3. Review the plan and dependency changes.
-4. Let it implement and run relevant checks.
-5. Review the diff and commit a small logical change.
-6. Update the documents when a decision changes.
+1. Давайте Codex одну целостную задачу из `docs/ROADMAP.md`.
+2. Просите его провести проверку до редактирования.
+3. Проверяйте план и изменения зависимостей.
+4. Позвольте ему выполнить реализацию и запустить необходимые проверки.
+5. Просмотрите diff и создайте небольшой логически целостный commit.
+6. Обновляйте документы при изменении решения.

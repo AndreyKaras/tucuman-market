@@ -1,92 +1,109 @@
-# Roadmap
+# Дорожная карта
 
-Statuses: `TODO`, `IN PROGRESS`, `DONE`, `BLOCKED`.
+Статусы: `TODO`, `IN PROGRESS`, `DONE`, `BLOCKED`.
 
-## Phase 0 — Foundation
+## Как обновляется прогресс
 
-- [ ] Confirm repository documents and decisions.
-- [ ] Install only the dependencies required for the first vertical slice.
-- [ ] Add `typecheck`, Vitest, and Playwright scripts.
-- [x] Configure `next-intl` with `es` default and `en` secondary locale.
-- [ ] Configure environment validation.
-- [ ] Configure PostgreSQL and Prisma.
-- [ ] Create initial schema and seed pipeline.
-- [ ] Add CI for lint, typecheck, tests, and build.
+Roadmap не может надёжно определить по коду, завершено ли бизнес-требование.
+Поэтому его обновление входит в Definition of Done в `AGENTS.md`: агент обязан в
+том же change сопоставить выполненную работу с пунктом ниже, поставить честный
+статус после проверок и актуализировать «Текущую следующую задачу». Отдельный
+генератор чекбоксов не используется, потому что он создавал бы ложные `DONE`.
 
-Exit: clean installation, valid environment template, database migration and
-seed work locally, CI is green.
+## Этап 0 — Основа — `IN PROGRESS`
 
-## Phase 1 — Storefront vertical slice
+- [x] Настроить `next-intl` с основной локалью `es` и дополнительной `en`.
+- [x] Настроить scripts для lint, typecheck, Vitest, Prettier и catalog validation.
+- [x] Подтвердить product, architecture, requirements, design и workflow документы.
+- [ ] Установить только зависимости этапа PostgreSQL/Prisma.
+- [ ] Настроить PostgreSQL, Prisma schema и первоначальную migration.
+- [ ] Настроить JSON → Prisma seed pipeline для текущего каталога.
+- [ ] Настроить централизованную валидацию окружения.
+- [ ] Добавить CI для format, lint, typecheck, tests, catalog validation и build.
+- [ ] Настроить Playwright для критических E2E-сценариев.
 
-- [ ] App shell, design tokens, responsive header/footer.
-- [ ] Localized home page.
-- [ ] Category and product repositories.
-- [ ] Catalog grid and category routes.
-- [ ] Product detail page.
-- [ ] Search, filters, sorting, and URL state.
-- [ ] Loading, empty, error, and not-found states.
+Критерий: чистая установка, безопасный env template, рабочие migration/seed и
+зелёный CI.
 
-Exit: customers can browse the bilingual seeded catalog end to end.
+## Этап 1 — Вертикальный срез витрины — `DONE` для JSON adapter
 
-## Phase 2 — Guest cart
+- [x] Каркас, дизайн-токены, responsive header/footer и service states.
+- [x] Локализованная главная с compact hero и category grid 4/3/2.
+- [x] JSON catalog repository категорий и товаров.
+- [x] Catalog/category routes и сетка товаров 4/3/2 без layout shift skeleton.
+- [x] Локализованная страница товара.
+- [x] Поиск, фильтры, сортировка и URL pagination.
+- [x] Loading, empty, error и not-found states.
+- [x] Разделить `Header` на search, locale switcher и mobile navigation.
+- [x] Передавать в client grid только видимую серверную порцию каталога.
+- [ ] После Prisma перевести фильтры/pagination на database repository для
+      300–500 товаров без загрузки полного каталога в browser.
 
-- [ ] Cart domain rules and tests.
-- [ ] Zustand guest cart with versioned local persistence.
-- [ ] Cart drawer and full cart page.
-- [ ] Server price/stock revalidation.
-- [ ] Locale-switch persistence.
+Критерий JSON-среза выполнен: покупатель может просматривать текущий двуязычный
+demo-каталог. Database scalability завершается вместе с этапом 0.
 
-Exit: guest cart survives reload and handles changed products safely.
+## Этап 2 — Гостевая корзина — `IN PROGRESS`
 
-## Phase 3 — Checkout and orders
+- [x] Domain-правила корзины и unit/component/integration тесты.
+- [x] Версионированное локальное сохранение гостевой корзины через reducer/context.
+- [x] Drawer, desktop cart dock и отдельная cart page.
+- [x] Добавление товара не открывает drawer автоматически.
+- [x] Корзина сохраняется при reload и переключении локали.
+- [x] `CartProvider` получает компактные product snapshots, а не полные записи.
+- [ ] При checkout повторно проверять на сервере товар, цену, остаток и количество.
 
-- [ ] Delivery/pickup form and validation.
-- [ ] Store settings and fulfillment rules.
-- [ ] Transactional order creation and item snapshots.
-- [ ] Duplicate-submission protection.
-- [ ] Confirmation page.
-- [ ] Telegram notification and retry-safe logging.
-- [ ] E2E tests for both fulfillment methods.
+Критерий: локальная корзина уже сохраняется и восстанавливается; полная безопасная
+проверка завершится после появления server checkout.
 
-Exit: a guest can place an order and the administrator is notified.
+## Этап 3 — Оформление заказа и заказы — `TODO`
 
-## Phase 4 — Admin
+- [ ] Форма доставки/самовывоза и валидация.
+- [ ] Настройки магазина и правила способов получения.
+- [ ] Идемпотентное транзакционное создание заказа и snapshots позиций.
+- [ ] Атомарная проверка/изменение остатков и защита от повторной отправки.
+- [ ] Страница подтверждения.
+- [ ] Telegram outbox/job с безопасными retry.
+- [ ] E2E обоих способов получения.
 
-- [ ] Better Auth integration and initial admin provisioning.
-- [ ] Admin route, action, and handler authorization.
-- [ ] Product and category management.
-- [ ] Image upload through storage abstraction.
-- [ ] Order list/detail and valid status updates.
-- [ ] Store settings editor.
-- [ ] Authorization and admin E2E tests.
+Критерий: гость оформляет заказ, магазин получает надёжное уведомление.
 
-Exit: the store can be operated without editing code or seed files.
+## Этап 4 — Администрирование — `TODO`
 
-## Phase 5 — Customer accounts
+- [ ] Better Auth и создание первого администратора.
+- [ ] Авторизация admin routes, actions и handlers.
+- [ ] CRUD товаров и категорий.
+- [ ] Upload через storage abstraction.
+- [ ] Список/детали заказов и переходы статусов.
+- [ ] Редактор store settings.
+- [ ] Auth/admin integration и E2E tests.
 
-- [ ] Registration/login and customer profile.
-- [ ] Saved addresses.
-- [ ] Database cart.
-- [ ] Idempotent guest-cart merge.
-- [ ] Owned order history and detail.
-- [ ] Repeat-order flow using current catalog data.
+Критерий: магазин управляется без редактирования кода и seed-файлов.
 
-Exit: authenticated customers retain their cart and account history securely.
+## Этап 5 — Аккаунты покупателей — `TODO`
 
-## Phase 6 — Quality and release
+- [ ] Registration/login и профиль.
+- [ ] Сохранённые адреса.
+- [ ] Корзина в БД и идемпотентное объединение guest cart.
+- [ ] История/детали принадлежащих пользователю заказов.
+- [ ] Повтор заказа по актуальным данным каталога.
 
-- [ ] Accessibility audit and keyboard testing.
-- [ ] Responsive visual QA on representative devices.
-- [ ] Performance and image optimization.
-- [ ] Localized SEO metadata, sitemap, robots, and structured data.
-- [ ] Security review of auth, authorization, input, uploads, secrets, and logs.
-- [ ] Production database, storage, Telegram, and Vercel configuration.
-- [ ] Backup/restore and operational notes.
+Критерий: аккаунт сохраняет корзину и историю заказов.
 
-Exit: production deployment is tested, documented, and portfolio-ready.
+## Этап 6 — Качество и релиз — `TODO`
 
-## Current next task
+- [ ] Audit переводов, hardcoded copy и неиспользуемых messages.
+- [ ] Accessibility/keyboard audit и responsive visual QA.
+- [ ] Performance/image optimization для production-каталога.
+- [ ] Localized SEO, sitemap, robots и structured data.
+- [ ] Security review auth, authorization, inputs, uploads, secrets и logs.
+- [ ] Production DB/storage/Telegram/Vercel configuration.
+- [ ] Backup/restore и эксплуатационная документация.
 
-Complete Phase 0 in small commits. Do not design all pages or install the full
-dependency list in one step. First configure localization and render one
-localized page; then connect the database and seed the current 20 products.
+Критерий: production deployment проверен, документирован и готов для портфолио.
+
+## Текущая следующая задача
+
+Настроить PostgreSQL и Prisma, создать первоначальную migration и выполнить seed
+по цепочке JSON → Prisma seed → PostgreSQL. Сразу спроектировать repository query
+с server-side pagination/filtering для 300–500 товаров, не устанавливая заранее
+остальные зависимости backend-этапов.

@@ -1,124 +1,150 @@
-# Functional Requirements
+# Функциональные требования
 
-## Actors
+## Участники
 
-- Guest customer
-- Registered customer
-- Administrator
+- Гость
+- Зарегистрированный покупатель
+- Администратор
 
-## Storefront
+## Витрина
 
-### Navigation and home
+### Навигация и главная страница
 
-- The customer can switch between Spanish and English.
-- The selected locale persists and keeps the equivalent current page.
-- The header exposes catalog search, categories, cart, and customer profile.
-- No admin login link appears on the public storefront.
-- The home page presents categories, promotions, featured products, store
-  benefits, delivery/pickup information, and contact details.
+- Покупатель может переключаться между испанским и английским языками.
+- Выбранная локаль сохраняется, а пользователь остаётся на эквивалентной
+  текущей странице.
+- Шапка предоставляет доступ к поиску по каталогу, категориям, корзине
+  и профилю покупателя.
+- На публичной витрине не отображается ссылка на вход администратора.
+- Главная страница показывает категории, акции, избранные товары, преимущества
+  магазина, информацию о доставке и самовывозе, а также контактные данные.
 
-### Catalog
+### Каталог
 
-- Browse all active products or a category.
-- Search by localized product name, brand, and relevant keywords.
-- Filter at minimum by category, availability, promotion, and price range.
-- Sort by relevance, price, name, and newest/featured where meaningful.
-- Pagination or incremental loading must preserve filters in the URL.
-- Hidden products never appear publicly.
+- Просмотр всех активных товаров или отдельной категории.
+- Поиск по локализованному названию товара, бренду и релевантным ключевым словам.
+- Фильтрация как минимум по категории, доступности, акции и диапазону цен.
+- Сортировка по релевантности, цене, названию, новизне и признаку избранного там,
+  где это имеет смысл.
+- Пагинация или постепенная загрузка должны сохранять фильтры в URL.
+- Скрытые товары никогда не отображаются публично.
 
-### Product
+### Товар
 
-- Show localized name, description, images, brand, net content or sale unit,
-  price, comparison price when valid, availability, and quantity control.
-- Disable adding an unavailable product.
-- Clearly distinguish products sold by unit from products sold by weight.
-- Do not imply exact final weight if future variable-weight selling is added.
+- Показывать локализованные название и описание, изображения, бренд, массу
+  или объём нетто
+  или единицу продажи, цену, корректную цену для сравнения, доступность
+  и элемент управления количеством.
+- Запрещать добавление недоступного товара.
+- Явно различать товары, продаваемые поштучно и на вес.
+- Не создавать впечатление точного конечного веса, если в будущем будет
+  добавлена продажа с переменным весом.
 
-## Cart
+## Корзина
 
-- Add, remove, and change quantity from product UI, cart drawer, or cart page.
-- Show server-revalidated subtotal before order confirmation.
-- Preserve guest cart across reloads.
-- Do not lose the cart when locale changes.
-- Show a clear resolution when a product becomes hidden, unavailable, repriced,
-  or has insufficient stock.
+- Добавлять, удалять и изменять количество через UI товара, выдвижную корзину
+  или страницу корзины.
+- Добавление товара не открывает выдвижную корзину автоматически. Корзина
+  открывается явной кнопкой в закреплённой шапке.
+- На широких desktop-экранах от 1440px дополнительная фиксированная кнопка
+  корзины располагается справа за пределами основного контейнера и открывает
+  тот же drawer; на меньших экранах она скрыта.
+- Показывать повторно проверенную сервером промежуточную сумму до подтверждения
+  заказа.
+- Сохранять гостевую корзину после перезагрузки.
+- Не терять корзину при смене локали.
+- Показывать понятный способ разрешения ситуации, если товар был скрыт, стал
+  недоступен, изменил цену или имеет недостаточный остаток.
 
-## Checkout
+## Оформление заказа
 
-- Guest checkout is allowed.
-- Collect name, phone, optional email, fulfillment method, and order notes.
-- Delivery requires a valid address and displays fee/conditions.
-- Pickup displays address, hours, and instructions and does not require a
-  delivery address.
-- The customer reviews items, fulfillment data, subtotal, fee, and total before
-  confirming.
-- No online payment is collected.
-- A successful order produces a stable public order number and confirmation.
-- Repeated submission must not create accidental duplicate orders.
+- Разрешено оформление заказа без регистрации.
+- Необходимо собирать имя, телефон, необязательный email, способ получения
+  и примечания к заказу.
+- Доставка требует корректного адреса и показывает стоимость и условия.
+- Самовывоз показывает адрес, часы работы и инструкции и не требует адреса
+  доставки.
+- Перед подтверждением покупатель проверяет позиции, данные о способе получения,
+  промежуточную сумму, сбор и итоговую сумму.
+- Онлайн-оплата не принимается.
+- Успешный заказ создаёт стабильный публичный номер заказа и подтверждение.
+- Повторная отправка не должна случайно создавать дубликаты заказов.
 
-## Telegram notification
+## Уведомление в Telegram
 
-- Notify the configured administrator after an order is committed.
-- Include order number, time, fulfillment type, customer contact, items, totals,
-  notes, and admin order link where safe.
-- Message text is Spanish.
-- Notification failure is logged and retryable without duplicating the order.
+- Уведомлять настроенного администратора после фиксации заказа.
+- Включать номер и время заказа, способ получения, контакт покупателя, позиции,
+  итоговые суммы, примечания и безопасную административную ссылку на заказ.
+- Текст сообщения — на испанском языке.
+- Сбой уведомления логируется и допускает повторную попытку без дублирования
+  заказа.
 
-## Admin
+## Администрирование
 
-### Access
+### Доступ
 
-- `/admin` redirects unauthenticated visitors to `/admin/login`.
-- Authenticated non-admin users receive no admin access.
-- Pages and mutations independently enforce `ADMIN` authorization.
+- `/admin` перенаправляет неаутентифицированных посетителей на `/admin/login`.
+- Аутентифицированные пользователи без роли администратора не получают доступ
+  к административной области.
+- Страницы и операции изменения независимо друг от друга проверяют авторизацию
+  `ADMIN`.
 
-### Catalog
+### Каталог
 
-- Create and edit products with shared commercial fields and both translations.
-- Upload, order, and remove product images.
-- Set price, comparison price, stock, low-stock threshold, sale unit, net
-  content, category, brand, featured state, and active state.
-- Create, edit, order, and hide categories with both translations.
-- Validate unique SKU and locale-specific slugs.
+- Создавать и редактировать товары с общими коммерческими полями и обоими
+  переводами.
+- Загружать, упорядочивать и удалять изображения товаров.
+- Настраивать цену, цену для сравнения, остаток, порог низкого остатка, единицу
+  продажи, массу или объём нетто, категорию, бренд, состояния featured и active.
+- Создавать, редактировать, упорядочивать и скрывать категории с обоими
+  переводами.
+- Проверять уникальность SKU и slugs в пределах локали.
 
-### Orders
+### Заказы
 
-- List and filter orders by date, status, fulfillment type, and order number.
-- View immutable item snapshots and customer fulfillment details.
-- Change only through valid status transitions.
-- Keep an audit timestamp for status updates.
+- Показывать список и фильтровать заказы по дате, статусу, способу получения
+  и номеру заказа.
+- Показывать неизменяемые снимки позиций и данные покупателя о способе получения.
+- Изменять статус только через допустимые переходы.
+- Хранить временную метку аудита для обновлений статуса.
 
-Initial statuses:
+Начальные статусы:
 
 ```text
 PENDING → CONFIRMED → PREPARING → READY → COMPLETED
    └───────────────→ CANCELLED
 ```
 
-Delivery may later add `OUT_FOR_DELIVERY`; do not add it until the operational
-workflow is confirmed.
+Для доставки позднее может быть добавлен `OUT_FOR_DELIVERY`; не добавляйте его,
+пока не подтверждён операционный процесс.
 
-### Store settings
+### Настройки магазина
 
-- Edit address, phone, WhatsApp, opening hours, pickup instructions, delivery
-  zones/conditions, and delivery fee.
-- Public pages load these values from the database rather than hard-coded copy.
+- Редактировать адрес, телефон, WhatsApp, часы работы, инструкции по самовывозу,
+  зоны и условия доставки, а также стоимость доставки.
+- Публичные страницы загружают эти значения из базы данных, а не из
+  жёстко заданных текстов.
 
-## Customer account — extended release
+## Аккаунт покупателя — расширенный релиз
 
-- Register, sign in, sign out, and recover access using the accepted auth design.
-- Edit name, phone, email, and saved addresses.
-- View owned order history and order details.
-- Repeat an order by adding currently available products at current prices;
-  never silently reuse old prices.
-- Persist the authenticated cart in PostgreSQL.
-- Merge guest cart after login and explain unavailable or adjusted items.
+- Регистрироваться, входить, выходить и восстанавливать доступ с использованием
+  принятой архитектуры аутентификации.
+- Редактировать имя, телефон, email и сохранённые адреса.
+- Просматривать принадлежащую пользователю историю и детали заказов.
+- Повторять заказ, добавляя доступные в данный момент товары по актуальным ценам;
+  никогда незаметно не использовать старые цены.
+- Сохранять корзину аутентифицированного пользователя в PostgreSQL.
+- Объединять гостевую корзину после входа и объяснять недоступные или
+  скорректированные позиции.
 
-## Non-functional requirements
+## Нефункциональные требования
 
-- Mobile-first responsive interface.
-- WCAG 2.2 AA-oriented semantics, focus, contrast, forms, and dialogs.
-- Search-engine-friendly localized public pages and structured product metadata.
-- No secrets or customer personal data in client bundles or source control.
-- Critical server mutations are validated, authorized, and covered by tests.
-- Production builds, linting, type checks, and tests pass before release.
+- Адаптивный интерфейс с подходом mobile-first.
+- Семантика, фокус, контрастность, формы и диалоги с ориентацией на WCAG 2.2 AA.
+- Локализованные публичные страницы, удобные для поисковых систем,
+  и структурированные metadata товаров.
+- Отсутствие секретов и персональных данных покупателей в клиентских сборках
+  и системе контроля версий.
+- Критически важные серверные mutations валидируются, авторизуются и покрываются
+  тестами.
+- Production build, lint, typecheck и тесты должны проходить перед релизом.

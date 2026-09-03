@@ -1,46 +1,92 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "categories": [
     {
       "key": "fruit-vegetables",
       "displayOrder": 1,
       "isActive": true,
+      "image": {
+        "src": "/images/products/manzana-roja-por-kg.webp",
+        "width": 1200,
+        "height": 1200,
+        "translations": {
+          "es": { "alt": "Manzanas rojas frescas" },
+          "en": { "alt": "Fresh red apples" }
+        }
+      },
       "translations": {
         "es": { "name": "Frutas y verduras", "slug": "frutas-y-verduras" },
-        "en": { "name": "Fruit and vegetables", "slug": "fruit-and-vegetables" }
+        "en": { "name": "Fruits and vegetables", "slug": "fruits-and-vegetables" }
+      }
+    },
+    {
+      "key": "dairy-fresh",
+      "displayOrder": 2,
+      "isActive": true,
+      "image": {
+        "src": "/images/products/leche-entera-1l.webp",
+        "width": 1200,
+        "height": 1200,
+        "translations": {
+          "es": { "alt": "Botella de leche entera" },
+          "en": { "alt": "Bottle of whole milk" }
+        }
+      },
+      "translations": {
+        "es": { "name": "Lácteos y frescos", "slug": "lacteos-y-frescos" },
+        "en": { "name": "Dairy and fresh", "slug": "dairy-and-fresh" }
+      }
+    },
+    {
+      "key": "bakery-breakfast",
+      "displayOrder": 3,
+      "isActive": true,
+      "image": {
+        "src": "/images/products/pan-frances-por-kg.webp",
+        "width": 1200,
+        "height": 1200,
+        "translations": {
+          "es": { "alt": "Pan francés fresco" },
+          "en": { "alt": "Fresh French bread" }
+        }
+      },
+      "translations": {
+        "es": { "name": "Panadería y desayuno", "slug": "panaderia-y-desayuno" },
+        "en": { "name": "Bakery and breakfast", "slug": "bakery-and-breakfast" }
       }
     },
     {
       "key": "pantry",
-      "displayOrder": 2,
+      "displayOrder": 4,
       "isActive": true,
+      "image": {
+        "src": "/images/products/cafe-molido-500g.webp",
+        "width": 1200,
+        "height": 1200,
+        "translations": {
+          "es": { "alt": "Paquete de café molido" },
+          "en": { "alt": "Pack of ground coffee" }
+        }
+      },
       "translations": {
         "es": { "name": "Almacén", "slug": "almacen" },
         "en": { "name": "Pantry", "slug": "pantry" }
       }
     },
     {
-      "key": "dairy-eggs",
-      "displayOrder": 3,
-      "isActive": true,
-      "translations": {
-        "es": { "name": "Lácteos y huevos", "slug": "lacteos-y-huevos" },
-        "en": { "name": "Dairy and eggs", "slug": "dairy-and-eggs" }
-      }
-    },
-    {
-      "key": "bakery",
-      "displayOrder": 4,
-      "isActive": true,
-      "translations": {
-        "es": { "name": "Panadería", "slug": "panaderia" },
-        "en": { "name": "Bakery", "slug": "bakery" }
-      }
-    },
-    {
       "key": "beverages",
       "displayOrder": 5,
       "isActive": true,
+      "image": {
+        "src": "/images/storefront/products-pantry.png",
+        "width": 320,
+        "height": 240,
+        "spritePosition": 6,
+        "translations": {
+          "es": { "alt": "Bebida en envase de cartón" },
+          "en": { "alt": "Drink in a carton" }
+        }
+      },
       "translations": {
         "es": { "name": "Bebidas", "slug": "bebidas" },
         "en": { "name": "Beverages", "slug": "beverages" }
@@ -50,27 +96,55 @@
       "key": "snacks-sweets",
       "displayOrder": 6,
       "isActive": true,
+      "image": {
+        "src": "/images/products/cereales-de-maiz-300g.webp",
+        "width": 1200,
+        "height": 1200,
+        "translations": {
+          "es": { "alt": "Cereales de maíz" },
+          "en": { "alt": "Corn cereal" }
+        }
+      },
       "translations": {
-        "es": { "name": "Snacks y dulces", "slug": "snacks-y-dulces" },
+        "es": { "name": "Snacks y golosinas", "slug": "snacks-y-golosinas" },
         "en": { "name": "Snacks and sweets", "slug": "snacks-and-sweets" }
       }
     },
     {
-      "key": "meat-deli",
+      "key": "frozen",
       "displayOrder": 7,
       "isActive": true,
+      "image": {
+        "src": "/images/products/carne-picada-por-kg.webp",
+        "width": 1200,
+        "height": 1200,
+        "translations": {
+          "es": { "alt": "Carne picada" },
+          "en": { "alt": "Ground beef" }
+        }
+      },
       "translations": {
-        "es": { "name": "Carnes y fiambres", "slug": "carnes-y-fiambres" },
-        "en": { "name": "Meat and deli", "slug": "meat-and-deli" }
+        "es": { "name": "Congelados", "slug": "congelados" },
+        "en": { "name": "Frozen foods", "slug": "frozen-foods" }
       }
     },
     {
-      "key": "frozen",
+      "key": "cleaning-personal-care",
       "displayOrder": 8,
       "isActive": true,
+      "image": {
+        "src": "/images/storefront/products-pantry.png",
+        "width": 320,
+        "height": 240,
+        "spritePosition": 9,
+        "translations": {
+          "es": { "alt": "Producto de limpieza" },
+          "en": { "alt": "Cleaning product" }
+        }
+      },
       "translations": {
-        "es": { "name": "Congelados", "slug": "congelados" },
-        "en": { "name": "Frozen food", "slug": "frozen-food" }
+        "es": { "name": "Limpieza y cuidado personal", "slug": "limpieza-y-cuidado-personal" },
+        "en": { "name": "Cleaning and personal care", "slug": "cleaning-and-personal-care" }
       }
     }
   ]

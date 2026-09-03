@@ -1,23 +1,29 @@
-import * as rootParams from "next/root-params";
-import { notFound } from "next/navigation";
-import { hasLocale } from "next-intl";
-import { getRequestConfig } from "next-intl/server";
+import * as rootParams from 'next/root-params';
+import { notFound } from 'next/navigation';
+import { hasLocale } from 'next-intl';
+import { getRequestConfig } from 'next-intl/server';
 
-import { routing } from "./routing";
+import enMessages from '../../messages/en.json';
+import esMessages from '../../messages/es.json';
+
+import { routing } from './routing';
+
+const messagesByLocale = {
+  en: enMessages,
+  es: esMessages,
+} as const;
 
 export default getRequestConfig(async ({ locale }) => {
   if (!locale) {
-    const localeParam = await rootParams.locale();
+    locale = await rootParams.locale();
+  }
 
-    if (!hasLocale(routing.locales, localeParam)) {
-      notFound();
-    }
-
-    locale = localeParam;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
   }
 
   return {
     locale,
-    messages: (await import(`../../messages/${locale}.json`)).default,
+    messages: messagesByLocale[locale],
   };
 });
