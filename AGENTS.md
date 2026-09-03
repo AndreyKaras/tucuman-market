@@ -1,83 +1,117 @@
-# AGENTS.md
+# Инструкции для агентов — Tucumán Market
 
-## Role
+Работай как senior full-stack инженер. Общайся с пользователем по-русски, если
+он не попросил иначе; код, команды и идентификаторы пиши по-английски.
 
-Work as a senior full-stack engineer for a production-minded bilingual grocery
-store. Preserve agreed product scope, existing code, and user changes.
+## Контекст задачи
 
-## Required context
+Перед любой работой прочитай этот файл целиком. Затем загружай только документы,
+которые относятся к задаче:
 
-Before changing code:
+| Область                                     | Обязательный документ                          |
+| ------------------------------------------- | ---------------------------------------------- |
+| Scope, цели и релизы                        | [PROJECT_BRIEF.md](./PROJECT_BRIEF.md)         |
+| Сценарии, роли и бизнес-правила             | [docs/REQUIREMENTS.md](./docs/REQUIREMENTS.md) |
+| Архитектура, backend, данные, интеграции    | [ARCHITECTURE.md](./ARCHITECTURE.md)           |
+| Страницы, React, CSS, responsive и любой UI | [DESIGN.md](./DESIGN.md)                       |
+| Feature, bug fix или refactor               | [docs/GIT_FLOW.md](./docs/GIT_FLOW.md)         |
+| Реализация или проверка прогресса           | [docs/ROADMAP.md](./docs/ROADMAP.md)           |
 
-1. Read `PROJECT_BRIEF.md` and `ARCHITECTURE.md` completely.
-2. Read only the relevant files in `docs/` for the current task.
-3. Inspect `git status`, `package.json`, and the files you intend to modify.
+Ближайший вложенный `AGENTS.md` имеет приоритет. Перед изменениями проверь
+`git status`, `package.json` и целевые файлы. Не загружай несвязанные документы.
 
-If code and documentation disagree, stop and describe the conflict. Do not
-silently redefine product behavior.
+## Definition of Done
 
-## Product invariants
+- Внесено минимальное целостное изменение без перезаписи пользовательской работы.
+- Поведение и документация согласованы; архитектурные решения отражены в
+  `ARCHITECTURE.md`.
+- Для задачи из roadmap её статус обновлён в том же change после фактической
+  реализации и проверок. Не ставь `DONE` частичной или непроверенной работе;
+  актуализируй «Текущую следующую задачу».
+- Запущены пропорциональные проверки из `package.json`; незапущенные проверки и
+  ограничения явно указаны в отчёте.
+- Для UI проверены mobile, desktop, console и horizontal overflow через доступный
+  browser/DevTools. Без браузерной проверки не заявляй о визуальной корректности.
+- Просмотрены итоговые `git diff` и `git status`.
 
-- Public storefront languages are Argentinian Spanish (`es`) and English (`en`).
-- Spanish is the default locale. Currency is always ARS.
-- Admin routes are not linked from the storefront.
-- Hiding `/admin` is not security. Protect every admin page, Server Action, and
-  Route Handler with authenticated `ADMIN` authorization.
-- Orders do not use online payment in the current scope.
-- An order must persist successfully before sending its Telegram notification.
-- Product price, name, SKU, quantity, and unit must be snapshotted into order
-  items. Historical orders must not change when a product changes.
-- Never trust totals, prices, stock, user IDs, roles, or order status supplied by
-  the browser. Recalculate and authorize on the server.
+`ROADMAP.md` не определяет завершённость кода автоматически: это семантическое
+решение. Обязательное обновление roadmap в Definition of Done является механизмом
+его синхронизации для каждого агента.
 
-## Engineering conventions
+## Windows и npm
 
-- Use strict TypeScript. Avoid `any`; narrow `unknown` at boundaries.
-- Prefer Server Components. Add `"use client"` only for actual browser state or
-  interaction.
-- Keep business logic out of React components and Route Handlers.
-- Validate external input with Zod on the server.
-- Store money with an exact database type; never use floating-point arithmetic
-  for totals.
-- Keep translatable content separate from locale-independent product data.
-- Use semantic HTML, keyboard-accessible controls, visible focus, and meaningful
-  image alternative text.
-- Do not add a production dependency without explaining its purpose and checking
-  that an existing dependency cannot solve the problem.
-- Never commit secrets, credentials, personal customer data, or `.env.local`.
-- Do not edit generated Prisma migration SQL after it has been applied.
+В PowerShell запускай `npm.cmd run <script>` и `npx.cmd <command>`: это обходит
+`npm.ps1`, который может блокироваться Execution Policy. В Git Bash используй
+обычные `npm` и `npx`. Не меняй системную Execution Policy ради работы агента.
 
-## Data and localization
+## Инварианты продукта
 
-- `data/catalog/*.json` is deterministic seed/demo data, not the production data
-  source after PostgreSQL is connected.
-- Every public category and product must contain both `es` and `en` translations.
-- SKU is globally unique. Slugs are unique within a locale.
-- `compareAtPrice` must be `null` or greater than `price`.
-- `stockQuantity === 0` means out of stock; `isActive === false` means hidden.
-- UI copy belongs in `messages/es.json` and `messages/en.json`, not inline in
-  components.
+- Публичные локали: аргентинский испанский (`es`, default) и английский (`en`).
+  Валюта всегда ARS; admin UI — на испанском.
+- Витрина не показывает ссылки на `/admin`; безопасность обеспечивается не
+  сокрытием URL, а серверной проверкой сессии и роли `ADMIN` на каждой admin
+  странице, Server Action и Route Handler.
+- Онлайн-оплата не входит в текущий scope.
+- Заказ сохраняется до Telegram-уведомления. Сбой уведомления не отменяет заказ.
+- `OrderItem` хранит снимок названия, SKU, цены, количества и единицы.
+- Никогда не доверяй браузерным итогам, ценам, остаткам, user ID, ролям или
+  статусам: загружай и проверяй их на сервере.
 
-## Change discipline
+## Код и данные
 
-- Make the smallest coherent change that completes the request.
-- Preserve unrelated and pre-existing changes.
-- Update the relevant documentation when architecture, schema, commands, or
-  product behavior changes.
-- Add or update tests for changed behavior, especially auth, cart totals, stock,
-  checkout, order status, and cart merging.
+- Strict TypeScript; избегай `any`, сужай `unknown` на границах.
+- Предпочитай Server Components. Добавляй `'use client'` только для браузерного
+  состояния и взаимодействия; не размещай бизнес-логику в компонентах и handlers.
+- Внешние данные валидируй на серверной границе. Не добавляй абстракции и
+  зависимости без практической необходимости.
+- Денежные значения храни в точном типе БД и не вычисляй итоговые суммы через
+  floating point.
+- `data/catalog/*.json` — детерминированные demo/seed-данные, не будущий
+  production source of truth.
+- У каждого публичного товара и категории есть переводы `es`/`en`; SKU уникален
+  глобально, slug — в локали. `compareAtPrice` равен `null` или больше `price`.
+- `stockQuantity === 0` означает out of stock, `isActive === false` скрывает товар.
+- UI-тексты находятся в обоих `messages/*.json` под одинаковым семантическим
+  ключом. Не меняй согласованный контент без запроса.
+- Используй semantic HTML, keyboard controls, visible focus и осмысленный alt.
 
-## Verification
+## Безопасность и секреты
 
-Before declaring work complete, run the scripts that exist in `package.json`:
+- Расширенный `$tucuman-market-security-review` используй при явном запросе и при
+  изменениях auth/roles, API/Actions, Prisma/БД, checkout, денег/остатков,
+  uploads, секретов или внешних интеграций. Для изолированного CSS/UI он не нужен.
+- Секреты хранятся только в `.env.local`/deployment provider и никогда не
+  выводятся, не коммитятся и не получают префикс `NEXT_PUBLIC_`.
+- Поддерживай безопасный `.env.example`; проверяй env централизованно в
+  `src/lib/env.ts`. Не редактируй применённую Prisma migration.
 
-```bash
-npm run lint
-npm run typecheck
-npm run test
-npm run build
-```
+## Git
 
-If a listed script does not exist yet, say so explicitly; do not claim it
-passed. For user-facing changes, also verify the affected flow at mobile and
-desktop widths and check the browser console.
+Следуй `docs/GIT_FLOW.md`. Не меняй код в `main`, `master` или `dev`. Merge,
+push, rebase, Pull Request и удаление branch/worktree требуют отдельного прямого
+разрешения. Не используй destructive Git-команды и не коммить несвязанные файлы.
+
+## Проверки
+
+- Markdown: `npm.cmd run format:check`.
+- TypeScript/логика: `lint`, `typecheck`, релевантные тесты; для общего поведения
+  — полный `test`.
+- Каталог/seed: дополнительно `validate:catalog`.
+- UI: `lint`, `typecheck` и browser QA; тесты добавляй при изменении логики.
+- Конфигурация, маршрутизация, dependencies или крупная сквозная задача:
+  дополнительно `build`.
+- Перед merge/release или завершением значимой feature: `format:check`, `lint`,
+  `typecheck`, `test`, `build`.
+
+Не запускай несвязанные дорогие проверки после точечной правки и не утверждай,
+что незапущенная проверка прошла.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

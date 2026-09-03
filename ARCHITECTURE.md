@@ -1,33 +1,42 @@
-# Architecture
+# Архитектура
 
-## Status
+## Статус
 
-This document records current technical decisions. Change it when an accepted
-decision changes; do not use it as a backlog.
+Этот документ фиксирует текущие технические решения. Обновляйте его при
+изменении принятого решения; не используйте его как backlog.
 
-## Stack
+## Стек
 
-| Concern | Decision |
-|---|---|
-| Framework | Next.js App Router, React, TypeScript |
-| Styling | Tailwind CSS |
-| Localization | `next-intl`, locale segment for the public app |
-| Database | PostgreSQL |
-| ORM | Prisma |
-| Authentication | Better Auth with database-backed sessions |
-| Validation | Zod |
-| Forms | React Hook Form where client-side form state adds value |
-| Client state | Zustand for the interactive guest-cart layer |
-| Notifications | Telegram Bot API called from server-only code |
-| Unit/integration tests | Vitest |
-| End-to-end tests | Playwright |
-| Hosting target | Vercel |
-| Product media | Object storage behind a small storage abstraction |
+### Установлено и используется сейчас
 
-No separate Express server is planned. Server Components, Server Actions, and
-Route Handlers provide the application server layer.
+| Область              | Решение                                                  |
+| -------------------- | -------------------------------------------------------- |
+| Фреймворк            | Next.js 16 App Router, React 19, strict TypeScript       |
+| Стилизация           | Tailwind CSS 4                                           |
+| Локализация          | `next-intl`, сегмент локали публичной витрины            |
+| Данные витрины       | Валидируемые JSON demo/seed-данные за catalog repository |
+| Гостевая корзина     | React reducer/context и версионированный `localStorage`  |
+| Unit/component тесты | Vitest                                                   |
+| Качество             | ESLint, TypeScript, Prettier, catalog validator          |
 
-## Route layout
+### Принято для следующих этапов, но ещё не установлено
+
+| Область                  | Планируемое решение                                             |
+| ------------------------ | --------------------------------------------------------------- |
+| База данных / ORM        | PostgreSQL и Prisma                                             |
+| Аутентификация           | Better Auth с database sessions                                 |
+| Валидация внешних данных | Zod                                                             |
+| Формы                    | React Hook Form только для сложных client forms                 |
+| Состояние на клиенте     | Zustand только если reducer/context станет измеримым bottleneck |
+| Уведомления              | Telegram Bot API только из server code через outbox/job         |
+| End-to-end тесты         | Playwright для критических сценариев                            |
+| Размещение               | Vercel                                                          |
+| Медиафайлы               | Object storage за небольшой storage abstraction                 |
+
+Отдельный Express-сервер не планируется. Server Components, Server Actions
+и Route Handlers образуют серверный слой приложения.
+
+## Структура маршрутов
 
 ```text
 src/app/
@@ -44,132 +53,188 @@ src/app/
 └── api/...
 ```
 
-The exact translated path implementation will be configured through
-`next-intl`; application code should use named localized navigation helpers
-rather than assembling URLs manually. Admin routes do not use a locale prefix
-and use Spanish UI copy.
+Точная реализация переведённых путей будет настроена через `next-intl`;
+код приложения должен использовать именованные локализованные вспомогательные
+функции навигации, а не собирать URL вручную. Административные маршруты
+не используют префикс локали,
+а их UI представлен на испанском языке.
 
-## Suggested source boundaries
+## Рекомендуемые границы исходного кода
 
 ```text
 src/
-├── app/                  # routes, layouts, route-local UI
-├── components/           # reusable presentation components
-├── features/             # catalog, cart, checkout, auth, admin, orders
-├── lib/                  # auth, db, i18n, env, money, telegram, storage
-├── server/               # server-only services and repositories
-└── types/                # shared domain types when genuinely shared
+├── app/                  # маршруты, layouts и UI конкретных маршрутов
+├── components/           # переиспользуемые компоненты представления
+├── features/             # бизнес-логика областей: catalog, cart, checkout, auth, admin, orders
+├── lib/                  # технические клиенты и утилиты: db, auth, i18n, env, money, telegram, storage
+├── server/               # общая серверная инфраструктура и междоменная координация
+└── types/                # общие domain-типы, только когда они действительно общие
 ```
 
-React components do not query Prisma directly. Server-only services coordinate
-authorization, validation, transactions, repositories, and side effects.
+React-компоненты не обращаются к Prisma напрямую. Бизнес-логика конкретной
+области находится в `features/`; общая серверная инфраструктура и междоменная
+координация — в `server/`; технические клиенты и утилиты — в `lib/`. Серверные
+сервисы координируют авторизацию, валидацию, транзакции, repositories и побочные
+эффекты.
 
-## Data model overview
+## Архитектурные шаблоны
 
-Core entities:
+- Repository изолирует доступ к Prisma и PostgreSQL от бизнес-логики.
+- Application Service или Use Case координирует checkout, заказы, авторизацию
+  и другие бизнес-сценарии.
+- Adapter изолирует Telegram, object storage и другие внешние системы.
+- Zod schema проверяет внешние данные на границе системы до передачи в
+  бизнес-логику.
+- Композиция предпочтительнее наследования.
+- Новые interfaces, factories, универсальные repositories и дополнительные
+  слои вводятся только при практической необходимости. Шаблоны не применяются
+  ради самих шаблонов и не должны дублировать существующие границы `features/`,
+  `server/` и `lib/`.
 
-- `User`, `Session`, `Account`, and verification entities required by auth.
-- `Address` owned by a user.
-- `Category` and `CategoryTranslation`.
-- `Product` and `ProductTranslation`.
+## Обзор модели данных
+
+Основные сущности:
+
+- `User`, `Session`, `Account` и сущности верификации, необходимые для
+  аутентификации.
+- `Address`, принадлежащий пользователю.
+- `Category` и `CategoryTranslation`.
+- `Product` и `ProductTranslation`.
 - `ProductImage`.
-- `Cart` and `CartItem`.
-- `Order` and `OrderItem`.
-- `StoreSettings` and localized store content if required.
+- `Cart` и `CartItem`.
+- `Order` и `OrderItem`.
+- `StoreSettings` и локализованный контент магазина, если он потребуется.
 
-See `docs/DATA_MODEL.md` for fields and constraints.
+Поля и ограничения описаны в `docs/DATA_MODEL.md`.
 
-## Money
+## Денежные значения
 
-- Database prices use an exact decimal or integer-minor-unit strategy chosen in
-  the Prisma schema; one strategy must be used consistently.
-- Browser-supplied totals are ignored.
-- The server loads current product prices, validates availability, calculates
-  subtotal and delivery fee, and persists the total in one transaction.
-- Each `OrderItem` stores a snapshot of product name, SKU, unit, unit price, and
-  quantity so historical orders remain stable.
+- Все денежные значения в Prisma представлены типом `Decimal` и хранятся в
+  PostgreSQL как `Decimal(12,2)`; эта стратегия применяется последовательно во
+  всём проекте.
+- JavaScript `number` не используется как источник истины для денежных значений.
+- Итоговые суммы, полученные из браузера, игнорируются.
+- Сервер загружает актуальные цены товаров, проверяет доступность, рассчитывает
+  subtotal и стоимость доставки, а затем сохраняет итоговую сумму в одной
+  транзакции.
+- Каждый `OrderItem` хранит снимок названия товара, SKU, единицы продажи, цены
+  за единицу и количества, чтобы исторические заказы оставались неизменными.
 
-## Cart model
+## Модель корзины
 
-### Guest
+### Гость
 
-- Zustand drives immediate UI updates.
-- A versioned guest cart is persisted in `localStorage`.
-- The server revalidates product existence, activity, stock, price, and allowed
-  quantity during checkout.
+- Сейчас reducer/context обеспечивает немедленное обновление UI. Переход на
+  Zustand допустим только при измеримой проблеме подписок или усложнении sync.
+- Версионированная гостевая корзина сохраняется в `localStorage`.
+- Во время оформления заказа сервер повторно проверяет существование и активность товара,
+  остаток, цену и допустимое количество.
 
-### Authenticated customer
+### Аутентифицированный покупатель
 
-- PostgreSQL is the source of truth.
-- Client state is a view/cache, not authority.
-- On login, guest items merge into the active user cart by product.
-- Merge quantities are capped or rejected according to current stock rules.
-- Merge is idempotent and clears local guest data only after server success.
+- PostgreSQL является источником истины.
+- Состояние на клиенте — это представление/кэш, а не авторитетный источник.
+- При входе гостевые позиции объединяются с активной корзиной пользователя
+  по товарам.
+- Количество при объединении ограничивается или отклоняется в соответствии
+  с актуальными правилами остатков.
+- Объединение идемпотентно и очищает локальные гостевые данные только после
+  успешной операции на сервере.
 
-## Order creation
+## Создание заказа
 
-1. Validate the request and fulfillment method.
-2. Resolve products and prices from the database.
-3. Validate active state, quantity rules, and stock.
-4. Calculate subtotal, delivery fee, and total on the server.
-5. Create the order and immutable order-item snapshots in a database transaction.
-6. Return a customer-visible order number.
-7. Send the Telegram notification after commit.
+1. Проверить запрос и способ получения заказа.
+2. Получить товары и цены из базы данных.
+3. Проверить активность, правила количества и остатки.
+4. Рассчитать subtotal, стоимость доставки и итоговую сумму на сервере.
+5. В одной транзакции базы данных атомарно изменить остатки, создать заказ,
+   неизменяемые снимки его позиций и PostgreSQL outbox/job для уведомления.
+6. Вернуть видимый покупателю номер заказа.
+7. Обработать PostgreSQL outbox/job и отправить уведомление в Telegram после
+   фиксации транзакции.
 
-Telegram failure must not roll back a valid order. Notification attempts should
-be logged and made idempotent so a retry does not create a duplicate order.
+Оформление заказа идемпотентно: повторный запрос с тем же ключом идемпотентности
+не создаёт новый заказ и не списывает остатки повторно. Изменение остатков
+выполняется атомарно и не допускает продажу количества, превышающего доступный
+остаток.
 
-## Authentication and authorization
+Сбой Telegram не должен откатывать корректно созданный заказ. PostgreSQL
+outbox/job хранит состояние и количество попыток отправки. Обработка задания
+логируется и является идемпотентной, чтобы повторная попытка не создавала
+дубликат заказа или уведомления.
 
-- `/admin/login` is public; all other admin pages require a valid session and
-  `role === "ADMIN"`.
-- Middleware may provide early redirects, but it is not the authorization
-  boundary.
-- Every admin Server Action and Route Handler repeats server-side authorization.
-- Customer-owned records are queried by both resource ID and authenticated user
-  ID to prevent insecure direct object references.
-- Role changes, secrets, and initial admin creation happen through controlled
-  server-side operations, never through public registration payloads.
+## Аутентификация и авторизация
 
-## Localization
+- `/admin/login` доступен публично; все остальные административные страницы требуют
+  действующей сессии и `role === "ADMIN"`.
+- Proxy в `src/proxy.ts` может выполнять ранние перенаправления, но не является
+  границей авторизации.
+- Каждая административная Server Action и каждый Route Handler повторно проверяют
+  авторизацию на сервере.
+- Записи, принадлежащие покупателю, запрашиваются одновременно по ID ресурса
+  и ID аутентифицированного пользователя, чтобы предотвратить небезопасные
+  прямые обращения к объектам.
+- Изменения ролей, секреты и создание первого администратора выполняются только
+  контролируемыми серверными операциями, но никогда через данные публичной
+  регистрации.
 
-- UI messages live in `messages/es.json` and `messages/en.json`.
-- Product/category names, descriptions, slugs, and SEO fields use translation
-  tables.
-- Price and number formatting use the selected locale while currency stays ARS.
-- Locale switching keeps the equivalent route and never clears cart state.
-- Localized pages provide canonical and alternate-language metadata.
+## Локализация
 
-## Images
+- Тексты UI хранятся в `messages/es.json` и `messages/en.json`.
+- Названия, описания, slugs и SEO-поля товаров и категорий используют таблицы
+  переводов.
+- Форматирование цен и чисел учитывает выбранную локаль, но валюта остаётся ARS.
+- Переключение локали сохраняет эквивалентный маршрут и никогда не очищает
+  состояние корзины.
+- Локализованные страницы предоставляют canonical metadata и metadata
+  альтернативных языковых версий.
 
-- The database stores asset identifiers, URLs, dimensions, sort order, and
-  localized alternative text; it does not store image bytes.
-- Uploads are validated by MIME type and size on the server.
-- Product cards use responsive optimized images with explicit dimensions.
-- Seed data may initially use local placeholder assets, but production uploads
-  go through the storage abstraction.
+## Изображения
 
-## Environment and secrets
+- База данных хранит идентификаторы assets, URL, размеры, порядок сортировки
+  и локализованный альтернативный текст, но не байты изображений.
+- Загрузки проверяются на сервере по MIME type и размеру.
+- Карточки товаров используют адаптивные оптимизированные изображения
+  с явно заданными размерами.
+- Seed-данные изначально могут использовать локальные placeholder assets,
+  но production-загрузки проходят через абстракцию хранилища.
 
-Environment variables are parsed once in `src/lib/env.ts` with a server/client
-schema. Server secrets are never imported into Client Components.
+## Окружение и секреты
 
-Expected variable names are documented in `.env.example`; actual values belong
-in `.env.local` and deployment secrets.
+Переменные окружения однократно разбираются в `src/lib/env.ts` с помощью
+server/client schema. Серверные секреты никогда не импортируются в Client Components.
 
-## Observability and errors
+Ожидаемые имена переменных документируются в `.env.example`; реальные значения
+хранятся в `.env.local` и секретах deployment-платформы.
 
-- Log structured identifiers such as order number and request context, not full
-  customer records.
-- Present localized, actionable errors to customers.
-- Preserve detailed server errors in protected logs.
-- Add error boundaries and not-found states for public and admin route groups.
+## Наблюдаемость и ошибки
 
-## Testing strategy
+- Логируйте структурированные идентификаторы, например номер заказа и контекст
+  запроса, а не полные записи покупателей.
+- Показывайте покупателям локализованные ошибки с понятным способом исправления.
+- Сохраняйте подробные серверные ошибки в защищённых логах.
+- Добавьте error boundaries и состояния not-found для публичных
+  и административных route groups.
 
-- Unit: money, quantity rules, status transitions, cart merge.
-- Integration: repositories, order transaction, authorization, translations.
-- E2E: browse → cart → checkout; delivery and pickup; admin login and order
-  update; account cart persistence once released.
-- Accessibility: keyboard flow, labels, focus management, dialog behavior, and
-  automated checks for key pages.
+## Стратегия тестирования
+
+- Unit: денежные значения, правила количества, переходы статусов, объединение
+  корзин.
+- Integration: repositories, транзакция заказа, авторизация, переводы.
+- E2E: просмотр → корзина → оформление заказа; доставка и самовывоз; вход
+  администратора и обновление
+  заказа; сохранение корзины аккаунта после выхода расширенного релиза.
+- Доступность: работа с клавиатурой, подписи, управление фокусом, поведение
+  диалогов и автоматические проверки ключевых страниц.
+
+## Масштаб каталога
+
+- Текущий JSON repository — временный adapter для demo/seed-каталога.
+- При росте до 300–500 товаров поиск, фильтры, сортировка и pagination выполняются
+  server-side через repository и PostgreSQL; полный набор товаров не передаётся в
+  Client Components.
+- До подключения БД каталог рендерит только видимую накопительную порцию по URL,
+  а `CartProvider` получает компактные snapshots, необходимые для восстановления
+  гостевой корзины.
+- После Prisma catalog repository сохраняет существующий domain-контракт, но
+  принимает query/pagination и возвращает items, total и данные следующей страницы.
